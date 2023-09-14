@@ -1,7 +1,8 @@
+import { StaticImageData } from "next/image";
 import { ReactElement, ReactNode } from "react";
 
 export interface IServiceItemProps {
-  icon: any;
+  img: StaticImageData;
   title: string;
   text: string;
 }
