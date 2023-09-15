@@ -3,7 +3,7 @@ import s from "./styles.module.sass";
 import { catalogList } from "../../data/catalogList";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Catalog = () => {
@@ -17,6 +17,10 @@ const Catalog = () => {
   const toggleCatalog = (index: number) => {
     setSelectedCatalog(index);
   };
+
+  useEffect(() => {
+    toggleAccordion(0);
+  }, [selectedCatalog]);
 
   return (
     <div className={s.catalog}>
