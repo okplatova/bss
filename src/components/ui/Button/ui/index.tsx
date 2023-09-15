@@ -8,10 +8,20 @@ const Button: FC<PropsWithChildren<IButtonProps>> = ({
   variable = "primary",
   size,
   className,
+  onClick,
+  count,
+  isActive,
 }) => {
-  const btnClass = `${s.button} ${s[variable]} ${s[size]} ${className}`;
+  const btnClass = `${s.button} ${s[variable]} ${s[size]} ${className} ${
+    isActive ? s.active : ""
+  }`;
 
-  return <button className={btnClass}>{children}</button>;
+  return (
+    <button className={btnClass} onClick={onClick}>
+      <span className={s.text}>{children}</span>
+      {count ? <span className={s.count}>{count}</span> : null}
+    </button>
+  );
 };
 
 export default Button;

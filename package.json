@@ -20,6 +20,7 @@
     "next": "13.4.19",
     "next-seo": "^6.1.0",
     "react": "18.2.0",
+    "react-accessible-accordion": "^5.0.0",
     "react-dom": "18.2.0",
     "react-hook-inview": "^4.5.0",
     "sass": "^1.67.0",

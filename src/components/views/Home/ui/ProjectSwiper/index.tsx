@@ -45,7 +45,7 @@ const ProjectSwiper = () => {
         spaceBetween={16}
         speed={800}
         className="mySwiper"
-        centeredSlides={true}
+        centeredSlides={false}
       >
         {projectList.map((project) => (
           <SwiperSlide key={project.id}>

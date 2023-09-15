@@ -3,4 +3,6 @@ export interface IButtonProps {
   size: "large" | "medium" | "small";
   className?: string;
   onClick?: () => void;
+  count?: number;
+  isActive?: boolean;
 }

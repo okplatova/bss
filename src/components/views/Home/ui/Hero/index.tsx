@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useInView } from "react-hook-inview";
 
 import s from "./styles.module.sass";
+
+import { Title } from "@/components/ui/Title";
 
 const Hero = () => {
   const [isActive, setActive] = useState(false);
@@ -12,13 +13,13 @@ const Hero = () => {
 
   return (
     <div className={`${s.hero} ${isActive ? s.isView : ""}`}>
-      <h1 className="container">
+      <Title variant="h1" className="container">
         <span>Big</span>
         <div className={s.square} />
         <span>Screen</span>
         <div className={s.square} />
         <span>Show</span>
-      </h1>
+      </Title>
       <div className={`${s.heroContent} container`}>
         <p>
           Команда талантливых профессионалов, создающих взрывные впечатления для

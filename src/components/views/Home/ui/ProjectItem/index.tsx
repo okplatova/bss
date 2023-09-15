@@ -12,19 +12,9 @@ import { PlusIcon } from "@/components/ui/PlusIcon";
 import { Button } from "@/components/ui/Button";
 
 const ProjectItem: FC<IProjectItemProps> = ({ title, year, img }) => {
-  const { isActive } = useSwiperSlide();
-  const swiper = useSwiper();
-
-  const { slider } = useStores();
-  const projectClass = `${s.projectItem} ${isActive ? s.active : ""}`;
-
-  useEffect(() => {
-    slider.setTotalSlides(swiper.slides?.length);
-    slider.setCurrentSlide(swiper.activeIndex + 1);
-  }, []);
 
   return (
-    <div className={projectClass}>
+    <div className={s.projectItem}>
       <div className={s.imageWrapper}>
         <Button size="large" variable="rounded" className={s.btn}>
           <PlusIcon />
@@ -39,4 +29,4 @@ const ProjectItem: FC<IProjectItemProps> = ({ title, year, img }) => {
   );
 };
 
-export default observer(ProjectItem);
+export default ProjectItem;

@@ -1,12 +1,13 @@
-.projectItem.active
-    .imageWrapper
-        .btn
-            opacity: 1
-    .text
-        color: var(--white-color)
-        border-color: var(--white-color)
 .projectItem
     position: relative
+    cursor: pointer
+    &:hover
+        .imageWrapper
+            .btn
+                opacity: 1
+        .text
+            color: var(--white-color)
+            border-color: var(--white-color)
     .imageWrapper
         position: relative
         aspect-ratio: 1

@@ -8,16 +8,16 @@ const Header = () => {
       <LogoIcon />
       <div className={s.headerContent}>
         <div className={s.top}>
-          <NavItem label="infi@bss-tv.com" isMail />
-          <NavItem label="+7 (900) 845-14-41" isPhone />
-          <NavItem label="+7 (903) 796-24-14" isPhone />
+          <NavItem link="#" label="infi@bss-tv.com" isMail />
+          <NavItem link="#" label="+7 (900) 845-14-41" isPhone />
+          <NavItem link="#" label="+7 (903) 796-24-14" isPhone />
         </div>
         <div className={s.bottom}>
-          <NavItem label="Проекты" />
-          <NavItem label="Оборудование" />
-          <NavItem label="Видеостудия" />
-          <NavItem label="Контакты" />
-          <NavItem label="Видеопроекционные комплексы" />
+          <NavItem link="#" label="Проекты" />
+          <NavItem link="/catalog" label="Оборудование" />
+          <NavItem link="#" label="Видеостудия" />
+          <NavItem link="#" label="Контакты" />
+          <NavItem link="#" label="Видеопроекционные комплексы" />
         </div>
       </div>
     </header>

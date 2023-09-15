@@ -10,6 +10,7 @@ const NavItem: FC<INavItemProps> = ({
   isPhone = false,
   isMail = false,
   isLink = true,
+  link,
 }) => {
   if (isPhone) {
     return (
@@ -27,7 +28,7 @@ const NavItem: FC<INavItemProps> = ({
   }
   if (isLink) {
     return (
-      <Link href="/" className={s.navItem}>
+      <Link href={link} className={s.navItem}>
         {label}
       </Link>
     );

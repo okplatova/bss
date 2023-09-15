@@ -7,11 +7,11 @@ import { Footer } from "../../Footer";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <>
+    <div className={s.layout}>
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

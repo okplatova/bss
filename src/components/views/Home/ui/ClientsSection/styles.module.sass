@@ -5,22 +5,33 @@
         margin-bottom: 4rem
         display: flex
         flex-direction: column
-        gap: .5rem
+        gap: 1rem
         scrollbar-width: thin
+        overflow: hidden
         scrollbar-color: rgba(0,0,0,0) rgba(0,0,0,0)
         &::-webkit-scrollbar-thumb
             background-color: rgba(0,0,0,0)
         &::-webkit-scrollbar-track
             background-color: rgba(0,0,0,0)
+        .clientsList.reverse
+            animation-direction: reverse
         .clientsList
             pointer-events: none
-            overflow: auto
             display: flex
             align-items: center
             gap: 1rem
+            flex-shrink: 0
             scrollbar-width: thin
+            animation: scroll 35s linear infinite
             scrollbar-color: rgba(0,0,0,0) rgba(0,0,0,0)
             &::-webkit-scrollbar-thumb
                 background-color: rgba(0,0,0,0)
             &::-webkit-scrollbar-track
                 background-color: rgba(0,0,0,0)
+
+@keyframes scroll 
+    from 
+        transform: translateX(0)
+    to 
+        transform: translateX(calc(-100% - 20px))
+    

@@ -14,6 +14,18 @@
     align-items: center
     justify-content: center
     border: 1px solid var(--gray-color)
+.button.primary.large
+    padding: 4rem 
+.button.primary.medium
+    padding: 1rem
+.button.primary.small
+    padding: 1rem
+.button.primary
+    background: var(--dark-color)
+    border: 1px solid var(--gray-color)
+    padding: 1rem
+.button.active
+    color: var(--white-color) !important
 .button
     display: flex
     align-items: center
@@ -23,6 +35,11 @@
     transition: all var(--trs-500)
     cursor: pointer
     border: none
+    position: relative
     svg
         path
             transition: all var(--trs-500)
+    .count
+        position: absolute
+        top: 1rem
+        right: 12px

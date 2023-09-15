@@ -14,30 +14,34 @@ const ClientsSection = () => {
 
   const [clients, inViewClients] = useInView();
 
+  // useEffect(() => {
+  //   topListRef.current!.scrollLeft = 300;
+  //   //@ts-ignore
+  //   bottomListRef.current!.scrollLeft = 400;
+
+  //   let lastScrollTop = 0;
+  //   const handleScroll = () => {
+  //     let st = window.scrollY || document.documentElement.scrollTop;
+  //     if (st > lastScrollTop) {
+  //       topListRef.current!.scrollLeft += 1;
+
+  //       bottomListRef.current!.scrollLeft -= 1;
+  //     } else if (st < lastScrollTop) {
+  //       topListRef.current!.scrollLeft -= 1;
+  //       bottomListRef.current!.scrollLeft += 1;
+  //     }
+  //     lastScrollTop = st <= 0 ? 0 : st;
+  //   };
+  //   if (inViewClients) {
+  //     window.addEventListener("scroll", handleScroll);
+  //   }
+
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [inViewClients]);
+
   useEffect(() => {
-    topListRef.current!.scrollLeft = 300;
-    //@ts-ignore
-    bottomListRef.current!.scrollLeft = 400;
 
-    let lastScrollTop = 0;
-    const handleScroll = () => {
-      let st = window.scrollY || document.documentElement.scrollTop;
-      if (st > lastScrollTop) {
-        topListRef.current!.scrollLeft += 1;
-
-        bottomListRef.current!.scrollLeft -= 1;
-      } else if (st < lastScrollTop) {
-        topListRef.current!.scrollLeft -= 1;
-        bottomListRef.current!.scrollLeft += 1;
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
-    };
-    if (inViewClients) {
-      window.addEventListener("scroll", handleScroll);
-    }
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [inViewClients]);
+  }, [])
 
   return (
     <section className={s.section}>
@@ -46,12 +50,18 @@ const ClientsSection = () => {
       </div>
 
       <div ref={clients} className={s.clientsListWrapper}>
-        <div ref={topListRef} className={s.clientsList}>
+        <div ref={topListRef} className={`${s.clientsList} ${s.reverse}`}>
+          {clientsList.reverse().map((client) => (
+            <ClientItem key={client.id} img={client.img} />
+          ))}
           {clientsList.map((client) => (
             <ClientItem key={client.id} img={client.img} />
           ))}
         </div>
         <div ref={bottomListRef} className={s.clientsList}>
+          {clientsList.map((client) => (
+            <ClientItem key={client.id} img={client.img} />
+          ))}
           {clientsList.reverse().map((client) => (
             <ClientItem key={client.id} img={client.img} />
           ))}

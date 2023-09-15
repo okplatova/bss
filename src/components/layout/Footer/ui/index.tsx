@@ -9,13 +9,13 @@ const Footer = () => {
           Световизуальное оборудование для грандиозного шоу. все права защищены
         </span>
       </p>
-      <div className={s.development}>
+      <a target="_blank" href='https://paradigma-digital.ru/' className={s.development}>
         <ParadigmaLogo />
         <p>
           <span>разработка сайта – </span>
           <span>paradigma</span>
         </p>
-      </div>
+      </a>
     </footer>
   );
 };

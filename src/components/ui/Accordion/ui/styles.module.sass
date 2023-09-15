@@ -1,0 +1,41 @@
+.accordion.active
+    .titleWrapper
+        h5
+            color: var(--white-color)
+        svg
+            transform: rotate(360deg)
+.accordion
+    border-bottom: 1px solid var(--gray-color)
+    .titleWrapper
+        display: flex
+        justify-content: space-between
+        padding: 2rem
+        cursor: pointer
+        h5
+            cursor: pointer
+            color: var(--text-gray-color)
+            transition: var(--trs-300)
+            position: relative
+            .count
+                position: absolute
+                font-family: 'Onest', sans-serif
+                font-size: 14px
+                font-style: normal
+                font-weight: 400
+                line-height: 100%
+                letter-spacing: -0.28px
+                text-transform: uppercase 
+                right: -1rem
+        svg
+            transition: var(--trs-500)
+            transform: rotate(180deg)
+    .content
+        padding-left: 2rem
+        padding-right: 2rem
+        max-height: 0
+        overflow: hidden
+        transition: all .5s linear
+    .content.show
+        padding: 2rem
+        max-height: 300vh
+        transition: all 1s 
