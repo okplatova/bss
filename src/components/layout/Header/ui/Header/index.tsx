@@ -1,11 +1,13 @@
 import NavItem from "../NavItem";
 import s from "./styles.module.sass";
 import { LogoIcon } from "@/components/ui/LogoIcon";
-
+import Link from "next/link";
 const Header = () => {
   return (
     <header className={s.header}>
-      <LogoIcon />
+      <Link href="/" className={s.logo}>
+        <LogoIcon />
+      </Link>
       <div className={s.headerContent}>
         <div className={s.top}>
           <NavItem link="#" label="infi@bss-tv.com" isMail />
