@@ -1,9 +1,13 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
+
+import { IAccordionProps } from "../types/accordion.interface";
+
 import s from "./styles.module.sass";
+
 import { Title } from "../../Title";
 import { OutlineArrowTop } from "../../OutlineArrowTop";
 
-const Accordion: FC<any> = ({
+const Accordion: FC<PropsWithChildren<IAccordionProps>> = ({
   children,
   isShow,
   onClick,

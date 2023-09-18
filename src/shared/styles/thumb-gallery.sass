@@ -1,0 +1,43 @@
+.image-gallery-thumbnails-wrapper
+    bottom: 2rem !important
+    left: 2rem !important
+    position: absolute !important
+    .image-gallery-thumbnail.active
+            border: 1px solid var(--gray-color)
+    .image-gallery-thumbnail
+        width: 80px
+        height: 80px
+        cursor: pointer
+        border: 1px solid rgba(0,0,0,0)
+        &:hover
+            border: 1px solid var(--gray-color)
+        .image-gallery-thumbnail-inner
+            padding: .5rem
+            img
+                // object-fit: cover 
+.image-gallery-image
+    // max-height: 100% !important
+    // object-fit: cover
+.image-gallery
+    height: 100%
+.image-gallery-content
+    height: 100%
+.image-gallery-slide-wrapper
+    height: 100%
+.image-gallery-swipe
+    height: 100%
+.image-gallery-slides
+    height: 100%
+.image-gallery-slide
+    height: 100%
+.image-gallery-image
+    // height: 100%
+    width: auto !important
+    max-height: 100% !important
+    object-fit: contain !important
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto

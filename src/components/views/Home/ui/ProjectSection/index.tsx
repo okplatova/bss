@@ -5,7 +5,7 @@ import "swiper/css";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
-import ProjectSwiper from "../ProjectSwiper";
+import { ProjectSwiper } from "@/components/common/ProjectSwiper";
 
 const ProjectSection = () => {
   return (

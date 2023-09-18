@@ -1,0 +1,30 @@
+.breadcrumbs
+    padding: 1rem 2rem
+    display: flex
+    gap: 1.6rem
+    border-bottom: 1px solid var(--gray-color)
+    .link.last
+        color: var(--text-gray-color)
+        cursor: default
+        &::after
+            display: none
+    .link
+        font-family: 'Onest', sans-serif
+        font-size: 14px
+        font-style: normal
+        font-weight: 400
+        line-height: 100%
+        letter-spacing: -0.28px
+        text-transform: uppercase
+        position: relative
+        cursor: pointer
+        &::after
+            position: absolute
+            content: ''
+            top: 0
+            bottom: 0
+            margin: auto 0
+            height: 1px
+            background: var(--white-color)
+            width: 11px
+            right: -1.15rem

@@ -1,10 +1,13 @@
-import { Title } from "@/components/ui/Title";
-import s from "./styles.module.sass";
+import { useEffect, useState } from "react";
+
 import { catalogList } from "../../data/catalogList";
+
+import s from "./styles.module.sass";
+
+import { Title } from "@/components/ui/Title";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import AccordionContent from "../AccordionContent";
 
 const Catalog = () => {
   const [selectedAccordion, setSelectedAccordion] = useState<any>(0);
@@ -40,6 +43,7 @@ const Catalog = () => {
                 key={catalogItem.id}
                 count={catalogItem.content.length}
                 size="medium"
+                variable="clear"
                 className={buttonClass}
                 onClick={() => toggleCatalog(index)}
               >
@@ -55,27 +59,9 @@ const Catalog = () => {
               isShow={selectedAccordion === index}
               title={accordion.title}
               onClick={() => toggleAccordion(index)}
-              item={accordion}
               count={accordion.equipments.length}
             >
-              <div className={s.imageWrapper}>
-                <Image src={accordion.img.src} fill alt={accordion.title} />
-              </div>
-              <div className={s.equipments}>
-                {accordion.equipments.map((equipment) => (
-                  <div key={equipment.id} className={s.equipment}>
-                    <p>{equipment.title}</p>
-                    <Title variant="h6">{equipment.type}</Title>
-                    <div className={s.options}>
-                      {equipment.options.map((option) => (
-                        <div key={option} className={s.option}>
-                          {option}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <AccordionContent accordion={accordion} />
             </Accordion>
           ))}
         </div>

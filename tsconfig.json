@@ -17,6 +17,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/views/Product/ui/ProductSwiper/index.jsx",
+    "src/components/views/Product/ui/ProductSwiper/index.jsx"
+  ],
   "exclude": ["node_modules"]
 }

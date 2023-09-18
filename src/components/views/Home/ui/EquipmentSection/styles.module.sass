@@ -20,8 +20,17 @@
             svg
                 path
                     fill: var(--black-color)
+    .equipmentList.isView
+        .equipmentItem
+            opacity: 1
+            // @for $i from 1 through 6
+            //     &:nth-child(#{$i})
+            //         transition: opacity var(--trs-500) $i * 150ms, background var(--trs-500)
+
     .equipmentList
         margin-top: 4rem
         display: grid
         grid-template-columns: repeat(4, 1fr)
         gap: 1rem
+        .equipmentItem
+            opacity: 0

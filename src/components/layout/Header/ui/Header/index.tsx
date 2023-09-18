@@ -15,10 +15,10 @@ const Header = () => {
           <NavItem link="#" label="+7 (903) 796-24-14" isPhone />
         </div>
         <div className={s.bottom}>
-          <NavItem link="#" label="Проекты" />
+          <NavItem link="/projects" label="Проекты" />
           <NavItem link="/catalog" label="Оборудование" />
           <NavItem link="#" label="Видеостудия" />
-          <NavItem link="#" label="Контакты" />
+          <NavItem link="/contacts" label="Контакты" />
           <NavItem link="#" label="Видеопроекционные комплексы" />
         </div>
       </div>

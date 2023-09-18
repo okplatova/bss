@@ -1,8 +1,15 @@
+import dynamic from "next/dynamic";
+
 import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import ContactMap from "../ContactMap";
-import ContactItem from "../ContactItem";
+import { ContactItem } from "@/components/common/ContactItem";
+const DynamicMap = dynamic(
+  () => import("@/components/common/ContactMap/ui/index"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
 
 const ContactsSection = () => {
   return (
@@ -31,7 +38,7 @@ const ContactsSection = () => {
           </div>
         </div>
       </div>
-      <ContactMap />
+      <DynamicMap />
     </section>
   );
 };

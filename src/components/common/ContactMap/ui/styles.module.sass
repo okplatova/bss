@@ -1,0 +1,15 @@
+.map
+    filter: grayscale(1)
+    max-height: 100vh
+    overflow: hidden
+    background: linear-gradient(274deg, #fff, #F0F0F0)
+    background-size: 400% 400%
+    animation: SkeletonAnimate 2s ease infinite
+    
+@keyframes SkeletonAnimate 
+    0%
+        background-position:0% 50%
+    50%
+        background-position:100% 50%
+    100%
+        background-position:0% 50%

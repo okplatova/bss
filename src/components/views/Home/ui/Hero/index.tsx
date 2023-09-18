@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
+import { Player } from "@/components/common/Player";
 
 const Hero = () => {
   const [isActive, setActive] = useState(false);
@@ -30,8 +31,8 @@ const Hero = () => {
       <div className={s.video}>
         <div className={s.videoWrapper}>
           <div className={s.backdrop} />
-
-          <img src="/video.jpg" alt="" />
+          <Player url="/hero.mp4" />
+          {/* <img src="/video.jpg" alt="" /> */}
         </div>
       </div>
     </div>

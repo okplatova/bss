@@ -20,10 +20,25 @@
     padding: 1rem
 .button.primary.small
     padding: 1rem
-.button.primary
-    background: var(--dark-color)
+.button.clear
+    background: none
     border: 1px solid var(--gray-color)
     padding: 1rem
+.button.primary
+    background: var(--dark-second-color)
+    border: 1px solid var(--gray-color)
+    padding: 1rem
+.button.secondary
+    background: var(--white-color)
+    padding: 1rem
+    color: var(--black-color)
+    &:hover
+        background: var(--black-color)
+        padding: 1rem
+        color: var(--white-color)
+        svg
+            path
+                fill: var(--white-color)
 .button.active
     color: var(--white-color) !important
 .button
@@ -39,7 +54,10 @@
     svg
         path
             transition: all var(--trs-500)
+    .text
+        display: flex
     .count
         position: absolute
         top: 1rem
         right: 12px
+        font-size: 10px
