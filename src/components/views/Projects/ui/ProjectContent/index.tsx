@@ -61,7 +61,7 @@ const ProjectContent = () => {
         </Button>
       ) : (
         <Button
-          disabled={true}
+          disabled={!allProjects}
           onClick={showMore}
           size="medium"
           className={s.loadMore}
