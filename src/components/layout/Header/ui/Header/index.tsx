@@ -1,7 +1,10 @@
-import NavItem from "../NavItem";
-import s from "./styles.module.sass";
-import { LogoIcon } from "@/components/ui/LogoIcon";
 import Link from "next/link";
+
+import s from "./styles.module.sass";
+
+import NavItem from "../NavItem";
+import { LogoIcon } from "@/components/ui/LogoIcon";
+
 const Header = () => {
   return (
     <header className={s.header}>

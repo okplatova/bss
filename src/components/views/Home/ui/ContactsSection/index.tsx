@@ -4,6 +4,7 @@ import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ContactItem } from "@/components/common/ContactItem";
+
 const DynamicMap = dynamic(
   () => import("@/components/common/ContactMap/ui/index"),
   {

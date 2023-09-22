@@ -1,14 +1,12 @@
-import Image from "next/image";
-
 import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import ProductSwiper from "./../ProductSwiper/index";
 import Specifications from "../Specifications";
 import Interactive from "../Interactive";
 import Certificates from "../Certificates";
 import Projects from "../Projects";
-import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 
 const breadcrumbs = [
   {

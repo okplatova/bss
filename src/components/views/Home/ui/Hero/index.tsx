@@ -32,7 +32,6 @@ const Hero = () => {
         <div className={s.videoWrapper}>
           <div className={s.backdrop} />
           <Player url="/hero.mp4" />
-          {/* <img src="/video.jpg" alt="" /> */}
         </div>
       </div>
     </div>

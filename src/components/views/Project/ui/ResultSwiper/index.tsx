@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/navigation";
+import { resultList } from "../../data/resultList";
+
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import s from "./styles.module.sass";
 
+import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
-import { resultList } from "../../data/resultList";
-import Image from "next/image";
-
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
-import lightGallery from "lightgallery";
-import { Fancybox } from "@/components/ui/Fancybox";
-import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const ResultSwiper = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);

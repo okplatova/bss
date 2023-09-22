@@ -1,7 +1,7 @@
+import s from "./styles.module.sass";
+
 import { ProjectSwiper } from "@/components/common/ProjectSwiper";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import Link from "next/link";
-import s from "./styles.module.sass";
 
 const Projects = () => {
   return (

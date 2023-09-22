@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import s from "./styles.module.sass";
-import "swiper/css";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";

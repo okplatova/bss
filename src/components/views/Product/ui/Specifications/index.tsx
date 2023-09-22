@@ -1,8 +1,8 @@
-import { SectionTitle } from "@/components/ui/SectionTitle";
 import s from "./styles.module.sass";
 
 import { Button } from "@/components/ui/Button";
 import { specificationsList } from "../../data/specificationsList";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 
 const Specifications = () => {
   return (

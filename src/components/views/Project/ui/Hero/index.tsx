@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";

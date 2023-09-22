@@ -1,12 +1,12 @@
-import { Title } from "@/components/ui/Title";
 import s from "./styles.module.sass";
+
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import Hero from "../Hero";
 import TaskSection from "../TaskSection";
 import ResultSection from "../ResultSection";
 import VideoSection from "../VideoSection";
 import Equipments from "../Equipments";
 import AnotherProjects from "../AnotherProjects";
-import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 
 const breadcrumbs = [
   {

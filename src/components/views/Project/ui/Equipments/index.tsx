@@ -1,9 +1,9 @@
-import { EquipmentItem } from "@/components/common/EquipmentItem";
 import { equipmentsList } from "../../data/equipmentsList";
 
 import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { EquipmentItem } from "@/components/common/EquipmentItem";
 
 const Equipments = () => {
   return (

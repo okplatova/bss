@@ -1,7 +1,7 @@
 import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import ResultSwiper from "./../ResultSwiper/index";
+import ResultSwiper from "../ResultSwiper";
 
 const ResultSection = () => {
   return (

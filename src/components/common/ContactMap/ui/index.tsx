@@ -3,7 +3,7 @@ import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
 
 import s from "./styles.module.sass";
 
-import pin from "../../../../../public/pin.svg";
+import pin from "/public/pin.svg";
 
 const ContactMap = () => {
   const map = useRef<any>();

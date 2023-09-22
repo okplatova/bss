@@ -1,5 +1,6 @@
-import { PdfIcon } from "@/components/ui/PdfIcon";
 import s from "./styles.module.sass";
+
+import { PdfIcon } from "@/components/ui/PdfIcon";
 import { Title } from "@/components/ui/Title";
 import { DownloadIcon } from "@/components/ui/DownloadIcon";
 import { Button } from "@/components/ui/Button";

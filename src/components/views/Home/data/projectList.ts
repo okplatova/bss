@@ -1,6 +1,6 @@
-import slide1 from "../../../../../public/projectSlider/slide1.jpg";
-import slide2 from "../../../../../public/projectSlider/slide2.jpg";
-import slide3 from "../../../../../public/projectSlider/slide3.jpg";
+import slide1 from "../../../../../public/projectSlider/slide1.webp";
+import slide2 from "../../../../../public/projectSlider/slide2.webp";
+import slide3 from "../../../../../public/projectSlider/slide3.webp";
 
 export const projectList = [
   {

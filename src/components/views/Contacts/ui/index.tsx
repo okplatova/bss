@@ -1,9 +1,11 @@
-import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import dynamic from "next/dynamic";
+
 import s from "./styles.module.sass";
+
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Title } from "@/components/ui/Title";
 import { ContactItem } from "@/components/common/ContactItem";
-import dynamic from "next/dynamic";
-import { ContactMap } from "@/components/common/ContactMap";
+
 const DynamicMap = dynamic(
   () => import("@/components/common/ContactMap/ui/index"),
   {

@@ -39,7 +39,6 @@ const Catalog = () => {
   return (
     <div className={s.catalog}>
       <Breadcrumbs items={breadcrumbs} />
-
       <div className={s.top}>
         <Title variant="h2" className="container">
           оборудование

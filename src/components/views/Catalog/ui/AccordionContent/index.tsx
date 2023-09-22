@@ -1,12 +1,10 @@
 import { FC } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 import { IAccordionContentProps } from "../../types/accordionContent.interface";
 
 import s from "./styles.module.sass";
 
-import { Title } from "@/components/ui/Title";
 import { EquipmentItem } from "@/components/common/EquipmentItem";
 
 const AccordionContent: FC<IAccordionContentProps> = ({ accordion }) => {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { projectList } from "../../data/projectList";
 
 import s from "./styles.module.sass";
 

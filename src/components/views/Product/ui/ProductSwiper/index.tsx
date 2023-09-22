@@ -11,9 +11,9 @@ import "react-image-gallery/styles/css/image-gallery.css";
 
 import s from "./styles.module.sass";
 
-import product1 from "../../../../../../public/equipments/equipment3.png";
-import product2 from "../../../../../../public/equipments/equipment4.png";
-import product3 from "../../../../../../public/equipments/equipment5.png";
+import product1 from "/public/equipments/equipment3.png";
+import product2 from "/public/equipments/equipment4.png";
+import product3 from "/public/equipments/equipment5.png";
 import { Fancybox } from "@/components/ui/Fancybox";
 
 const images = [
@@ -68,7 +68,6 @@ const ProductSwiper = () => {
             ))}
           </Swiper>
         </Fancybox>
-
         <Swiper
           //@ts-ignore
           onSwiper={setThumbsSwiper}
