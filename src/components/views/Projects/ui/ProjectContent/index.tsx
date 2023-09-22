@@ -5,6 +5,7 @@ import s from "./styles.module.sass";
 
 import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
+import { Loader } from "@/components/ui/Loader";
 
 const ProjectContent = () => {
   const [allProjects, setAllProjects] = useState<any>(null);
@@ -38,28 +39,29 @@ const ProjectContent = () => {
 
   return (
     <div className={s.content}>
-      <div className={s.projectList}>
-        {!visibleProjects ? (
-          <>loading</>
-        ) : (
-          <>
-            {visibleProjects.map((project: any) => (
-              <ProjectItem
-                key={project.id}
-                title={project.title}
-                year={project.year}
-                img={project.img}
-              />
-            ))}
-          </>
-        )}
-      </div>
+      {!visibleProjects ? (
+        <div className={s.loaderWrapper}>
+          <Loader />
+        </div>
+      ) : (
+        <div className={s.projectList}>
+          {visibleProjects.map((project: any) => (
+            <ProjectItem
+              key={project.id}
+              title={project.title}
+              year={project.year}
+              img={project.img}
+            />
+          ))}
+        </div>
+      )}
       {allProjects?.length <= visibleProjects?.length ? (
         <Button onClick={hideMore} size="medium" className={s.loadMore}>
           Скрыть
         </Button>
       ) : (
         <Button
+          disabled={true}
           onClick={showMore}
           size="medium"
           className={s.loadMore}

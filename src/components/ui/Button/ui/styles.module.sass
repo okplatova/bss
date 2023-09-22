@@ -51,6 +51,9 @@
     cursor: pointer
     border: none
     position: relative
+    &:disabled
+        opacity: .5
+        pointer-events: none
     svg
         path
             transition: all var(--trs-500)

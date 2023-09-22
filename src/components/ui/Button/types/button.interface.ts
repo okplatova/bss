@@ -5,4 +5,5 @@ export interface IButtonProps {
   onClick?: () => void;
   count?: number;
   isActive?: boolean;
+  disabled?: boolean;
 }
