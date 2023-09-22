@@ -8,6 +8,17 @@ import { Title } from "@/components/ui/Title";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
 import AccordionContent from "../AccordionContent";
+import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+
+const breadcrumbs = [
+  {
+    label: "Главная",
+    link: "/",
+  },
+  {
+    label: "Оборудование",
+  },
+];
 
 const Catalog = () => {
   const [selectedAccordion, setSelectedAccordion] = useState<any>(0);
@@ -27,6 +38,8 @@ const Catalog = () => {
 
   return (
     <div className={s.catalog}>
+      <Breadcrumbs items={breadcrumbs} />
+
       <div className={s.top}>
         <Title variant="h2" className="container">
           оборудование

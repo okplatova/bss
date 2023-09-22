@@ -17,13 +17,13 @@
             text-transform: uppercase 
     .content
         display: grid
-        grid-template-areas: "swiper specifications" "empty interactive" "empty certificates"
+        grid-template-areas: "swiper specifications" "swiper interactive" "swiper certificates"
         grid-template-columns: 50% 50%
-        .swiper
+        .swiperWrapper
             grid-area: swiper
             border-bottom: 1px solid var(--gray-color)
-        .empty
-            grid-area: empty
-            border-bottom: 1px solid var(--gray-color)
+            position: relative
+            
+        
         
         

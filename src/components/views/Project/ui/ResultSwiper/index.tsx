@@ -10,6 +10,12 @@ import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { resultList } from "../../data/resultList";
 import Image from "next/image";
 
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import lightGallery from "lightgallery";
+import { Fancybox } from "@/components/ui/Fancybox";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 const ResultSwiper = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
@@ -38,22 +44,36 @@ const ResultSwiper = () => {
 
   return (
     <div className={s.swiper}>
-      <Swiper
-        ref={sliderRef}
-        slidesPerView={3}
-        spaceBetween={16}
-        speed={800}
-        className="mySwiper"
-        centeredSlides={false}
+      <Fancybox
+        options={{
+          Carousel: {
+            infinite: false,
+          },
+        }}
       >
-        {resultList.map((result) => (
-          <SwiperSlide key={result.id}>
-            <div className={s.imageWrapper}>
-              <Image src={result.img} fill alt="result" />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          ref={sliderRef}
+          slidesPerView={3}
+          spaceBetween={16}
+          speed={800}
+          className="mySwiper"
+          centeredSlides={false}
+        >
+          {resultList.map((result) => (
+            <SwiperSlide data-caption={result.img} key={result.id}>
+              <div className={s.imageWrapper}>
+                <Image
+                  data-fancybox="gallery"
+                  src={result.img}
+                  fill
+                  alt="result"
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Fancybox>
+
       <div className={s.swiperBottom}>
         <div className={s.author}>
           <span className={s.type}>Фотограф: </span>
