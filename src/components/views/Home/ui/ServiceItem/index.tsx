@@ -15,6 +15,7 @@ const ServiceItem: FC<IServiceItemProps> = ({ img, title, text }) => {
           alt={title}
           width={img.width}
           height={img.height}
+          loading="lazy"
         />
       </div>
       <p>{text}</p>

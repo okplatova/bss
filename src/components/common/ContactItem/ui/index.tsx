@@ -12,14 +12,14 @@ const ContactItem: FC<IContactItemProps> = ({
 }) => {
   return (
     <div className={`${s.contactItem} ${className}`}>
-      <h6>{title}</h6>
-      <h4>
+      <span className={s.title}>{title}</span>
+      <div className={s.contactLinks}>
         {links?.map((link) => (
           <a key={link} href={`${isMail ? "mailto:" : "tel:"}${link}`}>
             {link}
           </a>
         ))}
-      </h4>
+      </div>
     </div>
   );
 };

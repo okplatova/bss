@@ -60,7 +60,8 @@ const ProductSwiper = () => {
                     data-fancybox="gallery"
                     src={image.original}
                     fill
-                    alt="result"
+                    alt="product"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -84,7 +85,8 @@ const ProductSwiper = () => {
                   data-fancybox="gallery"
                   src={image.original}
                   fill
-                  alt="result"
+                  alt="product"
+                  loading="lazy"
                 />
               </div>
             </SwiperSlide>

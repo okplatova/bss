@@ -22,10 +22,15 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
     >
       <h6 className={s.title}>{title}</h6>
       <div className={s.imageWrapper}>
-        <Image src={img.src} alt={title} fill />
+        <Image src={img.src} alt="Equipment" fill loading="lazy" />
       </div>
       <div className={s.btnWrapper}>
-        <Button className={s.addBtn} size="small" variable="rounded">
+        <Button
+          className={s.addBtn}
+          size="small"
+          variable="rounded"
+          ariaLabel="transition"
+        >
           <PlusIcon />
         </Button>
       </div>

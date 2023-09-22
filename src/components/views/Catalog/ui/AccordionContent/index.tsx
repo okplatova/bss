@@ -13,7 +13,7 @@ const AccordionContent: FC<IAccordionContentProps> = ({ accordion }) => {
   return (
     <div className={s.accordionContent}>
       <div className={s.imageWrapper}>
-        <Image src={accordion.img.src} fill alt={accordion.title} />
+        <Image src={accordion.img.src} fill alt="accordion" loading="lazy" />
       </div>
 
       <div className={s.equipments}>

@@ -14,6 +14,7 @@ const ClientItem: FC<IClientItemProps> = ({ img }) => {
           alt="client"
           width={img.width}
           height={img.height}
+          loading="lazy"
         />
       </div>
     </div>

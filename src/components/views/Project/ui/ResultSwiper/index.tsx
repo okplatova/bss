@@ -67,6 +67,7 @@ const ResultSwiper = () => {
                   src={result.img}
                   fill
                   alt="result"
+                  loading="lazy"
                 />
               </div>
             </SwiperSlide>
@@ -79,7 +80,7 @@ const ResultSwiper = () => {
           <span className={s.type}>Фотограф: </span>
           <span className={s.name}>Дмитрий Мухин</span>
         </div>
-        <button onClick={handlePrevSlide}>
+        <button onClick={handlePrevSlide} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
         <div className={s.progress}>
@@ -87,7 +88,7 @@ const ResultSwiper = () => {
           <span> - </span>
           <span>{totalSlides}</span>
         </div>
-        <button onClick={handleNextSlide}>
+        <button onClick={handleNextSlide} aria-label="navigation">
           <ArrowRightIcon />
         </button>
       </div>

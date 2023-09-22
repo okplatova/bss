@@ -6,4 +6,5 @@ export interface IButtonProps {
   count?: number;
   isActive?: boolean;
   disabled?: boolean;
+  ariaLabel: string;
 }

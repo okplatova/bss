@@ -56,7 +56,12 @@ const ProjectContent = () => {
         </div>
       )}
       {allProjects?.length <= visibleProjects?.length ? (
-        <Button onClick={hideMore} size="medium" className={s.loadMore}>
+        <Button
+          onClick={hideMore}
+          size="medium"
+          className={s.loadMore}
+          ariaLabel="hide"
+        >
           Скрыть
         </Button>
       ) : (
@@ -66,6 +71,7 @@ const ProjectContent = () => {
           size="medium"
           className={s.loadMore}
           count={123}
+          ariaLabel="show"
         >
           Показать еще
         </Button>

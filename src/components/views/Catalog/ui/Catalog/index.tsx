@@ -59,6 +59,7 @@ const Catalog = () => {
                 variable="clear"
                 className={buttonClass}
                 onClick={() => toggleCatalog(index)}
+                ariaLabel="product"
               >
                 {catalogItem.title}
               </Button>

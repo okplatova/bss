@@ -13,7 +13,7 @@ const Interactive = () => {
         воздействие, удивительные и незабываемые впечатления зрителей
       </p>
       <div className={s.imageWrapper}>
-        <Image src="/interactive.jpg" fill alt="interactive" />
+        <Image src="/interactive.jpg" fill alt="interactive" loading="lazy" />
       </div>
     </div>
   );

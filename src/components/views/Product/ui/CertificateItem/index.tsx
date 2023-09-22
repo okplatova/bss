@@ -13,7 +13,12 @@ const CertificateItem = () => {
       </div>
       <div className={s.bottom}>
         <p className={s.year}>2023</p>
-        <Button size="small" variable="secondary" className={s.downloadBtn}>
+        <Button
+          size="small"
+          variable="secondary"
+          className={s.downloadBtn}
+          ariaLabel="download"
+        >
           <DownloadIcon />
         </Button>
       </div>

@@ -17,7 +17,12 @@ const Specifications = () => {
           </div>
         ))}
       </div>
-      <Button className={s.calcBtn} size="medium" variable="secondary">
+      <Button
+        className={s.calcBtn}
+        size="medium"
+        variable="secondary"
+        ariaLabel="calculator"
+      >
         Калькулятор
       </Button>
     </div>

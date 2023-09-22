@@ -12,13 +12,20 @@ const Button: FC<PropsWithChildren<IButtonProps>> = ({
   count,
   isActive,
   disabled,
+  ariaLabel,
 }) => {
   const btnClass = `${s.button} ${s[variable]} ${s[size]} ${className} ${
     isActive ? s.active : ""
   }`;
 
   return (
-    <button disabled={disabled} className={btnClass} onClick={onClick}>
+    <button
+      aria-label={ariaLabel}
+      disabled={disabled}
+      className={btnClass}
+      onClick={onClick}
+      type="button"
+    >
       <span className={s.text}>{children}</span>
       {count ? <span className={s.count}>{count}</span> : null}
     </button>

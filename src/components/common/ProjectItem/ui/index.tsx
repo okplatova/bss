@@ -12,14 +12,19 @@ const ProjectItem: FC<IProjectItemProps> = ({ title, year, img }) => {
   return (
     <Link href="/project/project-item" className={s.projectItem}>
       <div className={s.imageWrapper}>
-        <Button size="large" variable="rounded" className={s.btn}>
+        <Button
+          size="large"
+          variable="rounded"
+          className={s.btn}
+          ariaLabel="transition"
+        >
           <PlusIcon />
         </Button>
-        <Image src={img} alt={title} fill />
+        <Image src={img} alt="project" fill loading="lazy" />
       </div>
       <div className={s.text}>
-        <h5>{title}</h5>
-        <h6>{year}</h6>
+        <span className={s.title}>{title}</span>
+        <span className={s.year}>{year}</span>
       </div>
     </Link>
   );

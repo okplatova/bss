@@ -11,7 +11,7 @@ const Hero = () => {
           День Флага Российской Федерации
         </Title>
         <div className={s.imageWrapper}>
-          <Image src="/project-hero.jpg" fill alt="hero" />
+          <Image src="/project-hero.jpg" fill alt="hero" loading="lazy" />
         </div>
       </div>
     </div>

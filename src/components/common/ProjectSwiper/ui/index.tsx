@@ -58,7 +58,7 @@ const ProjectSwiper = () => {
         ))}
       </Swiper>
       <div className={s.swiperBottom}>
-        <button onClick={handlePrevSlide}>
+        <button onClick={handlePrevSlide} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
         <div className={s.progress}>
@@ -66,7 +66,7 @@ const ProjectSwiper = () => {
           <span> - </span>
           <span>{totalSlides}</span>
         </div>
-        <button onClick={handleNextSlide}>
+        <button onClick={handleNextSlide} aria-label="navigation">
           <ArrowRightIcon />
         </button>
       </div>
