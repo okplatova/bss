@@ -1,15 +1,20 @@
+@import '@/shared/styles/variables'
+    
 .interactive
     grid-area: interactive
     border-left: 1px solid var(--gray-color)
     padding: 2rem
+    @media(max-width: $tab)
+        padding: 2rem 1rem
     p
         margin-top: 1rem
         margin-bottom: 2rem
-        
         font-size: 16px
         font-style: normal
         font-weight: 400
         line-height: 100%
+        @media(max-width: $tab)
+            font-size: 14px
     .imageWrapper
         width: 100%
         aspect-ratio: 2

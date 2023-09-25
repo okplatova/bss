@@ -1,4 +1,10 @@
+@import '@/shared/styles/variables'
+
+    
 .equipmentItem
+    display: flex
+    flex-direction: column
+    justify-content: space-between
     background: var(--soft-gray-color)
     padding: 1rem
     transition: background-color var(--trs-500) 0ms
@@ -23,12 +29,17 @@
         letter-spacing: -0.64px
         text-transform: uppercase 
         transition: var(--trs-500)
+        @media(max-width: $tab)
+            font-size: 14px
     .imageWrapper
         margin: 7.5rem auto 5.5rem
         position: relative
         width: 50%
-        // padding-bottom: 50%
         aspect-ratio: 1
+        @media(max-width: $tab)
+            margin: 5.5rem auto 3.5rem
+        @media(max-width: $tab-sm)
+            margin: 2.5rem auto 1.5rem
         img
             position: absolute
             top: 0

@@ -20,7 +20,12 @@ const Player: FC<IPlayerProps> = ({ url }) => {
     <div className={s.player}>
       {hydrate && (
         <div className={s.videoWrapper}>
-          <PlayerDynamic volume={0.3} playing={playing} url={url} />
+          <PlayerDynamic
+            volume={0.3}
+            playing={playing}
+            width="100%"
+            url={url}
+          />
           <span
             onClick={() => setPlaying((prev) => !prev)}
             className={s.controls}

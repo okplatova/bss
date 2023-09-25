@@ -1,11 +1,17 @@
+@import '@/shared/styles/variables'
+
+    
 .serviceItem 
     padding: 1rem
     display: flex
     flex-direction: column
     gap: 11rem
     border-right: 1px solid var(--gray-color)
+    min-width: 306px
     &:nth-last-child(1)
         border-right: none
+    @media(max-width: $tab)
+        gap: 5rem
     .title
         display: flex
         justify-content: space-between

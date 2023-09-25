@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+    
 .map
     filter: grayscale(1)
     max-height: 100vh
@@ -5,7 +7,8 @@
     background: linear-gradient(274deg, #fff, #F0F0F0)
     background-size: 400% 400%
     animation: SkeletonAnimate 2s ease infinite
-    
+    @media(max-width: $tab)
+        height: 50vh
 @keyframes SkeletonAnimate 
     0%
         background-position:0% 50%

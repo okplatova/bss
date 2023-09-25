@@ -1,7 +1,13 @@
+@import '@/shared/styles/variables'
+    
 .footer
     display: flex
     justify-content: space-between
     padding: 1.5rem 0
+    z-index: 100
+    @media(max-width: $tab-sm)
+        flex-direction: column
+        gap: 2rem
     .text
         display: flex
         flex-direction: column

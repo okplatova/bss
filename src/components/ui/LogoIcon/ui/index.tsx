@@ -1,8 +1,14 @@
+import { FC } from "react";
+
 import s from "./styles.module.sass";
 
-const LogoIcon = () => {
+import { ILogoIcon } from "../types/logoIcon.interface";
+
+const LogoIcon: FC<ILogoIcon> = ({ className }) => {
+  const logoClass = `${s.logo} ${className ? className : ""}`;
+
   return (
-    <div className={s.logo}>
+    <div className={logoClass}>
       <svg
         width="76"
         height="72"

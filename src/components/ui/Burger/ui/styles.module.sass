@@ -1,0 +1,56 @@
+.burgerWrapper 
+    cursor: pointer
+    display: flex
+    align-items: center
+    position: relative
+    .burger
+        position: relative
+    .burger.default 
+            transition: 300ms ease
+            width: 14px
+            height: 1px
+            background: var(--white-color)
+            &:before 
+                transition: 300ms ease
+                content: ''
+                top: -3px
+                position: absolute
+                width: 14px
+                height: 1px
+                background: var(--white-color)
+            
+            &:after 
+                transition: 300ms ease
+                content: ''
+                bottom: -3px
+                position: absolute
+                width: 14px
+                height: 1px
+                background: var(--white-color)
+    .burger.active 
+        transition: 300ms ease
+        width: 0
+        height: 2px
+        background: #000
+        &:before 
+            transition: 300ms ease
+            content: ''
+            top: 8px
+            position: absolute
+            width: 32px
+            transform: rotate(45deg)
+            height: 2px
+            background: #000
+        
+        &:after 
+            transition: 300ms ease
+            content: ''
+            bottom: 10px
+            position: absolute
+            width: 32px
+            height: 2px
+            transform: rotate(-45deg)
+            background: #000
+        
+    
+

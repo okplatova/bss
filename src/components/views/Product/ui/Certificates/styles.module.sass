@@ -1,11 +1,17 @@
+@import '@/shared/styles/variables'
+    
 .certificates
     grid-area: certificates
     padding: 2rem
     border-left: 1px solid var(--gray-color)
     border-top: 1px solid var(--gray-color)
     border-bottom: 1px solid var(--gray-color)
+    @media(max-width: $tab)
+        padding: 2rem 1rem
     .certificatesList
         margin-top: 2rem
         display: grid
         gap: .5rem
         grid-template-columns: repeat(2,1fr)
+        @media(max-width: $tab-sm)
+            grid-template-columns: repeat(1,1fr)

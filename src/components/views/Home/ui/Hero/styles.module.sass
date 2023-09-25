@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+    
 .hero.isView
     h1
         .square
@@ -34,6 +36,11 @@
         align-items: center
         gap: 3.4vw
         overflow: hidden
+        flex-wrap: wrap
+        @media(max-width: $tab)
+            margin-top: 4rem
+        @media(max-width: $tab-sm)
+            margin-top: 2rem
         .square
             min-width: 14px
             min-height: 14px
@@ -42,21 +49,37 @@
             background: #fff
             opacity: 0
             transition: var(--trs-500)
+            @media(max-width: $tab)
+                width: 8px
+                height: 8px
+                min-width: 8px
+                min-height: 8px
         span
             transform: translateY(100%)
             transition: var(--trs-500)
             position: relative
     .heroContent
         margin-top: 2rem
+        @media(max-width: $tab)
+            margin-top: 1rem
         p
             opacity: 0
             transition: opacity var(--trs-500) 2700ms
             max-width: 448px
+            font-size: 16px
+            font-style: normal
+            font-weight: 400
+            line-height: 100%
+            @media(max-width: $tab)
+                font-size: 14px
+
     .video
         margin-top: 4rem
         display: flex
         justify-content: center
         overflow: hidden
+        @media(max-width: $tab)
+            margin-top: 2rem
         .videoWrapper
             display: flex
             justify-content: center

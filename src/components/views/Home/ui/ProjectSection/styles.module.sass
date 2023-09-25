@@ -1,6 +1,11 @@
+@import '@/shared/styles/variables'
+    
 .section
     margin-top: 8rem
     margin-bottom: 8rem
+    @media(max-width: $tab)
+        margin-top: 4rem
+        margin-bottom: 2rem
     .top
         display: flex
         align-items: center
@@ -17,5 +22,7 @@
             line-height: 100%
             letter-spacing: -0.28px
             text-transform: uppercase
+            @medi(max-width: $tab)
+            font-size: 12px
     .swiper
         margin-top: 4rem

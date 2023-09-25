@@ -1,6 +1,10 @@
+@import '@/shared/styles/variables'
+    
 .section
     padding: 4rem 0
     background: var(--white-color)
+    @media(max-width: $tab)
+        padding: 2rem 0
     .top
         display: flex
         align-items: center
@@ -10,7 +14,6 @@
             display: flex
             align-items: center
             gap: 0.5rem
-            
             font-size: 14px
             font-style: normal
             font-weight: 400
@@ -20,6 +23,8 @@
             svg
                 path
                     fill: var(--black-color)
+            @media(max-width: $tab)
+                font-size: 12px
     .equipmentList.isView
         .equipmentItem
             opacity: 1
@@ -32,5 +37,11 @@
         display: grid
         grid-template-columns: repeat(4, 1fr)
         gap: 1rem
+        @media(max-width: $desktop-sm)
+            grid-template-columns: repeat(3, 1fr)
+        @media(max-width: $tab)
+            grid-template-columns: repeat(2, 1fr)
+        @media(max-width: $mob)
+            grid-template-columns: repeat(1, 1fr)
         .equipmentItem
             opacity: 0

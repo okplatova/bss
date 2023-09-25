@@ -1,3 +1,40 @@
+@import '@/shared/styles/variables'
+    
+.header.active
+    .logoWrapper
+        .logo
+            span
+                font-size: 16px
+                line-height: 100%
+                @media(max-width: $tab-sm)
+                    font-size: 8px
+            svg
+                width: 50px
+                height: 48px
+                @media(max-width: $tab-sm)
+                    width: 25px
+                    height: 24px
+    .headerContent
+        height: 78px
+        @media(max-width: $tab-sm)
+            height: 56px
+        .top
+            grid-template-columns: 54% 18% 18% 10%
+            border-color: rgba(0,0,0,0)
+            & > a:first-child
+                opacity: 0
+                pointer-events: none
+            @media(max-width: $desktop-md)
+                grid-template-columns: 50% 18% 18% 14%
+            @media(max-width: $desktop-sm)
+                grid-template-columns: 40% 21% 21% 17%
+            @media(max-width: $tab-sm)
+                grid-template-columns: 40% 21% 21% 17%
+            .burger
+                opacity: 1
+        .bottom
+            opacity: 0
+            transform: translateY(-100%)
 .header
     display: flex
     align-items: center
@@ -10,15 +47,61 @@
     border-bottom: 1px solid var(--gray-color)
     padding-left: 2rem
     overflow: hidden
-    .logo
+    @media(max-width: $tab)
+        padding-left: 1rem
+    @media(max-width: $tab-sm)
+        justify-content: space-between
+    .logoWrapper
         color: var(--white-color)
     .headerContent
         width: 100%
+        height: 148px
         padding-left: 10rem
+        transition: height var(--trs-500)
+        @media(max-width: $desktop-sm)
+            padding-left: 2rem
+        @media(max-width: $tab)
+            height: 78px
+        @media(max-width: $tab-sm)
+            height: 56px
         .top
             display: grid
-            grid-template-columns: 64% 18% 18%
+            grid-template-columns: 64% 18% 18% 0%
             border-bottom: 1px solid var(--gray-color)
+            z-index: 10
+            position: relative
+            background: var(--dark-color)
+            transition:  var(--trs-500)
+            @media(max-width: $tab)
+                border-bottom: none
+                height: 100%
+                display: flex
+                justify-content: flex-end
+                width: auto
+            
+            .burger
+                opacity: 0
+                transition:  var(--trs-300)
+                display: flex
+                align-items: center
+                gap: 13px
+                justify-content: center
+                border-left: 1px solid var(--gray-color)
+                span
+                    font-size: 14px
+                    font-style: normal
+                    font-weight: 400
+                    line-height: 114%
+                    letter-spacing: -0.28px
+                    text-transform: uppercase
+                @media(max-width: $tab)
+                    opacity: 1
+                    padding: 0 2rem
+                
         .bottom
             display: grid
             grid-template-columns: 16% 16% 16% 16% 36%
+            z-index: 5
+            transition: transform var(--trs-500), opacity var(--trs-300)
+            @media(max-width: $tab)
+                display: none

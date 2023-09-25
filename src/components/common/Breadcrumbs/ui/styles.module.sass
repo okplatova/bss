@@ -1,15 +1,18 @@
+@import '@/shared/styles/variables'
+    
 .breadcrumbs
     padding: 1rem 2rem
     display: flex
     gap: 1.6rem
     border-bottom: 1px solid var(--gray-color)
+    @media(max-width: $tab)
+        padding: 1rem 
     .link.last
         color: var(--text-gray-color)
         cursor: default
         &::after
             display: none
     .link
-        
         font-size: 14px
         font-style: normal
         font-weight: 400

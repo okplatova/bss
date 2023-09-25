@@ -11,6 +11,18 @@ import { ProjectItem } from "../../ProjectItem";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 
+const breakpoints = {
+  0: {
+    slidesPerView: 1,
+  },
+  767: {
+    slidesPerView: 2,
+  },
+  1024: {
+    slidesPerView: 3,
+  },
+};
+
 const ProjectSwiper = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
@@ -46,6 +58,7 @@ const ProjectSwiper = () => {
         speed={800}
         className="mySwiper"
         centeredSlides={false}
+        breakpoints={breakpoints}
       >
         {projectList.map((project) => (
           <SwiperSlide key={project.id}>
