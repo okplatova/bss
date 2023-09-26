@@ -7,9 +7,13 @@ import NavItem from "../NavItem";
 import { LogoIcon } from "@/components/ui/LogoIcon";
 import { Burger } from "@/components/ui/Burger";
 import { BurgerIcon } from "@/components/ui/BurgerIcon";
+import { observer } from "mobx-react-lite";
+import { useStores } from "@/shared/context";
 
 const Header = () => {
   const [active, setActive] = useState(false);
+
+  const { menu } = useStores();
 
   const controlHeader = () => {
     if (typeof window !== "undefined") {
@@ -19,6 +23,10 @@ const Header = () => {
         setActive(false);
       }
     }
+  };
+
+  const handleOpenMenu = () => {
+    menu.handleOpenMenu();
   };
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const Header = () => {
           <NavItem link="#" label="infi@bss-tv.com" isMail />
           <NavItem link="#" label="+7 (900) 845-14-41" isPhone />
           <NavItem link="#" label="+7 (903) 796-24-14" isPhone />
-          <div className={s.burger}>
+          <div onClick={handleOpenMenu} className={s.burger}>
             <span>Меню</span>
             <BurgerIcon />
           </div>
@@ -50,13 +58,16 @@ const Header = () => {
         <div className={s.bottom}>
           <NavItem link="/projects" label="Проекты" />
           <NavItem link="/catalog" label="Оборудование" />
-          <NavItem link="#" label="Видеостудия" />
+          <NavItem link="/video-studio" label="Видеостудия" />
           <NavItem link="/contacts" label="Контакты" />
-          <NavItem link="#" label="Видеопроекционные комплексы" />
+          <NavItem
+            link="/video-projection"
+            label="Видеопроекционные комплексы"
+          />
         </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default observer(Header);

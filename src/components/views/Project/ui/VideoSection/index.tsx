@@ -7,7 +7,7 @@ const VideoSection = () => {
   return (
     <div className={s.section}>
       <SectionTitle label="Видео" />
-      <Player url="/flag.mp4" />
+      <Player url="https://vimeo.com/842048913" />
     </div>
   );
 };

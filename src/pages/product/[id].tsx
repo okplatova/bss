@@ -1,16 +1,6 @@
 import Head from "next/head";
 import { Product } from "@/components/views/Product";
 
-export async function getStaticProps() {
-  return { props: {} };
-}
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
-
 const ProductPage = () => {
   return (
     <>

@@ -1,0 +1,95 @@
+@import '@/shared/styles/variables'
+    
+.projection
+    flex: 1
+    .top
+        position: relative
+        margin-top: 4rem
+        @media(max-width: $tab)
+            margin-top: 2rem
+        .title
+            font-size: 96px
+            @media(max-width: $tab)
+                font-size: 64px
+            @media(max-width: $tab-sm)
+                font-size: 28px
+        .description
+            margin-top: 2rem
+            max-width: 450px
+            font-size: 16px
+            font-style: normal
+            font-weight: 400
+            line-height: 100%
+            @media(max-width: $tab)
+                font-size: 14px
+                margin-top: 1rem
+    .content
+        margin-top: 4rem
+        @media(max-width: $tab-sm)
+            margin-top: 2rem
+        .complexes
+            margin-top: 8rem
+            @media(max-width: $tab)
+                margin-top: 4rem
+            .complexesContent
+                display: grid
+                grid-template-columns: 30% 70%
+                border-top: 1px solid var(--gray-color)
+                margin-top: 4rem
+                @media(max-width: $desktop-sm)
+                    grid-template-columns: 40% 60%
+                @media(max-width: $tab)
+                    grid-template-columns: 100%
+                .complexesList
+                    width: 100%
+                    border-right: 1px solid var(--gray-color)
+                    height: 100%
+                    @media(max-width: $tab)
+                        display: none
+                    .complexeBtn.active
+                        color: var(--white-color)
+                        border-right: 1px solid var(--white-color)
+                    .complexeBtn
+                        width: 100%
+                        border-top: none
+                        border-left: none
+                        border-right: none
+                        font-size: 14px
+                        font-style: normal
+                        font-weight: 400
+                        line-height: 170% 
+                        letter-spacing: -0.28px
+                        text-transform: uppercase 
+                        color: var(--text-gray-color)
+                        transition: var(--trs-300)
+                        padding-left: 2rem
+                        &:hover
+                            color: var(--white-color)
+                        span
+                            max-width: 330px
+                            text-overflow: ellipsis
+                            overflow: hidden
+                            white-space: nowrap
+                .complexeContent
+                    .complexeContentItem
+                        display: flex
+                        flex-direction: column
+                        gap: 2rem
+                        padding: 2rem
+                        border-top: 1px solid var(--gray-color)
+                        &:first-child
+                            border-top: none
+                        @media(max-width: $tab)
+                            padding: 1rem
+                            gap: 1rem
+                        .quipmentList
+                            display: grid
+                            grid-template-columns: repeat(3,1fr)
+                            gap: .5rem
+                            @media(max-width: $desktop-sm)
+                                grid-template-columns: repeat(2,1fr)
+                            @media(max-width: $tab-sm)
+                                grid-template-columns: repeat(1, 1fr)
+                        .loadBtn
+                            display: flex
+                            justify-content: center

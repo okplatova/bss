@@ -1,16 +1,6 @@
 import Head from "next/head";
 import { Project } from "@/components/views/Project";
 
-export async function getStaticProps() {
-  return { props: {} };
-}
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
-
 const ProjectPage = () => {
   return (
     <>

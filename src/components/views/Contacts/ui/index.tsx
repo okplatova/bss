@@ -27,6 +27,7 @@ const Contacts = () => {
   return (
     <div className={s.contacts}>
       <Breadcrumbs items={breadcrumbs} />
+
       <div className={s.content}>
         <div className={`${s.contactsInfo} container`}>
           <Title variant="h1" className={s.title}>

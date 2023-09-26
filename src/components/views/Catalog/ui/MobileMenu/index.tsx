@@ -31,19 +31,21 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
           <div className={s.separator} />
         </div>
         {catalogList.map((catalogItem, index) => {
-          console.log(catalogItem);
           const currentCatalogItem = {
             id: catalogItem.id,
             title: catalogItem.title,
             count: catalogItem.count,
           };
+          const btnClass = `${s.btn} ${
+            catalogItem.id === catalog.currentCatalogItem.id ? s.active : ""
+          }`;
           return (
             <Button
               key={catalogItem.id}
               count={catalogItem.content.length}
               size="medium"
               variable="clear"
-              className={s.btn}
+              className={btnClass}
               onClick={() => handleSelectItem(currentCatalogItem, index)}
               ariaLabel="product"
             >

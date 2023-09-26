@@ -1,0 +1,27 @@
+@import '@/shared/styles/variables'
+    
+.content
+    display: flex
+    flex-direction: column
+    padding: 0 2rem
+    gap: 2rem
+    padding-bottom: 4rem
+    @media(max-width: $tab)
+        padding: 0 1rem 2rem
+    .loaderWrapper
+        display: flex
+        justify-content: center
+        width: 100%
+        margin-top: 2rem
+    .projectList
+        margin-top: 4rem
+        display: grid
+        grid-template-columns: repeat(3,1fr)
+        gap: 1rem
+        @media(max-width: $desktop-sm)
+            grid-template-columns: repeat(2,1fr)
+        @media(max-width: $tab-sm)
+            grid-template-columns: repeat(1,1fr)
+    .loadMore
+        justify-content: center
+        text-transform: uppercase
