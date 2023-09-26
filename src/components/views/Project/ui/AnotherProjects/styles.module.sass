@@ -1,6 +1,10 @@
+@import '@/shared/styles/variables'
+    
 .anotherProjects
     padding: 2rem
-    border-bottom: 1px solid var(--gray-color)
     display: flex
     flex-direction: column
     gap: 4rem
+    @media(max-width: $tab)
+        padding: 1rem
+        gap: 1.5rem

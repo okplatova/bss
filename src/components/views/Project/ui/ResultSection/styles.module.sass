@@ -1,6 +1,11 @@
+@import '@/shared/styles/variables'
+    
 .section
     display: flex
     flex-direction: column
     gap: 2.5rem
-    padding: 2rem 2rem
+    padding: 2rem
     border-bottom: 1px solid var(--gray-color)
+    @media(max-width: $tab)
+        padding: 1rem
+        gap: 1.5rem

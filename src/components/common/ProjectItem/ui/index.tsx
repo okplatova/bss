@@ -8,10 +8,18 @@ import s from "./styles.module.sass";
 
 import { PlusIcon } from "@/components/ui/PlusIcon";
 import { Button } from "@/components/ui/Button";
+import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 
-const ProjectItem: FC<IProjectItemProps> = ({ title, year, img }) => {
+const ProjectItem: FC<IProjectItemProps> = ({
+  title,
+  year,
+  img,
+  isGrid = true,
+}) => {
+  const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
+
   return (
-    <Link href="/project/project-item" className={s.projectItem}>
+    <Link href="/project/project-item" className={projectClass}>
       <div className={s.imageWrapper}>
         <Button
           size="large"
@@ -26,6 +34,9 @@ const ProjectItem: FC<IProjectItemProps> = ({ title, year, img }) => {
       <div className={s.text}>
         <span className={s.title}>{title}</span>
         <span className={s.year}>{year}</span>
+        <span className={s.arrow}>
+          <ArrowRightIcon />
+        </span>
       </div>
     </Link>
   );

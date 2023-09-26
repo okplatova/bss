@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import ProjectContent from "../ProjectContent";
+import { Button } from "@/components/ui/Button";
 
 const breadcrumbs = [
   {
@@ -15,6 +18,8 @@ const breadcrumbs = [
 ];
 
 const Projects = () => {
+  const [isGrid, setGrid] = useState(true);
+
   return (
     <div className={s.projects}>
       <Breadcrumbs items={breadcrumbs} />
@@ -22,8 +27,28 @@ const Projects = () => {
         <Title variant="h1" className={`${s.title} container`}>
           Проекты
         </Title>
+        <div className={s.typeSelectors}>
+          <Button
+            onClick={() => setGrid(false)}
+            size="large"
+            ariaLabel="type"
+            variable="clear"
+            className={`${s.tab} ${!isGrid ? s.active : ""}`}
+          >
+            Списком
+          </Button>
+          <Button
+            onClick={() => setGrid(true)}
+            size="large"
+            ariaLabel="type"
+            variable="clear"
+            className={`${s.tab} ${isGrid ? s.active : ""}`}
+          >
+            Сектой
+          </Button>
+        </div>
       </div>
-      <ProjectContent />
+      <ProjectContent isGrid={isGrid} />
     </div>
   );
 };

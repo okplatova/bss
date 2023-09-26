@@ -1,16 +1,69 @@
+@import '@/shared/styles/variables'
+    
 .catalog
-    border-bottom: 1px solid var(--gray-color)
     flex: 1
+    .bread
+        @media(max-width: $tab)
+            position: fixed
+            top: 78px
+            right: 0
+            left: 0
+            background: var(--dark-color)
+            z-index: 1
+        @media(max-width: $tab-sm)
+            top: 56px
     .top
         padding: 24px 0
         border-bottom: 1px solid var(--gray-color)
+        @media(max-width: $tab)
+            position: fixed
+            top: 125px
+            right: 0
+            left: 0
+            background: var(--dark-color)
+            z-index: 1
+        @media(max-width: $tab-sm)
+            top: 103px
+    .modalBtnWrapper
+        display: none
+        background: var(--dark-color)
+        height: 64px
+        @media(max-width: $tab)
+            display: flex
+            justify-content: center
+            align-items: center
+            position: fixed
+            left: 0
+            right: 0
+            top: 222px
+            border-bottom: 1px solid var(--gray-color)
+            z-index: 1
+        @media(max-width: $tab-sm)
+            top: 188px
+        button
+            height: 64px
+            border: none
+            font-size: 18px
+            font-style: normal
+            font-weight: 400
+            line-height: 100%
+            letter-spacing: -0.72px
+            text-transform: uppercase
+
+
     .catalogContent
         display: grid
         grid-template-columns: 30% 70%
+        @media(max-width: $desktop-sm)
+            grid-template-columns: 40% 60%
+        @media(max-width: $tab)
+            grid-template-columns: 100%
         .catalogList
             width: 100%
             border-right: 1px solid var(--gray-color)
             height: 100%
+            @media(max-width: $tab)
+                display: none
             .catalogBtn.active
                 color: var(--white-color)
                 border-right: 1px solid var(--white-color)
@@ -19,7 +72,6 @@
                 border-top: none
                 border-left: none
                 border-right: none
-                
                 font-size: 14px
                 font-style: normal
                 font-weight: 400
@@ -31,6 +83,10 @@
                 &:hover
                     color: var(--white-color)
                 span
+                    max-width: 330px
+                    text-overflow: ellipsis
+                    overflow: hidden
+                    white-space: nowrap
                     &:last-child
                         font-size: 10px
                         font-weight: 400
@@ -39,5 +95,9 @@
         .info
             display: flex
             flex-direction: column
+            @media(max-width: $tab)
+                margin-top: 227px
+            @media(max-width: $tab-sm)
+                margin-top: 217px
              
 

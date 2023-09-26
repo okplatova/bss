@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+    
 .accordion.active
     .titleWrapper
         h5
@@ -11,6 +13,8 @@
         justify-content: space-between
         padding: 2rem
         cursor: pointer
+        @media(max-width: $tab)
+            padding: 1rem
         h5
             cursor: pointer
             color: var(--text-gray-color)
@@ -18,7 +22,6 @@
             position: relative
             .count
                 position: absolute
-                
                 font-size: 14px
                 font-style: normal
                 font-weight: 400
@@ -36,9 +39,14 @@
         overflow: hidden
         transition: max-height 1000ms, padding 500ms, opacity 500ms
         opacity: 0
+        @media(max-width: $tab)
+            padding-left: 1rem 
+            padding-right: 1rem 
     .content.show
-        padding: 2rem
+        padding: 0 2rem 2rem
         transition: max-height 1s , padding 700ms,opacity 500ms
         max-height: 200vh
         opacity: 1
+        @media(max-width: $tab)
+            padding: 1rem
 

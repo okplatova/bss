@@ -5,11 +5,13 @@ import { IBreadcrumbsProps } from "../types/breadcrumbs.interface";
 
 import s from "./styles.module.sass";
 
-const Breadcrumbs: FC<IBreadcrumbsProps> = ({ items }) => {
+const Breadcrumbs: FC<IBreadcrumbsProps> = ({ items, className }) => {
   const { push } = useRouter();
 
+  const breadcrumbsClass = `${s.breadcrumbs} ${className ? className : ""}`;
+
   return (
-    <div className={s.breadcrumbs}>
+    <div className={breadcrumbsClass}>
       {items.map((item) => {
         const pushTo = () => {
           if (item.link) {

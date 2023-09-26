@@ -9,6 +9,9 @@ import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
 import AccordionContent from "../AccordionContent";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
+import MobileMenu from "../MobileMenu";
+import { observer } from "mobx-react-lite";
+import { useStores } from "@/shared/context";
 
 const breadcrumbs = [
   {
@@ -21,8 +24,10 @@ const breadcrumbs = [
 ];
 
 const Catalog = () => {
-  const [selectedAccordion, setSelectedAccordion] = useState<any>(0);
-  const [selectedCatalog, setSelectedCatalog] = useState<any>(0);
+  const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
+  const [selectedCatalog, setSelectedCatalog] = useState<number>(0);
+
+  const { catalog } = useStores();
 
   const toggleAccordion = (index: number) => {
     setSelectedAccordion(index);
@@ -36,15 +41,30 @@ const Catalog = () => {
     toggleAccordion(0);
   }, [selectedCatalog]);
 
+  const handleOpenMenu = () => {
+    catalog.handleOpenMenu();
+  };
+
   return (
     <div className={s.catalog}>
-      <Breadcrumbs items={breadcrumbs} />
+      <Breadcrumbs items={breadcrumbs} className={s.bread} />
       <div className={s.top}>
         <Title variant="h2" className="container">
           оборудование
         </Title>
       </div>
       <div className={s.catalogContent}>
+        <MobileMenu toggleCatalog={setSelectedCatalog} />
+        <div className={s.modalBtnWrapper}>
+          <Button
+            onClick={handleOpenMenu}
+            size="medium"
+            variable="clear"
+            ariaLabel="open-modal"
+          >
+            {catalog.currentCatalogItem.title}
+          </Button>
+        </div>
         <div className={s.catalogList}>
           {catalogList.map((catalogItem, index) => {
             const buttonClass = `${s.catalogBtn} ${
@@ -83,4 +103,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default observer(Catalog);

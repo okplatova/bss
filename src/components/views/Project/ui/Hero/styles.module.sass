@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+    
 .hero
     border-bottom: 1px solid var(--gray-color)
     padding-bottom: 2rem
@@ -5,9 +7,18 @@
         .title
             padding: 2rem 0
             font-size: 64px
+            @media(max-width: $tab)
+                font-size: 48px
+                padding: 1.5rem 0
+            @media(max-width: $tab-sm)
+                font-size: 36px
+            @media(max-width: $mob)
+                font-size: 24px
         .imageWrapper
             position: relative
             aspect-ratio: 3
+            min-height: 380px
+            width: 100%
             img
                 object-fit: cover
                 position: absolute

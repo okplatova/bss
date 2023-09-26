@@ -1,5 +1,19 @@
 @import '@/shared/styles/variables'
     
+.projectItem.list
+    .imageWrapper
+        display: none
+    .text
+        display: flex
+        justify-content: space-between
+        flex-direction: row
+        color: var(--white-color)
+        display: grid
+        grid-template-columns: 65% 25% 8%
+        .arrow
+            display: flex
+            justify-content: flex-end
+           
 .projectItem
     position: relative
     cursor: pointer
@@ -10,6 +24,10 @@
         .text
             color: var(--white-color)
             border-color: var(--white-color)
+            .arrow
+                svg
+                    path
+                        fill: var(--white-color)
     .imageWrapper
         position: relative
         aspect-ratio: 1
@@ -49,3 +67,10 @@
             letter-spacing: -0.56px
             @media(max-width: $tab)
                 font-size: 12px
+        .arrow
+            display: none
+            transition: var(--trs-800)
+            svg
+                path
+                    fill: var(--text-gray-color)
+            

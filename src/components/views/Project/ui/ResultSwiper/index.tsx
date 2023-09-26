@@ -11,6 +11,18 @@ import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 
+const breakpoints = {
+  0: {
+    slidesPerView: 1,
+  },
+  767: {
+    slidesPerView: 2,
+  },
+  1024: {
+    slidesPerView: 3,
+  },
+};
+
 const ResultSwiper = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
@@ -53,6 +65,7 @@ const ResultSwiper = () => {
           speed={800}
           className="mySwiper"
           centeredSlides={false}
+          breakpoints={breakpoints}
         >
           {resultList.map((result) => (
             <SwiperSlide data-caption={result.img} key={result.id}>

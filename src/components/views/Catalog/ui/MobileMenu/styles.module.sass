@@ -1,0 +1,49 @@
+@import '@/shared/styles/variables'
+
+    
+.menu.active
+    pointer-events: all
+    background: rgba(8, 8, 8, 0.30)
+    backdrop-filter: blur(64px)
+    .menuContent
+        transform: translateY(0)
+.menu
+    background: rgba(8, 8, 8, 0)
+    backdrop-filter: blur(0)
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    z-index: 200
+    display: none
+    pointer-events: none
+    transition: var(--trs-500)
+    @media(max-width: $tab)
+        display: block
+    .menuContent
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        background: var(--dark-color)
+        transform: translateY(100%)
+        transition: var(--trs-500)
+        .separatorWrapper
+            width: 100%
+            padding: 1rem 0
+            display: flex
+            justify-content: center
+            .separator
+                width: 100px
+                height: 2px
+                background: var(--white-color)
+        .btn.active
+            border-color: var(--white-color)
+            color: var(--white-color)
+
+        .btn
+            border: none
+            width: 100%
+            border-bottom: 1px solid var(--gray-color)
+            color: var(--text-gray-color)

@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+
 .equipments
     padding: 2rem
     margin-top: 2rem
@@ -6,7 +8,16 @@
     display: flex
     flex-direction: column
     gap: 2.5rem
+    @media(max-width: $tab)
+        gap: 1.5rem
+        padding: 1rem
     .equipmentsList
         display: grid
         grid-template-columns: repeat(4,1fr)
         gap: .5rem
+        @media(max-width: $desktop-sm)
+            grid-template-columns: repeat(3,1fr)
+        @media(max-width: $tab-sm)
+            grid-template-columns: repeat(2,1fr)
+        @media(max-width: $mob)
+            grid-template-columns: repeat(1,1fr)

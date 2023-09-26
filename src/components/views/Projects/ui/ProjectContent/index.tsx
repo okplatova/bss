@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+
+import { IProjectContentProps } from "../../types/projectContent.interface";
 
 import s from "./styles.module.sass";
 
@@ -6,7 +8,7 @@ import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 
-const ProjectContent = () => {
+const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
   const [allProjects, setAllProjects] = useState<any>(null);
   const [visibleProjects, setVisibleProjects] = useState<any>(null);
 
@@ -43,13 +45,14 @@ const ProjectContent = () => {
           <Loader />
         </div>
       ) : (
-        <div className={s.projectList}>
+        <div className={`${s.projectList} ${isGrid ? s.grid : s.list}`}>
           {visibleProjects.map((project: any) => (
             <ProjectItem
               key={project.id}
               title={project.title}
               year={project.year}
               img={project.img}
+              isGrid={isGrid}
             />
           ))}
         </div>
