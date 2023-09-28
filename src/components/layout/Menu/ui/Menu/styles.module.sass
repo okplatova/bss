@@ -20,7 +20,7 @@
     z-index: 1000
     .menuContent
         background: var(--white-color)
-        width: 35vw
+        width: 33.3333vw
         height: 100vh
         position: absolute
         left: 0
@@ -30,6 +30,7 @@
         flex-direction: column
         transform: translateX(-100%)
         transition: var(--trs-500)
+        
         @media(max-width: $tab)
             width: 50vw
         @media(max-width: $tab-sm)
@@ -60,7 +61,9 @@
             flex: 1
             display: flex
             flex-direction: column
-            a
+            button
+                color: var(--dark-color)
+                border: none
                 padding: 2rem
                 border-bottom: 1px solid var(--soft-gray-color)
                 font-size: 14px

@@ -1,3 +1,7 @@
+import { observer } from "mobx-react-lite";
+
+import { useStores } from "@/shared/context";
+
 import s from "./styles.module.sass";
 
 import { Button } from "@/components/ui/Button";
@@ -5,6 +9,12 @@ import { specificationsList } from "../../data/specificationsList";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 
 const Specifications = () => {
+  const { calculator } = useStores();
+
+  const handleOpenCalculator = () => {
+    calculator.handleOpenMenu();
+  };
+
   return (
     <div className={s.specifications}>
       <SectionTitle label="Характеристики" />
@@ -18,6 +28,7 @@ const Specifications = () => {
         ))}
       </div>
       <Button
+        onClick={handleOpenCalculator}
         className={s.calcBtn}
         size="medium"
         variable="secondary"
@@ -29,4 +40,4 @@ const Specifications = () => {
   );
 };
 
-export default Specifications;
+export default observer(Specifications);

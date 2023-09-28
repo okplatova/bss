@@ -1,5 +1,9 @@
 @import '@/shared/styles/variables'
     
+.navItem.link
+    &:hover
+        background: var(--white-color)
+        color: var(--dark-color)
 .navItem
     color: var(--white-color)
     text-align: center
@@ -15,3 +19,4 @@
     transition: var(--trs-500)
     @media(max-width: $tab)
         display: none
+        

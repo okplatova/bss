@@ -91,11 +91,6 @@ const ResultSwiper = () => {
         <button onClick={handlePrevSlide} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
-        <div className={s.progress}>
-          <span>{currentSlideIndex}</span>
-          <span> - </span>
-          <span>{totalSlides}</span>
-        </div>
         <button onClick={handleNextSlide} aria-label="navigation">
           <ArrowRightIcon />
         </button>

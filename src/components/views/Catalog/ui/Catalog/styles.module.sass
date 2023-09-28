@@ -2,44 +2,20 @@
     
 .catalog
     flex: 1
-    .bread
-        @media(max-width: $tab)
-            position: fixed
-            top: 78px
-            right: 0
-            left: 0
-            background: var(--dark-color)
-            z-index: 1
-        @media(max-width: $tab-sm)
-            top: 56px
     .top
         padding: 24px 0
         border-bottom: 1px solid var(--gray-color)
-        @media(max-width: $tab)
-            position: fixed
-            top: 125px
-            right: 0
-            left: 0
-            background: var(--dark-color)
-            z-index: 1
-        @media(max-width: $tab-sm)
-            top: 103px
     .modalBtnWrapper
         display: none
         background: var(--dark-color)
         height: 64px
         @media(max-width: $tab)
             display: flex
-            justify-content: center
+            justify-content: flex-start
             align-items: center
-            position: fixed
-            left: 0
-            right: 0
-            top: 222px
             border-bottom: 1px solid var(--gray-color)
             z-index: 1
-        @media(max-width: $tab-sm)
-            top: 188px
+            background: var(--white-color)
         button
             height: 64px
             border: none
@@ -49,8 +25,13 @@
             line-height: 100%
             letter-spacing: -0.72px
             text-transform: uppercase
-
-
+            width: 100%
+            color: var(--dark-color)
+            span
+                width: 100%
+                align-items: center
+                display: flex
+                justify-content: space-between
     .catalogContent
         display: grid
         grid-template-columns: 30% 70%
@@ -95,9 +76,5 @@
         .info
             display: flex
             flex-direction: column
-            @media(max-width: $tab)
-                margin-top: 227px
-            @media(max-width: $tab-sm)
-                margin-top: 217px
              
 

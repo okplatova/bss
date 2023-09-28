@@ -7,6 +7,7 @@ import Specifications from "../Specifications";
 import Interactive from "../Interactive";
 import Certificates from "../Certificates";
 import Projects from "../Projects";
+import { Calculator } from "../Calculator";
 
 const breadcrumbs = [
   {
@@ -25,6 +26,7 @@ const breadcrumbs = [
 const Product = () => {
   return (
     <div className={s.product}>
+      <Calculator />
       <Breadcrumbs items={breadcrumbs} />
       <div className={s.top}>
         <Title variant="h2" className="container">

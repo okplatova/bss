@@ -1,6 +1,5 @@
 .equipment
     padding: 1rem
-    background: var(--dark-second-color)
     display: flex
     flex-direction: column
     gap: 1rem
@@ -8,16 +7,8 @@
     border: 1px solid rgba(0,0,0,0)
     color: var(--white-color)
     transition: border-color var(--trs-500)
-    &:hover
-        border-color: var(--white-color)
-        p
-            color: var(--white-color)
-        .options
-            color: var(--white-color)
     p
         transition: var(--trs-500)
-        color: var(--text-gray-color)
-        
         font-size: 12px
         font-style: normal
         font-weight: 400
@@ -25,12 +16,37 @@
         text-transform: uppercase
     .options
         transition: var(--trs-500)
-        color: var(--text-gray-color)
         display: flex
         gap: .5rem
-        
         font-size: 12px
         font-style: normal
         font-weight: 400
         line-height: 100%
         text-transform: uppercase
+
+.equipment.light
+    background: var(--soft-gray-color)
+    color: var(--dark-color)
+    &:hover
+        border-color: var(--dark-color)
+        p
+            color: var(--dark-color)
+        .options
+            color: var(--dark-color)
+    p
+        color: var(--text-gray-color)
+    .options
+        color: var(--text-gray-color)
+.equipment.black
+    background: var(--dark-second-color)
+    color: var(--white-color)
+    &:hover
+        border-color: var(--white-color)
+        p
+            color: var(--white-color)
+        .options
+            color: var(--white-color)
+    p
+        color: var(--text-gray-color)
+    .options
+        color: var(--text-gray-color)

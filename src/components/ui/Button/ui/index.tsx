@@ -26,8 +26,14 @@ const Button: FC<PropsWithChildren<IButtonProps>> = ({
       onClick={onClick}
       type="button"
     >
-      <span className={s.text}>{children}</span>
-      {count ? <span className={s.count}>{count}</span> : null}
+      {count ? (
+        <>
+          <span className={s.text}>{children}</span>
+          <span className={s.count}>{count}</span>
+        </>
+      ) : (
+        <>{children}</>
+      )}
     </button>
   );
 };

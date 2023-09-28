@@ -12,6 +12,7 @@ import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import MobileMenu from "../MobileMenu";
 import { observer } from "mobx-react-lite";
 import { useStores } from "@/shared/context";
+import { OutlineArrowRight } from "@/components/ui/OutlineArrowRight";
 
 const breadcrumbs = [
   {
@@ -62,7 +63,8 @@ const Catalog = () => {
             variable="clear"
             ariaLabel="open-modal"
           >
-            {catalog.currentCatalogItem.title}
+            <span>{catalog.currentCatalogItem.title}</span>
+            <OutlineArrowRight />
           </Button>
         </div>
         <div className={s.catalogList}>

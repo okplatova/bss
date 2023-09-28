@@ -1,3 +1,8 @@
+import { observer } from "mobx-react-lite";
+
+import { useStores } from "@/shared/context";
+import { equipments } from "../../data/equipments";
+
 import s from "./styles.module.sass";
 
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
@@ -5,10 +10,10 @@ import { Player } from "@/components/common/Player";
 import { Button } from "@/components/ui/Button";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Title } from "@/components/ui/Title";
-import ProjectionSwiper from "../ProjectionSwiper";
-import EquipmentSwiper from "../EquipmentSwiper";
-import { equipments } from "../../data/equipments";
 import { EquipmentItem } from "@/components/common/EquipmentItem";
+import ProjectionSwiper from "../ProjectionSwiper";
+import MobileMenu from "../MobileMenu";
+import { OutlineArrowRight } from "@/components/ui/OutlineArrowRight";
 
 const breadcrumbs = [
   {
@@ -21,6 +26,12 @@ const breadcrumbs = [
 ];
 
 const VideoProjection = () => {
+  const { projection } = useStores();
+  const handleOpenMenu = () => {
+    projection.handleOpenMenu();
+  };
+  console.log(projection.menuIsOpen);
+
   return (
     <div className={s.projection}>
       <Breadcrumbs items={breadcrumbs} />
@@ -40,26 +51,40 @@ const VideoProjection = () => {
           <div className="container">
             <SectionTitle label="Комплексы" />
           </div>
+          <MobileMenu />
+          <div className={s.modalBtnWrapper}>
+            <Button
+              onClick={handleOpenMenu}
+              size="medium"
+              variable="clear"
+              ariaLabel="open-modal"
+            >
+              <span>Выбрать комплекс</span>
+              <OutlineArrowRight />
+            </Button>
+          </div>
           <div className={s.complexesContent}>
-            <div className={s.complexesList}>
-              <Button
-                onClick={() => {}}
-                size="medium"
-                ariaLabel="complexe"
-                variable="clear"
-                className={s.complexeBtn}
-              >
-                Комплекс 1
-              </Button>
-              <Button
-                onClick={() => {}}
-                size="medium"
-                ariaLabel="complexe"
-                variable="clear"
-                className={s.complexeBtn}
-              >
-                Комплекс 2
-              </Button>
+            <div className={s.complexesListWrapper}>
+              <div className={s.complexesList}>
+                <Button
+                  onClick={() => {}}
+                  size="medium"
+                  ariaLabel="complexe"
+                  variable="clear"
+                  className={s.complexeBtn}
+                >
+                  Комплекс 1
+                </Button>
+                <Button
+                  onClick={() => {}}
+                  size="medium"
+                  ariaLabel="complexe"
+                  variable="clear"
+                  className={s.complexeBtn}
+                >
+                  Комплекс 2
+                </Button>
+              </div>
             </div>
             <div className={s.complexeContent}>
               <div className={s.complexeContentItem}>
@@ -68,7 +93,6 @@ const VideoProjection = () => {
               </div>
               <div className={s.complexeContentItem}>
                 <SectionTitle label="Оборудование" />
-                <EquipmentSwiper />
                 <div className={s.quipmentList}>
                   {equipments.map((equipment) => (
                     <EquipmentItem
@@ -79,14 +103,6 @@ const VideoProjection = () => {
                     />
                   ))}
                 </div>
-                <Button
-                  className={s.loadBtn}
-                  onClick={() => {}}
-                  size="medium"
-                  ariaLabel="load more"
-                >
-                  Показать еще
-                </Button>
               </div>
             </div>
           </div>
@@ -96,4 +112,4 @@ const VideoProjection = () => {
   );
 };
 
-export default VideoProjection;
+export default observer(VideoProjection);

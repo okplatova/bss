@@ -29,6 +29,15 @@ const Projects = () => {
         </Title>
         <div className={s.typeSelectors}>
           <Button
+            onClick={() => setGrid(true)}
+            size="large"
+            ariaLabel="type"
+            variable="clear"
+            className={`${s.tab} ${isGrid ? s.active : ""}`}
+          >
+            Сеткой
+          </Button>
+          <Button
             onClick={() => setGrid(false)}
             size="large"
             ariaLabel="type"
@@ -36,15 +45,6 @@ const Projects = () => {
             className={`${s.tab} ${!isGrid ? s.active : ""}`}
           >
             Списком
-          </Button>
-          <Button
-            onClick={() => setGrid(true)}
-            size="large"
-            ariaLabel="type"
-            variable="clear"
-            className={`${s.tab} ${isGrid ? s.active : ""}`}
-          >
-            Сектой
           </Button>
         </div>
       </div>

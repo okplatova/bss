@@ -11,26 +11,26 @@ import s from "./styles.module.sass";
 import { Button } from "@/components/ui/Button";
 
 const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
-  const { catalog } = useStores();
+  const { projection } = useStores();
 
   const handleOpenMenu = () => {
-    catalog.handleOpenMenu();
+    projection.handleOpenMenu();
   };
   const handleSelectItem = (item: any, index: number) => {
-    catalog.setCatalogItem(item);
-    catalog.handleOpenMenu();
-    toggleCatalog(index);
+    projection.setCatalogItem(item);
+    projection.handleOpenMenu();
+    // toggleCatalog(index);
   };
 
   useEffect(() => {
-    if (catalog.menuIsOpen) {
+    if (projection.menuIsOpen) {
       document.body.classList.add("noScroll");
     } else {
       document.body.classList.remove("noScroll");
     }
-  }, [catalog.menuIsOpen]);
+  }, [projection.menuIsOpen]);
 
-  const menuClass = `${s.menu} ${catalog.menuIsOpen ? s.active : ""}`;
+  const menuClass = `${s.menu} ${projection.menuIsOpen ? s.active : ""}`;
 
   return (
     <div className={menuClass} onClick={handleOpenMenu}>
@@ -45,7 +45,7 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
             count: catalogItem.count,
           };
           const btnClass = `${s.btn} ${
-            catalogItem.id === catalog.currentCatalogItem.id ? s.active : ""
+            catalogItem.id === projection.currentCatalogItem.id ? s.active : ""
           }`;
           return (
             <Button

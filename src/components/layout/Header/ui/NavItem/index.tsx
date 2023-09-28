@@ -28,7 +28,7 @@ const NavItem: FC<INavItemProps> = ({
   }
   if (isLink) {
     return (
-      <Link href={link} className={s.navItem}>
+      <Link href={link} className={`${s.navItem} ${s.link}`}>
         {label}
       </Link>
     );
