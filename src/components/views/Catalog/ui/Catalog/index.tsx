@@ -50,7 +50,7 @@ const Catalog = () => {
     <div className={s.catalog}>
       <Breadcrumbs items={breadcrumbs} className={s.bread} />
       <div className={s.top}>
-        <Title variant="h2" className="container">
+        <Title variant="h1" className={`${s.title} container`}>
           оборудование
         </Title>
       </div>

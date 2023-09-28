@@ -5,6 +5,14 @@
     .top
         padding: 24px 0
         border-bottom: 1px solid var(--gray-color)
+        .title
+            font-size: 96px
+            @media(max-width: $tab)
+                font-size: 64px
+            @media(max-width: $tab-sm)
+                font-size: 48px
+            @media(max-width: $mob)
+                font-size: 28px
     .modalBtnWrapper
         display: none
         background: var(--dark-color)
