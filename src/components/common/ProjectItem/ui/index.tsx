@@ -15,11 +15,16 @@ const ProjectItem: FC<IProjectItemProps> = ({
   year,
   img,
   isGrid = true,
+  customStyles,
 }) => {
   const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
 
   return (
-    <Link href="/project/project-item" className={projectClass}>
+    <Link
+      href="/project/project-item"
+      className={projectClass}
+      style={{ ...customStyles }}
+    >
       <div className={s.imageWrapper}>
         <Button
           size="large"

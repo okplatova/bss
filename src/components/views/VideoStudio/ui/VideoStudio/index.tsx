@@ -1,17 +1,10 @@
-import { Title } from "@/components/ui/Title";
 import s from "./styles.module.sass";
 
+import { Title } from "@/components/ui/Title";
 import { Breadcrumbs } from "@/components/common/Breadcrumbs";
 import { Player } from "@/components/common/Player";
-import { SectionTitle } from "@/components/ui/SectionTitle";
-import Image from "next/image";
 import AboutSection from "../AboutSection";
-import PhotoSwiper from "../PhotoSwiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import PhotoSwiperSection from "../PhotoSwiperSection";
-import { useEffect, useState } from "react";
-import { projectList } from "./../../../Projects/data/projectList";
-import { Button } from "@/components/ui/Button";
 import ProjectsSection from "../ProjectsSection";
 
 const breadcrumbs = [

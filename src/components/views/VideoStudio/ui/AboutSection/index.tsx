@@ -1,8 +1,10 @@
+import { motion } from "framer-motion";
+import Image from "next/image";
+
 import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Title } from "@/components/ui/Title";
-import Image from "next/image";
 
 const AboutSection = () => {
   return (
@@ -10,10 +12,22 @@ const AboutSection = () => {
       <SectionTitle label="О студии" />
       <div className={s.sectionItemList}>
         <div className={s.sectionItem}>
-          <div className={s.imageWrapper}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className={s.imageWrapper}
+          >
             <Image src="/videost1.jpg" fill alt="video studio" />
-          </div>
-          <div className={s.text}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: "10%" }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className={s.text}
+          >
             <Title variant="h3">Воплощаем идеи в реальность</Title>
             <div className={s.paragraphs}>
               <p>
@@ -32,10 +46,16 @@ const AboutSection = () => {
                 внимание аудитории
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div className={s.sectionItem}>
-          <div className={s.text}>
+          <motion.div
+            initial={{ opacity: 0, y: "10%" }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className={s.text}
+          >
             <Title variant="h3">Воплощаем идеи в реальность</Title>
             <div className={s.paragraphs}>
               <p>
@@ -54,10 +74,16 @@ const AboutSection = () => {
                 внимание аудитории
               </p>
             </div>
-          </div>
-          <div className={s.imageWrapper}>
+          </motion.div>
+          <motion.div
+            className={s.imageWrapper}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
             <Image src="/videost2.jpg" fill alt="video studio" />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

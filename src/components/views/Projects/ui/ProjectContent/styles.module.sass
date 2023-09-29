@@ -13,9 +13,17 @@
         justify-content: center
         width: 100%
         margin-top: 2rem
+    .projectList.list.isView
+        & > a
+            opacity: 1
     .projectList.list
         display: grid
         grid-template-columns: repeat(1,1fr)
+        & > a 
+            opacity: 0
+    .projectList.grid.isView
+        & > a
+            opacity: 1
     .projectList.grid
         margin-top: 4rem
         display: grid
@@ -25,6 +33,8 @@
             grid-template-columns: repeat(2,1fr)
         @media(max-width: $tab-sm)
             grid-template-columns: repeat(1,1fr)
+        & > a 
+            opacity: 0
     .loadMore
         justify-content: center
         text-transform: uppercase

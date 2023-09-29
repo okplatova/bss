@@ -1,12 +1,18 @@
-import { ProjectItem } from "@/components/common/ProjectItem";
-import s from "./styles.module.sass";
-import { Button } from "@/components/ui/Button";
 import { useEffect, useState } from "react";
+import { useInView } from "react-hook-inview";
+
+import s from "./styles.module.sass";
+
+import { ProjectItem } from "@/components/common/ProjectItem";
+import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 
 const ProjectsSection = () => {
+  const [isView, setView] = useState(false);
   const [allProjects, setAllProjects] = useState<any>(null);
   const [visibleProjects, setVisibleProjects] = useState<any>(null);
+
+  const [ref, inView] = useInView();
 
   const fetchFunc = () => {
     fetch("/db/projects.json")
@@ -21,6 +27,10 @@ const ProjectsSection = () => {
     fetchFunc();
   }, []);
 
+  useEffect(() => {
+    if (inView) setView(true);
+  }, [inView]);
+
   const showMore = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
@@ -34,6 +44,8 @@ const ProjectsSection = () => {
     setVisibleProjects(allProjects.slice(0, 6));
   };
 
+  const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
+
   return (
     <div className={s.content}>
       {!visibleProjects ? (
@@ -41,15 +53,24 @@ const ProjectsSection = () => {
           <Loader />
         </div>
       ) : (
-        <div className={s.projectList}>
-          {visibleProjects.map((project: any) => (
-            <ProjectItem
-              key={project.id}
-              title={project.title}
-              year={project.year}
-              img={project.img}
-            />
-          ))}
+        <div className={projectListClass} ref={ref}>
+          {visibleProjects.map((project: any, index: number) => {
+            let delay;
+            if (isView) {
+              delay = (index + 1) * 150;
+            }
+            return (
+              <ProjectItem
+                key={project.id}
+                title={project.title}
+                year={project.year}
+                img={project.img}
+                customStyles={{
+                  transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
+                }}
+              />
+            );
+          })}
         </div>
       )}
       {allProjects?.length <= visibleProjects?.length ? (
