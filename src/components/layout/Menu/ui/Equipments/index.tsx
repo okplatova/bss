@@ -9,6 +9,8 @@ import { CloseIcon } from "@/components/ui/CloseIcon";
 import { useStores } from "@/shared/context";
 import { equipmentsList } from "../../data/equipmentsList";
 import { EquipmentItem } from "@/components/common/EquipmentItem";
+import { equipmentsTypes } from "../../data/equipmentsTypes";
+import { equipmentsMenuList } from "../../data/equipmentsMenuList";
 
 const Equipments = () => {
   const { equipmentMenu } = useStores();
@@ -20,10 +22,12 @@ const Equipments = () => {
     equipmentMenu.handleOpenThirdMenu(false);
   };
 
-  const handleOpenSecondMenu = () => {
+  const handleOpenSecondMenu = (id: number) => {
+    equipmentMenu.setEquipmentTypeId(id);
     equipmentMenu.handleOpenSecondMenu(true);
   };
-  const handleOpenThirdMenu = () => {
+  const handleOpenThirdMenu = (id: number) => {
+    equipmentMenu.setEquipmentListId(id);
     equipmentMenu.handleOpenThirdMenu(true);
   };
 
@@ -54,88 +58,48 @@ const Equipments = () => {
       </div>
       <div className={s.content}>
         <div className={s.equipmentsTypes}>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Светодиодные экраны
-          </Button>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Проекционное оборудование
-          </Button>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Сенсорные и же панели
-          </Button>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Медиасерверы
-          </Button>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Пультовое и коммуникационное обрудование
-          </Button>
-          <Button
-            onClick={handleOpenSecondMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Системы движения экранов
-          </Button>
+          {equipmentsTypes.map((type, index) => {
+            const btnClass = `${
+              equipmentMenu.equipmentTypeId &&
+              index === equipmentMenu.equipmentTypeId - 1
+                ? s.active
+                : ""
+            }`;
+            return (
+              <Button
+                key={type.id}
+                onClick={() => handleOpenSecondMenu(type.id)}
+                size="medium"
+                variable="clear"
+                ariaLabel="equipmentType"
+                className={btnClass}
+              >
+                {type.title}
+              </Button>
+            );
+          })}
         </div>
         <div className={equipmentListClass}>
-          <Button
-            onClick={handleOpenThirdMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Экраны для улиц и помещений
-          </Button>
-          <Button
-            onClick={handleOpenThirdMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Экраны для помещений
-          </Button>
-          <Button
-            onClick={handleOpenThirdMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Креативные решения
-          </Button>
-          <Button
-            onClick={handleOpenThirdMenu}
-            size="medium"
-            variable="clear"
-            ariaLabel="equipmentType"
-          >
-            Типовые решения при установке экранов
-          </Button>
+          {equipmentsMenuList.map((item, index) => {
+            const btnClass = `${
+              equipmentMenu.equipmentListId &&
+              index === equipmentMenu.equipmentListId - 1
+                ? s.active
+                : ""
+            }`;
+            return (
+              <Button
+                key={item.id}
+                onClick={() => handleOpenThirdMenu(item.id)}
+                size="medium"
+                variable="clear"
+                ariaLabel="equipmentType"
+                className={btnClass}
+              >
+                Экраны для улиц и помещений
+              </Button>
+            );
+          })}
         </div>
         <div className={equipmentClass}>
           <div className={s.scrollContent}>

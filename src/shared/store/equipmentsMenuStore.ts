@@ -5,6 +5,9 @@ class EquipmentsMenuStore {
   secondMenuIsOpen = false;
   thirdMenuIsOpen = false;
 
+  equipmentTypeId: number | null = null;
+  equipmentListId: number | null = null;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -29,6 +32,13 @@ class EquipmentsMenuStore {
       return;
     }
     this.thirdMenuIsOpen = !this.thirdMenuIsOpen;
+  }
+
+  setEquipmentTypeId(id: number) {
+    this.equipmentTypeId = id;
+  }
+  setEquipmentListId(id: number) {
+    this.equipmentListId = id;
   }
 }
 
