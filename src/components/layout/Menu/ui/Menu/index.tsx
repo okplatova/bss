@@ -16,14 +16,14 @@ const Menu = () => {
   const router = useRouter();
 
   const handleOpenEquipmentsMenu = () => {
-    equipmentMenu.handleOpenMainMenu();
+    equipmentMenu.handleOpenMainMenu(true);
   };
 
   const handleOpenMenu = () => {
     if (equipmentMenu.mainMenuIsOpen) {
-      equipmentMenu.handleOpenMainMenu();
-      equipmentMenu.handleOpenSecondMenu();
-      equipmentMenu.handleOpenThirdMenu();
+      equipmentMenu.handleOpenMainMenu(false);
+      equipmentMenu.handleOpenSecondMenu(false);
+      equipmentMenu.handleOpenThirdMenu(false);
     }
     menu.handleOpenMenu();
   };

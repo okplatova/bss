@@ -15,19 +15,16 @@ const Equipments = () => {
   const { push } = useRouter();
 
   const handleOpenMenu = () => {
-    if (equipmentMenu.mainMenuIsOpen) {
-      equipmentMenu.handleOpenMainMenu();
-      equipmentMenu.handleOpenSecondMenu();
-      equipmentMenu.handleOpenThirdMenu();
-      return;
-    }
+    equipmentMenu.handleOpenMainMenu(false);
+    equipmentMenu.handleOpenSecondMenu(false);
+    equipmentMenu.handleOpenThirdMenu(false);
   };
 
   const handleOpenSecondMenu = () => {
-    equipmentMenu.handleOpenSecondMenu();
+    equipmentMenu.handleOpenSecondMenu(true);
   };
   const handleOpenThirdMenu = () => {
-    equipmentMenu.handleOpenThirdMenu();
+    equipmentMenu.handleOpenThirdMenu(true);
   };
 
   const equipmentsMenuClass = `${s.equipmentsMenu} ${

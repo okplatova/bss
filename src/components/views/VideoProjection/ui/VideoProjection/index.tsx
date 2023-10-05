@@ -30,7 +30,6 @@ const VideoProjection = () => {
   const handleOpenMenu = () => {
     projection.handleOpenMenu();
   };
-  console.log(projection.menuIsOpen);
 
   return (
     <div className={s.projection}>
