@@ -1,8 +1,6 @@
 import Head from "next/head";
 import { VideoStudio } from "@/components/views/VideoStudio";
-export async function getServerSideProps() {
-  return { props: {} };
-}
+
 const VideoStudioPage = () => {
   return (
     <>

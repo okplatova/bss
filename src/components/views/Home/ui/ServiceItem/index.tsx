@@ -11,10 +11,10 @@ const ServiceItem: FC<IServiceItemProps> = ({ img, title, text }) => {
       <div className={s.title}>
         <h6>{title}</h6>
         <Image
-          src={img.src}
+          src={`https://dev9.paradigma-digital.ru${img}`}
           alt={title}
-          width={img.width}
-          height={img.height}
+          width={72}
+          height={72}
           loading="lazy"
         />
       </div>

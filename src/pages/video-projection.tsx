@@ -1,10 +1,6 @@
 import Head from "next/head";
 import { VideoProjection } from "@/components/views/VideoProjection";
 
-export async function getServerSideProps() {
-  return { props: {} };
-}
-
 const VideoStudioPage = () => {
   return (
     <>

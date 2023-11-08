@@ -4,20 +4,26 @@ import { serviceList } from "../../data/serviceList";
 
 import ServiceItem from "../ServiceItem";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useGetServices } from "@/shared/hooks/useGetServices";
 
 const ServicesSection = () => {
+  const { services } = useGetServices();
+
   return (
     <section className={`${s.section} container`}>
       <SectionTitle label="Услуги" />
       <div className={s.serviceList}>
-        {serviceList.map((service) => (
-          <ServiceItem
-            key={service.id}
-            img={service.img}
-            title={service.title}
-            text={service.text}
-          />
-        ))}
+        {
+          //@ts-ignore
+          services?.map((service: any) => (
+            <ServiceItem
+              key={service.ID}
+              img={service.PICTURE}
+              title={service.NAME}
+              text={service.TEXT}
+            />
+          ))
+        }
       </div>
     </section>
   );

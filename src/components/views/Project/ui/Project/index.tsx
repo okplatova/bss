@@ -7,28 +7,36 @@ import ResultSection from "../ResultSection";
 import VideoSection from "../VideoSection";
 import Equipments from "../Equipments";
 import AnotherProjects from "../AnotherProjects";
+import { FC } from "react";
 
-const breadcrumbs = [
-  {
-    label: "Главная",
-    link: "/",
-  },
-  {
-    label: "Проекты",
-    link: "/projects",
-  },
-  {
-    label: "День Флага Российской Федерации",
-  },
-];
+const Project: FC<any> = ({ project }) => {
+  const breadcrumbs = [
+    {
+      label: "Главная",
+      link: "/",
+    },
+    {
+      label: "Проекты",
+      link: "/projects",
+    },
+    {
+      label: project.NAME,
+    },
+  ];
+  console.log('project.CONTENT["Другие проекты"]', project.CONTENT);
 
-const Project = () => {
   return (
     <div className={s.project}>
       <Breadcrumbs items={breadcrumbs} />
-      <Hero />
-      <TaskSection />
-      <ResultSection />
+      <Hero title={project.NAME} img={project.DETAIL_PICTURE} />
+      <TaskSection
+        task={project.CONTENT.Задача.TEXT}
+        decision={project.CONTENT.Решение.TEXT}
+      />
+      <ResultSection
+        author={project.CONTENT.Фотограф}
+        results={project.CONTENT["Результат"]}
+      />
       <VideoSection />
       <Equipments />
       <AnotherProjects />

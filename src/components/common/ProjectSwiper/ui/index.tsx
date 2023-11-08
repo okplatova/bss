@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { projectList } from "../data/projectList";
@@ -10,6 +10,13 @@ import s from "./styles.module.sass";
 import { ProjectItem } from "../../ProjectItem";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
+import { useGetProjects } from "@/shared/hooks";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+interface IProjectSwiperProps {
+  projects?: any;
+  children: ReactNode;
+}
 
 const breakpoints = {
   0: {
@@ -23,7 +30,7 @@ const breakpoints = {
   },
 };
 
-const ProjectSwiper = () => {
+const ProjectSwiper: FC<IProjectSwiperProps> = ({ projects, children }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
   const sliderRef = useRef(null);
@@ -60,15 +67,7 @@ const ProjectSwiper = () => {
         centeredSlides={false}
         breakpoints={breakpoints}
       >
-        {projectList.map((project) => (
-          <SwiperSlide key={project.id}>
-            <ProjectItem
-              title={project.title}
-              year={project.year}
-              img={project.img.src}
-            />
-          </SwiperSlide>
-        ))}
+        {children}
       </Swiper>
       <div className={s.swiperBottom}>
         <button onClick={handlePrevSlide} aria-label="navigation">

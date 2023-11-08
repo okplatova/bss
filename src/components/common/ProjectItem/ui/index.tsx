@@ -18,10 +18,10 @@ const ProjectItem: FC<IProjectItemProps> = ({
   customStyles,
 }) => {
   const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
-
+  console.log("Skeleton", title.split(" ").join("-").toLowerCase());
   return (
     <Link
-      href="/project/project-item"
+      href={`/project/${title.split(" ").join("-").toLowerCase()}`}
       className={projectClass}
       style={{ ...customStyles }}
     >
@@ -34,7 +34,12 @@ const ProjectItem: FC<IProjectItemProps> = ({
         >
           <PlusIcon />
         </Button>
-        <Image src={img} alt="project" fill loading="lazy" />
+        <Image
+          src={`https://dev9.paradigma-digital.ru/${img}`}
+          alt="project"
+          fill
+          loading="lazy"
+        />
       </div>
       <div className={s.text}>
         <span className={s.title}>{title}</span>

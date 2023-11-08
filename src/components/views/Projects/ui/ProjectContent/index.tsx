@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useInView } from "react-hook-inview";
+import { useGetProjects } from "@/shared/hooks";
 
 import { IProjectContentProps } from "../../types/projectContent.interface";
 
@@ -15,6 +16,8 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
   const [visibleProjects, setVisibleProjects] = useState<any>(null);
 
   const [ref, inView] = useInView();
+
+  const { projects, isLoading } = useGetProjects();
 
   const fetchFunc = () => {
     fetch("/db/projects.json")
@@ -53,23 +56,23 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
 
   return (
     <div className={s.content}>
-      {!visibleProjects ? (
+      {isLoading ? (
         <div className={s.loaderWrapper}>
           <Loader />
         </div>
       ) : (
         <div className={projectListClass} ref={ref}>
-          {visibleProjects.map((project: any, index: number) => {
+          {projects.map((project: any, index: number) => {
             let delay;
             if (isView) {
               delay = (index + 1) * 150;
             }
             return (
               <ProjectItem
-                key={project.id}
-                title={project.title}
-                year={project.year}
-                img={project.img}
+                title={project.NAME}
+                year={project.CONTENT.Год}
+                img={project.PREVIEW_PICTURE}
+                key={project.ID}
                 isGrid={isGrid}
                 customStyles={{
                   transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
@@ -94,7 +97,7 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
           onClick={showMore}
           size="medium"
           className={s.loadMore}
-          count={123}
+          count={projects.length}
           ariaLabel="show"
         >
           Показать еще

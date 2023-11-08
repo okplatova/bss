@@ -25,7 +25,7 @@ const EquipmentSection = () => {
       <div className="container">
         <div className={s.top}>
           <SectionTitle label="Оборудование" color="black" />
-          <Link href="/" className={s.link}>
+          <Link href="/catalog" className={s.link}>
             <span>Смотреть все</span>
             <ArrowRightIcon />
           </Link>

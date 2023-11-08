@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,6 +10,12 @@ import s from "./styles.module.sass";
 import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
+import { Skeleton } from "@/components/ui/Skeleton";
+
+interface IResultSwiperProps {
+  author?: string;
+  results: any;
+}
 
 const breakpoints = {
   0: {
@@ -23,7 +29,7 @@ const breakpoints = {
   },
 };
 
-const ResultSwiper = () => {
+const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
   const sliderRef = useRef(null);
@@ -48,6 +54,7 @@ const ResultSwiper = () => {
     //@ts-ignore
     setTotalSlides(sliderRef.current?.swiper.slides.length);
   }, []);
+  console.log("resultsresultsresultsresults", results);
 
   return (
     <div className={s.swiper}>
@@ -67,26 +74,42 @@ const ResultSwiper = () => {
           centeredSlides={false}
           breakpoints={breakpoints}
         >
-          {resultList.map((result) => (
-            <SwiperSlide data-caption={result.img} key={result.id}>
-              <div className={s.imageWrapper}>
-                <Image
-                  data-fancybox="gallery"
-                  src={result.img}
-                  fill
-                  alt="result"
-                  loading="lazy"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {results ? (
+            <>
+              {results.map((result: string, index: number) => (
+                <SwiperSlide data-caption={result} key={index}>
+                  <div className={s.imageWrapper}>
+                    <Image
+                      data-fancybox="gallery"
+                      src={`https://dev9.paradigma-digital.ru/${result}`}
+                      fill
+                      alt="result"
+                      loading="lazy"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </>
+          ) : (
+            <>
+              {[...Array(5)].map((_, index) => (
+                <SwiperSlide key={index}>
+                  <div className={s.imageWrapper}>
+                    <Skeleton className={s.skeleton} />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </>
+          )}
         </Swiper>
       </Fancybox>
 
       <div className={s.swiperBottom}>
         <div className={s.author}>
           <span className={s.type}>Фотограф: </span>
-          <span className={s.name}>Дмитрий Мухин</span>
+          <span className={s.name}>
+            {author ? author : <Skeleton className={s.authorSkeleton} />}
+          </span>
         </div>
         <button onClick={handlePrevSlide} aria-label="navigation">
           <ArrowLeftIcon />
