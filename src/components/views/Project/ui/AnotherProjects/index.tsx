@@ -30,7 +30,7 @@ const AnotherProjects: FC<IAnotherProjectsProps> = ({ projects }) => {
               <SwiperSlide key={project.ID}>
                 <ProjectItem
                   title={project.NAME}
-                  year={project.CONTENT.Год}
+                  year={project.YEAR}
                   img={project.PREVIEW_PICTURE}
                 />
               </SwiperSlide>

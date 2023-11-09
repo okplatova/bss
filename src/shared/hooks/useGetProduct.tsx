@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useGetVideostudio = () => {
-  const [videostudion, setVideostudion] = useState(null);
+export const useGetProduct = () => {
+  const [product, setProduct] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   const fetchData = async () => {
@@ -11,11 +11,11 @@ export const useGetVideostudio = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/videostudio/",
+        url: "https://dev9.paradigma-digital.ru/equipment/",
       });
-      setVideostudion(res.data);
+      setProduct(res.data && Object.values(res.data));
     } catch (e) {
-      console.log("error", e);
+      console.log("error product", e);
     } finally {
       setLoading(false);
     }
@@ -26,7 +26,7 @@ export const useGetVideostudio = () => {
   }, []);
 
   return {
-    videostudion,
+    product,
     isLoading,
   };
 };

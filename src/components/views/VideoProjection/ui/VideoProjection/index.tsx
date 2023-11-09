@@ -94,6 +94,7 @@ const VideoProjection = () => {
                 <SectionTitle label="Оборудование" />
                 <div className={s.quipmentList}>
                   {equipments.map((equipment) => (
+                    //@ts-ignore
                     <EquipmentItem
                       key={equipment.id}
                       title={equipment.title}

@@ -13,6 +13,7 @@ import MobileMenu from "../MobileMenu";
 import { observer } from "mobx-react-lite";
 import { useStores } from "@/shared/context";
 import { OutlineArrowRight } from "@/components/ui/OutlineArrowRight";
+import { useGetProduct } from "@/shared/hooks";
 
 const breadcrumbs = [
   {
@@ -29,6 +30,8 @@ const Catalog = () => {
   const [selectedCatalog, setSelectedCatalog] = useState<number>(0);
 
   const { catalog } = useStores();
+
+  const { product, isLoading } = useGetProduct();
 
   const toggleAccordion = (index: number) => {
     setSelectedAccordion(index);
@@ -68,37 +71,48 @@ const Catalog = () => {
           </Button>
         </div>
         <div className={s.catalogList}>
-          {catalogList.map((catalogItem, index) => {
-            const buttonClass = `${s.catalogBtn} ${
-              selectedCatalog === index ? s.active : ""
-            }`;
-            return (
-              <Button
-                key={catalogItem.id}
-                count={catalogItem.content.length}
-                size="medium"
-                variable="clear"
-                className={buttonClass}
-                onClick={() => toggleCatalog(index)}
-                ariaLabel="product"
-              >
-                {catalogItem.title}
-              </Button>
-            );
-          })}
+          {
+            //@ts-ignore
+            product?.map((catalogItem, index) => {
+              const buttonClass = `${s.catalogBtn} ${
+                selectedCatalog === index ? s.active : ""
+              }`;
+              const children = Object.values(catalogItem.CHILD);
+              return (
+                <Button
+                  key={catalogItem.ID}
+                  count={children.length}
+                  size="medium"
+                  variable="clear"
+                  className={buttonClass}
+                  onClick={() => toggleCatalog(index)}
+                  ariaLabel="product"
+                >
+                  {catalogItem.NAME}
+                </Button>
+              );
+            })
+          }
         </div>
         <div className={s.info}>
-          {catalogList[selectedCatalog].content.map((accordion, index) => (
-            <Accordion
-              key={accordion.id}
-              isShow={selectedAccordion === index}
-              title={accordion.title}
-              onClick={() => toggleAccordion(index)}
-              count={accordion.equipments.length}
-            >
-              <AccordionContent accordion={accordion} />
-            </Accordion>
-          ))}
+          {!isLoading &&
+            //@ts-ignore
+            Object.values(product[selectedCatalog]?.CHILD).map(
+              (accordion, index) => (
+                <Accordion
+                  //@ts-ignore
+                  key={accordion.ID}
+                  isShow={selectedAccordion === index}
+                  //@ts-ignore
+                  title={accordion.NAME}
+                  onClick={() => toggleAccordion(index)}
+                  //@ts-ignore
+                  count={Object.values(accordion.ITM).length}
+                >
+                  <AccordionContent accordion={accordion} />
+                </Accordion>
+              )
+            )}
         </div>
       </div>
     </div>

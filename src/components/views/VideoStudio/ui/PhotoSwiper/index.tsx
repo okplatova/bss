@@ -12,6 +12,8 @@ import s from "./styles.module.sass";
 import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
+import { useGetVideostudio } from "@/shared/hooks";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const breakpoints = {
   0: {
@@ -26,16 +28,14 @@ const breakpoints = {
 };
 
 const PhotoSwiper = () => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
-  const [totalSlides, setTotalSlides] = useState(1);
   const sliderRef = useRef(null);
+
+  const { videostudion, isLoading } = useGetVideostudio();
 
   const handleNextSlide = () => {
     if (!sliderRef.current) return;
     //@ts-ignore
     sliderRef.current?.swiper.slideNext();
-    //@ts-ignore
-    setCurrentSlideIndex(sliderRef.current?.swiper.activeIndex + 1);
   };
 
   const handlePrevSlide = () => {
@@ -43,13 +43,7 @@ const PhotoSwiper = () => {
     //@ts-ignore
     sliderRef.current?.swiper.slidePrev();
     //@ts-ignore
-    setCurrentSlideIndex(sliderRef.current?.swiper.activeIndex + 1);
   };
-
-  useEffect(() => {
-    //@ts-ignore
-    setTotalSlides(sliderRef.current?.swiper.slides.length);
-  }, []);
 
   return (
     <div className={s.swiper}>
@@ -69,19 +63,34 @@ const PhotoSwiper = () => {
           centeredSlides={false}
           breakpoints={breakpoints}
         >
-          {swiperItems.map((result) => (
-            <SwiperSlide data-caption={result.img} key={result.id}>
-              <div className={s.imageWrapper}>
-                <Image
-                  data-fancybox="gallery"
-                  src={result.img}
-                  fill
-                  alt="photo"
-                  loading="lazy"
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+          {isLoading ? (
+            <>
+              {[...Array(6)].map((_, index) => (
+                <SwiperSlide key={index}>
+                  <Skeleton className={s.skeleton} />
+                </SwiperSlide>
+              ))}
+            </>
+          ) : (
+            <>
+              {
+                //@ts-ignore
+                videostudion[0].CONTENT["Фото Студии"]?.map((photo: any) => (
+                  <SwiperSlide data-caption={photo} key={photo}>
+                    <div className={s.imageWrapper}>
+                      <Image
+                        data-fancybox="gallery"
+                        src={`https://dev9.paradigma-digital.ru/${photo}`}
+                        fill
+                        alt="photo"
+                        loading="lazy"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))
+              }
+            </>
+          )}
         </Swiper>
       </Fancybox>
 

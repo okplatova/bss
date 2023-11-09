@@ -6,6 +6,7 @@ import s from "./styles.module.sass";
 import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
+import { useGetProjects } from "@/shared/hooks";
 
 const ProjectsSection = () => {
   const [isView, setView] = useState(false);
@@ -14,34 +15,29 @@ const ProjectsSection = () => {
 
   const [ref, inView] = useInView();
 
-  const fetchFunc = () => {
-    fetch("/db/projects.json")
-      .then((res) => res.json())
-      .then((result) => {
-        setAllProjects(result);
-        setVisibleProjects(result.slice(0, 6));
-      });
-  };
+  const { projects, isLoading } = useGetProjects();
 
   useEffect(() => {
-    fetchFunc();
-  }, []);
-
-  useEffect(() => {
-    if (inView) setView(true);
-  }, [inView]);
+    setAllProjects(projects);
+    setVisibleProjects(projects.slice(0, 6));
+  }, [projects]);
 
   const showMore = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
-      ...allProjects.slice(
+      ...projects.slice(
         visibleProjects.length - 1,
         visibleProjects.length - 1 + 6
       ),
     ]);
   };
+
+  useEffect(() => {
+    if (inView) setView(true);
+  }, [inView]);
+
   const hideMore = () => {
-    setVisibleProjects(allProjects.slice(0, 6));
+    setVisibleProjects(projects.slice(0, 6));
   };
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
@@ -54,17 +50,17 @@ const ProjectsSection = () => {
         </div>
       ) : (
         <div className={projectListClass} ref={ref}>
-          {visibleProjects.map((project: any, index: number) => {
+          {projects.map((project: any, index: number) => {
             let delay;
             if (isView) {
               delay = (index + 1) * 150;
             }
             return (
               <ProjectItem
-                key={project.id}
-                title={project.title}
-                year={project.year}
-                img={project.img}
+                title={project.NAME}
+                year={project.CONTENT.Год}
+                img={project.PREVIEW_PICTURE}
+                key={project.NAME}
                 customStyles={{
                   transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
                 }}
@@ -73,26 +69,30 @@ const ProjectsSection = () => {
           })}
         </div>
       )}
-      {allProjects?.length <= visibleProjects?.length ? (
-        <Button
-          onClick={hideMore}
-          size="medium"
-          className={s.loadMore}
-          ariaLabel="hide"
-        >
-          Скрыть
-        </Button>
-      ) : (
-        <Button
-          disabled={!allProjects}
-          onClick={showMore}
-          size="medium"
-          className={s.loadMore}
-          count={123}
-          ariaLabel="show"
-        >
-          Показать еще
-        </Button>
+      {allProjects?.length < 6 ? null : (
+        <>
+          {allProjects?.length <= visibleProjects?.length ? (
+            <Button
+              onClick={hideMore}
+              size="medium"
+              className={s.loadMore}
+              ariaLabel="hide"
+            >
+              Скрыть
+            </Button>
+          ) : (
+            <Button
+              disabled={!allProjects}
+              onClick={showMore}
+              size="medium"
+              className={s.loadMore}
+              count={projects.length}
+              ariaLabel="show"
+            >
+              Показать еще
+            </Button>
+          )}
+        </>
       )}
     </div>
   );

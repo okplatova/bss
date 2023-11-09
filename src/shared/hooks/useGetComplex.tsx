@@ -13,7 +13,6 @@ export const useGetComplex = () => {
         method: "get",
         url: "https://dev9.paradigma-digital.ru/complex/",
       });
-      console.log("res", res.data[0].CONTENT);
       setComplex(res.data);
     } catch (e) {
       console.log("error", e);

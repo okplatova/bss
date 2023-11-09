@@ -6,10 +6,9 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { SwiperSlide } from "swiper/react";
 import { useGetProjects } from "@/shared/hooks";
+import { FC } from "react";
 
-const Projects = () => {
-  const { projects } = useGetProjects();
-
+const Projects: FC<any> = ({ projects }) => {
   return (
     <section className={s.projects}>
       <div className={`${s.top} container`}>
@@ -31,7 +30,7 @@ const Projects = () => {
                 <SwiperSlide key={project.ID}>
                   <ProjectItem
                     title={project.NAME}
-                    year={project.CONTENT.Год}
+                    year={project.YEAR}
                     img={project.PREVIEW_PICTURE}
                   />
                 </SwiperSlide>

@@ -54,7 +54,6 @@ const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
     //@ts-ignore
     setTotalSlides(sliderRef.current?.swiper.slides.length);
   }, []);
-  console.log("resultsresultsresultsresults", results);
 
   return (
     <div className={s.swiper}>

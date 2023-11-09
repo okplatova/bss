@@ -23,7 +23,6 @@ const Project: FC<any> = ({ project }) => {
       label: project.NAME,
     },
   ];
-  console.log('project.CONTENT["Другие проекты"]', project.CONTENT);
 
   return (
     <div className={s.project}>
@@ -37,9 +36,9 @@ const Project: FC<any> = ({ project }) => {
         author={project.CONTENT.Фотограф}
         results={project.CONTENT["Результат"]}
       />
-      <VideoSection />
+      <VideoSection video={project.CONTENT["Видео"]} />
       <Equipments />
-      <AnotherProjects />
+      <AnotherProjects projects={project.CONTENT["Другие проекты"]} />
     </div>
   );
 };

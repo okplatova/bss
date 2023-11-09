@@ -11,10 +11,20 @@ import { equipmentsList } from "../../data/equipmentsList";
 import { EquipmentItem } from "@/components/common/EquipmentItem";
 import { equipmentsTypes } from "../../data/equipmentsTypes";
 import { equipmentsMenuList } from "../../data/equipmentsMenuList";
+import { useGetProduct } from "@/shared/hooks";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/Skeleton";
 
 const Equipments = () => {
+  const [equipments, setEquipments] = useState(null);
+
   const { equipmentMenu } = useStores();
   const { push } = useRouter();
+  const { product } = useGetProduct();
+  //@ts-ignore
+  const filteredProduct = product?.filter((item) => {
+    return item.ID === equipmentMenu.equipmentTypeId;
+  });
 
   const handleOpenMenu = () => {
     equipmentMenu.handleOpenMainMenu(false);
@@ -26,9 +36,10 @@ const Equipments = () => {
     equipmentMenu.setEquipmentTypeId(id);
     equipmentMenu.handleOpenSecondMenu(true);
   };
-  const handleOpenThirdMenu = (id: number) => {
+  const handleOpenThirdMenu = (id: number, item: any) => {
     equipmentMenu.setEquipmentListId(id);
     equipmentMenu.handleOpenThirdMenu(true);
+    setEquipments(item);
   };
 
   const equipmentsMenuClass = `${s.equipmentsMenu} ${
@@ -41,7 +52,6 @@ const Equipments = () => {
   const equipmentClass = `${s.equipment} ${
     equipmentMenu.thirdMenuIsOpen ? s.active : ""
   }`;
-
   return (
     <div className={equipmentsMenuClass} onClick={(e) => e.stopPropagation()}>
       <div className={s.top}>
@@ -58,64 +68,92 @@ const Equipments = () => {
       </div>
       <div className={s.content}>
         <div className={s.equipmentsTypes}>
-          {equipmentsTypes.map((type, index) => {
-            const btnClass = `${
-              equipmentMenu.equipmentTypeId &&
-              index === equipmentMenu.equipmentTypeId - 1
-                ? s.active
-                : ""
-            }`;
-            return (
-              <Button
-                key={type.id}
-                onClick={() => handleOpenSecondMenu(type.id)}
-                size="medium"
-                variable="clear"
-                ariaLabel="equipmentType"
-                className={btnClass}
-              >
-                {type.title}
-              </Button>
-            );
-          })}
+          {
+            //@ts-ignore
+            product?.map((type, index) => {
+              const btnClass = `${
+                equipmentMenu.equipmentTypeId &&
+                type.ID === equipmentMenu.equipmentTypeId
+                  ? s.active
+                  : ""
+              }`;
+              return (
+                <Button
+                  key={type.ID}
+                  onClick={() => handleOpenSecondMenu(type.ID)}
+                  size="medium"
+                  variable="clear"
+                  ariaLabel="equipmentType"
+                  className={btnClass}
+                >
+                  {type.NAME}
+                </Button>
+              );
+            })
+          }
         </div>
         <div className={equipmentListClass}>
-          {equipmentsMenuList.map((item, index) => {
-            const btnClass = `${
-              equipmentMenu.equipmentListId &&
-              index === equipmentMenu.equipmentListId - 1
-                ? s.active
-                : ""
-            }`;
-            return (
-              <Button
-                key={item.id}
-                onClick={() => handleOpenThirdMenu(item.id)}
-                size="medium"
-                variable="clear"
-                ariaLabel="equipmentType"
-                className={btnClass}
-              >
-                Экраны для улиц и помещений
-              </Button>
-            );
-          })}
+          {filteredProduct?.length > 0 &&
+            Object.values(filteredProduct[0].CHILD).map((item, index) => {
+              const btnClass = `${
+                equipmentMenu.equipmentListId &&
+                //@ts-ignore
+                item.ID === equipmentMenu.equipmentListId
+                  ? s.active
+                  : ""
+              }`;
+              return (
+                <Button
+                  //@ts-ignore
+                  key={item.ID}
+                  //@ts-ignore
+                  onClick={() => handleOpenThirdMenu(item.ID, item)}
+                  size="medium"
+                  variable="clear"
+                  ariaLabel="equipmentType"
+                  className={btnClass}
+                >
+                  Экраны для улиц и помещений
+                </Button>
+              );
+            })}
         </div>
         <div className={equipmentClass}>
           <div className={s.scrollContent}>
             <div className={s.imageWrapper}>
-              <Image src="/catalog/img.jpg" fill alt="equipment" />
+              {
+                //@ts-ignore
+                equipments?.PICTURE ? (
+                  <Image
+                    //@ts-ignore
+                    src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
+                    fill
+                    alt="equipment"
+                  />
+                ) : (
+                  <Skeleton className={s.imageSkeleton} />
+                )
+              }
             </div>
             <div className={s.equipmentsItems}>
-              {equipmentsList.map((equipment) => (
-                <EquipmentItem
-                  key={equipment.id}
-                  title={equipment.title}
-                  type={equipment.type}
-                  options={equipment.options}
-                  variant="light"
-                />
-              ))}
+              {equipments &&
+                //@ts-ignore
+                Object.values(equipments.ITM).map((equipment) => (
+                  <EquipmentItem
+                    //@ts-ignore
+                    key={equipment.ID}
+                    // title={equipment.CONTENT["Заголовок"]}
+                    //@ts-ignore
+                    type={equipment.CONTENT["Заголовок"]}
+                    //@ts-ignore
+                    option1={equipment.CONTENT["Свойства для Анонса 1"]}
+                    //@ts-ignore
+                    option2={equipment.CONTENT["Свойства для Анонса 2"]}
+                    //@ts-ignore
+                    option3={equipment.CONTENT["Свойства для Анонса 3"]}
+                    variant="light"
+                  />
+                ))}
             </div>
           </div>
 

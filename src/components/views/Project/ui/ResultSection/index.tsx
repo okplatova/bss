@@ -10,8 +10,6 @@ interface IResultSectionProps {
 }
 
 const ResultSection: FC<IResultSectionProps> = ({ author, results }) => {
-  console.log("author", author);
-
   return (
     <div className={s.section}>
       <SectionTitle label="Результат" />

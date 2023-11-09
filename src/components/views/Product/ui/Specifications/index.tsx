@@ -7,8 +7,10 @@ import s from "./styles.module.sass";
 import { Button } from "@/components/ui/Button";
 import { specificationsList } from "../../data/specificationsList";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { FC } from "react";
+import { Skeleton } from "@/components/ui/Skeleton";
 
-const Specifications = () => {
+const Specifications: FC<any> = ({ specifications }) => {
   const { calculator } = useStores();
 
   const handleOpenCalculator = () => {
@@ -19,11 +21,20 @@ const Specifications = () => {
     <div className={s.specifications}>
       <SectionTitle label="Характеристики" />
       <div className={s.specificationsList}>
-        {specificationsList.map((specification) => (
-          <div key={specification.id} className={s.specification}>
-            <p>{specification.title}</p>
+        {specifications.map((specification: any) => (
+          <div key={specification["Название"]} className={s.specification}>
+            {!specification["Название"] ? (
+              <Skeleton className={s.skeleton} />
+            ) : (
+              <p>{specification["Название"]}</p>
+            )}
+
             <div className={s.line} />
-            <p>{specification.label}</p>
+            {!specification["Значение"] ? (
+              <Skeleton className={s.skeleton} />
+            ) : (
+              <p>{specification["Значение"]}</p>
+            )}
           </div>
         ))}
       </div>

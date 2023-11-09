@@ -18,7 +18,6 @@ const ProjectItem: FC<IProjectItemProps> = ({
   customStyles,
 }) => {
   const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
-  console.log("Skeleton", title.split(" ").join("-").toLowerCase());
   return (
     <Link
       href={`/project/${title.split(" ").join("-").toLowerCase()}`}

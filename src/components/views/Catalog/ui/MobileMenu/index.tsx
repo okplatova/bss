@@ -9,9 +9,11 @@ import { catalogList } from "../../data/catalogList";
 import s from "./styles.module.sass";
 
 import { Button } from "@/components/ui/Button";
+import { useGetProduct } from "@/shared/hooks";
 
 const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
   const { catalog } = useStores();
+  const { product, isLoading } = useGetProduct();
 
   const handleOpenMenu = () => {
     catalog.handleOpenMenu();
@@ -38,29 +40,33 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
         <div className={s.separatorWrapper}>
           <div className={s.separator} />
         </div>
-        {catalogList.map((catalogItem, index) => {
-          const currentCatalogItem = {
-            id: catalogItem.id,
-            title: catalogItem.title,
-            count: catalogItem.count,
-          };
-          const btnClass = `${s.btn} ${
-            catalogItem.id === catalog.currentCatalogItem.id ? s.active : ""
-          }`;
-          return (
-            <Button
-              key={catalogItem.id}
-              count={catalogItem.content.length}
-              size="medium"
-              variable="clear"
-              className={btnClass}
-              onClick={() => handleSelectItem(currentCatalogItem, index)}
-              ariaLabel="product"
-            >
-              {catalogItem.title}
-            </Button>
-          );
-        })}
+        {
+          //@ts-ignore
+          product?.map((catalogItem, index) => {
+            const children = Object.values(catalogItem.CHILD);
+            const currentCatalogItem = {
+              id: catalogItem.ID,
+              title: catalogItem.NAME,
+              count: children.length,
+            };
+            const btnClass = `${s.btn} ${
+              catalogItem.id === catalog.currentCatalogItem.id ? s.active : ""
+            }`;
+            return (
+              <Button
+                key={catalogItem.id}
+                count={children.length}
+                size="medium"
+                variable="clear"
+                className={btnClass}
+                onClick={() => handleSelectItem(currentCatalogItem, index)}
+                ariaLabel="product"
+              >
+                {catalogItem.NAME}
+              </Button>
+            );
+          })
+        }
       </div>
     </div>
   );

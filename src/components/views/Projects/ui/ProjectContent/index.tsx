@@ -19,23 +19,15 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
 
   const { projects, isLoading } = useGetProjects();
 
-  const fetchFunc = () => {
-    fetch("/db/projects.json")
-      .then((res) => res.json())
-      .then((result) => {
-        setAllProjects(result);
-        setVisibleProjects(result.slice(0, 6));
-      });
-  };
-
   useEffect(() => {
-    fetchFunc();
-  }, []);
+    setAllProjects(projects);
+    setVisibleProjects(projects.slice(0, 6));
+  }, [projects]);
 
   const showMore = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
-      ...allProjects.slice(
+      ...projects.slice(
         visibleProjects.length - 1,
         visibleProjects.length - 1 + 6
       ),
@@ -47,7 +39,7 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
   }, [inView]);
 
   const hideMore = () => {
-    setVisibleProjects(allProjects.slice(0, 6));
+    setVisibleProjects(projects.slice(0, 6));
   };
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""} ${
@@ -82,26 +74,30 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
           })}
         </div>
       )}
-      {allProjects?.length <= visibleProjects?.length ? (
-        <Button
-          onClick={hideMore}
-          size="medium"
-          className={s.loadMore}
-          ariaLabel="hide"
-        >
-          Скрыть
-        </Button>
-      ) : (
-        <Button
-          disabled={!allProjects}
-          onClick={showMore}
-          size="medium"
-          className={s.loadMore}
-          count={projects.length}
-          ariaLabel="show"
-        >
-          Показать еще
-        </Button>
+      {allProjects?.length < 6 ? null : (
+        <>
+          {allProjects?.length <= visibleProjects?.length ? (
+            <Button
+              onClick={hideMore}
+              size="medium"
+              className={s.loadMore}
+              ariaLabel="hide"
+            >
+              Скрыть
+            </Button>
+          ) : (
+            <Button
+              disabled={!allProjects}
+              onClick={showMore}
+              size="medium"
+              className={s.loadMore}
+              count={projects.length}
+              ariaLabel="show"
+            >
+              Показать еще
+            </Button>
+          )}
+        </>
       )}
     </div>
   );

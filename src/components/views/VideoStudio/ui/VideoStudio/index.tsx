@@ -6,12 +6,11 @@ import { Player } from "@/components/common/Player";
 import AboutSection from "../AboutSection";
 import PhotoSwiperSection from "../PhotoSwiperSection";
 import ProjectsSection from "../ProjectsSection";
-import { useGetVideostudio } from "@/shared/hooks/useGetVideostudio";
+import { useGetVideostudio } from "@/shared/hooks";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 const VideoStudio = () => {
   const { videostudion, isLoading } = useGetVideostudio();
-  console.log("videostudion", videostudion);
   const breadcrumbs = [
     {
       label: "Главная",
@@ -28,17 +27,12 @@ const VideoStudio = () => {
       <Breadcrumbs items={breadcrumbs} />
       <div className={`${s.top} container`}>
         <Title variant="h1" className={s.title}>
-          {
-            //@ts-ignore
-            videostudion?.NAME
-          }
+          Видеостудия
         </Title>
-
         <p className={s.description}>
-          {
-            //@ts-ignore
-            videostudion?.CONTENT["Текст на Первом блоке"]
-          }
+          Разработаем видео-контент любой сложности, от концептуализации и
+          сценаризации до съемки, монтажа и пост-продакшна с учетом
+          использования оборудовании на мероприятии
         </p>
       </div>
       <div className={s.content}>

@@ -11,6 +11,7 @@ const Equipments = () => {
       <SectionTitle label="Оборудование" />
       <div className={s.equipmentsList}>
         {equipmentsList.map((equipment) => (
+          //@ts-ignore
           <EquipmentItem
             key={equipment.id}
             title={equipment.title}

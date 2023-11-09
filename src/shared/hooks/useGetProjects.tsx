@@ -13,10 +13,9 @@ export const useGetProjects = () => {
         method: "get",
         url: "https://dev9.paradigma-digital.ru/projects/",
       });
-      console.log("res", res.data[0].CONTENT);
       setProjects(res.data);
     } catch (e) {
-      console.log("error", e);
+      console.log("error projects", e);
     } finally {
       setLoading(false);
     }

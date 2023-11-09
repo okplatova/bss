@@ -13,10 +13,9 @@ export const useGetServices = () => {
         method: "get",
         url: "https://dev9.paradigma-digital.ru/services/",
       });
-      console.log("res", res.data[0].CONTENT);
       setServices(res.data);
     } catch (e) {
-      console.log("error", e);
+      console.log("error services", e);
     } finally {
       setLoading(false);
     }
