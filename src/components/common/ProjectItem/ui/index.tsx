@@ -20,7 +20,7 @@ const ProjectItem: FC<IProjectItemProps> = ({
   const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
   return (
     <Link
-      href={`/project/${title.split(" ").join("-").toLowerCase()}`}
+      href={`/projects/${title.split(" ").join("-").toLowerCase()}`}
       className={projectClass}
       style={{ ...customStyles }}
     >

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import s from "./styles.module.sass";
 
@@ -17,7 +17,7 @@ const breadcrumbs = [
   },
 ];
 
-const Projects = () => {
+const Projects: FC<any> = ({ projects }) => {
   const [isGrid, setGrid] = useState(true);
 
   return (
@@ -48,7 +48,7 @@ const Projects = () => {
           </Button>
         </div>
       </div>
-      <ProjectContent isGrid={isGrid} />
+      <ProjectContent projects={projects} isGrid={isGrid} />
     </div>
   );
 };

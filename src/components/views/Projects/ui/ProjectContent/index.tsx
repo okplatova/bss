@@ -10,14 +10,14 @@ import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 
-const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
+const ProjectContent: FC<any> = ({ projects, isGrid }) => {
   const [isView, setView] = useState(false);
   const [allProjects, setAllProjects] = useState<any>(null);
   const [visibleProjects, setVisibleProjects] = useState<any>(null);
 
   const [ref, inView] = useInView();
 
-  const { projects, isLoading } = useGetProjects();
+  // const { projects, isLoading } = useGetProjects();
 
   useEffect(() => {
     setAllProjects(projects);
@@ -48,7 +48,7 @@ const ProjectContent: FC<IProjectContentProps> = ({ isGrid }) => {
 
   return (
     <div className={s.content}>
-      {isLoading ? (
+      {!projects ? (
         <div className={s.loaderWrapper}>
           <Loader />
         </div>
