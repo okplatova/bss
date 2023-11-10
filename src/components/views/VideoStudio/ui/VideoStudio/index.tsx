@@ -18,7 +18,7 @@ const VideoStudio = () => {
     },
     {
       //@ts-ignore
-      label: videostudion?.NAME,
+      label: "Видеостудия",
     },
   ];
 
