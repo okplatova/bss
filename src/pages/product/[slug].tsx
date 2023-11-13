@@ -7,42 +7,79 @@ import {
   InferGetStaticPropsType,
 } from "next";
 
-export const getStaticPaths = (async () => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
-  const data = await res.json();
-  const product = Object.values(data).map((product: any) => {
-    //@ts-ignore
-    let item = [];
-    const filteredProduct = Object.values(product.CHILD).map((child) => {
-      //@ts-ignore
-      return Object.values(child.ITM);
-    });
+// export const getStaticPaths = (async () => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
+//   const data = await res.json();
+//   const product = Object.values(data).map((product: any) => {
+//     //@ts-ignore
+//     let item = [];
+//     const filteredProduct = Object.values(product.CHILD).map((child) => {
+//       //@ts-ignore
+//       return Object.values(child.ITM);
+//     });
 
-    filteredProduct.forEach((obj) => {
-      const filter = obj.filter((obj2) => {
-        return (
-          //@ts-ignore
-          obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase()
-        );
-      });
-      item.push(filter[0]);
-    });
-    //@ts-ignore
-    return item[0];
-  });
+//     filteredProduct.forEach((obj) => {
+//       const filter = obj.filter((obj2) => {
+//         return (
+//           //@ts-ignore
+//           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase()
+//         );
+//       });
+//       item.push(filter[0]);
+//     });
+//     //@ts-ignore
+//     return item[0];
+//   });
 
-  const paths = product.map((project: any) => ({
-    params: {
-      slug: project.CONTENT["Заголовок"].split(" ").join("-").toLowerCase(),
-    },
-  }));
-  return {
-    paths: paths,
-    fallback: false,
-  };
-}) satisfies GetStaticPaths;
+//   const paths = product.map((project: any) => ({
+//     params: {
+//       slug: project.CONTENT["Заголовок"].split(" ").join("-").toLowerCase(),
+//     },
+//   }));
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async (context) => {
+// export const getStaticProps = (async (context) => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
+//   const data = await res.json();
+//   const product = Object.values(data).map((product: any) => {
+//     //@ts-ignore
+//     let item = [];
+//     const filteredProduct = Object.values(product.CHILD).map((child) => {
+//       //@ts-ignore
+//       return Object.values(child.ITM);
+//     });
+//     filteredProduct.forEach((obj) => {
+//       const filter = obj.filter((obj2) => {
+//         return (
+//           //@ts-ignore
+//           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase() ===
+//           context.params?.slug
+//         );
+//       });
+//       item.push(filter[0]);
+//     });
+//     //@ts-ignore
+//     return item[0];
+//   });
+
+//   const result = product[0];
+
+//   if (!result) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   //@ts-ignore
+//   return { props: { result } };
+// }) satisfies GetServerSideProps<{
+//   result: any;
+// }>;
+
+export const getServerSideProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
   const data = await res.json();
   const product = Object.values(data).map((product: any) => {
@@ -81,7 +118,7 @@ export const getStaticProps = (async (context) => {
 
 const ProductPage = ({
   result,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <Head>

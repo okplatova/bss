@@ -8,19 +8,33 @@ import {
   InferGetStaticPropsType,
 } from "next";
 
-export const getStaticPaths = (async () => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
-  const data = await res.json();
-  const paths = data.map((project: any) => ({
-    params: { slug: project.NAME.split(" ").join("-").toLowerCase() },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}) satisfies GetStaticPaths;
+// export const getStaticPaths = (async () => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
+//   const data = await res.json();
+//   const paths = data.map((project: any) => ({
+//     params: { slug: project.NAME.split(" ").join("-").toLowerCase() },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }) satisfies GetStaticPaths;
 
-export const getStaticProps = (async (context) => {
+// export const getStaticProps = (async (context) => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
+//   const data = await res.json();
+//   const project = data.filter((project: any) => {
+//     return (
+//       project.NAME.split(" ").join("-").toLowerCase() === context.params?.slug
+//     );
+//   });
+
+//   return { props: { project } };
+// }) satisfies GetStaticProps<{
+//   project: any;
+// }>;
+
+export const getServerSideProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
   const data = await res.json();
   const project = data.filter((project: any) => {
@@ -30,15 +44,13 @@ export const getStaticProps = (async (context) => {
   });
 
   return { props: { project } };
-}) satisfies GetStaticProps<{
+}) satisfies GetServerSideProps<{
   project: any;
 }>;
 
 const ProjectPage = ({
   project,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log("project", project);
-
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <Head>

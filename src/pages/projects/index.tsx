@@ -1,20 +1,24 @@
 import Head from "next/head";
 import { Projects } from "@/components/views/Projects";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
+} from "next";
 
-export const getStaticProps = (async (context) => {
+export const getServerSideProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
   const projects = await res.json();
 
   return { props: { projects } };
-}) satisfies GetStaticProps<{
+}) satisfies GetServerSideProps<{
   projects: any;
 }>;
 
 const ProjectsPage = ({
   projects,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <Head>
