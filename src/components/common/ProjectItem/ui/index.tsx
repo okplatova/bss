@@ -9,6 +9,7 @@ import s from "./styles.module.sass";
 import { PlusIcon } from "@/components/ui/PlusIcon";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
+import he from "he";
 
 const ProjectItem: FC<IProjectItemProps> = ({
   title,
@@ -41,7 +42,10 @@ const ProjectItem: FC<IProjectItemProps> = ({
         />
       </div>
       <div className={s.text}>
-        <span className={s.title}>{title}</span>
+        <span
+          className={s.title}
+          dangerouslySetInnerHTML={{ __html: he.decode(title) }}
+        ></span>
         <span className={s.year}>{year}</span>
         <span className={s.arrow}>
           <ArrowRightIcon />

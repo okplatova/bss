@@ -23,22 +23,33 @@ const Project: FC<any> = ({ project }) => {
       label: project.NAME,
     },
   ];
+  console.log("project", project);
 
   return (
     <div className={s.project}>
       <Breadcrumbs items={breadcrumbs} />
-      <Hero title={project.NAME} img={project.DETAIL_PICTURE} />
+      {project.DETAIL_PICTURE ? (
+        <Hero title={project.NAME} img={project.DETAIL_PICTURE} />
+      ) : null}
+
       <TaskSection
         task={project.CONTENT.Задача.TEXT}
         decision={project.CONTENT.Решение.TEXT}
       />
-      <ResultSection
-        author={project.CONTENT.Фотограф}
-        results={project.CONTENT["Результат"]}
-      />
-      <VideoSection video={project.CONTENT["Видео"]} />
+      {project.CONTENT["Результат"] ? (
+        <ResultSection
+          author={project.CONTENT.Фотограф}
+          results={project.CONTENT["Результат"]}
+        />
+      ) : null}
+      {project.CONTENT["Видео"] ? (
+        <VideoSection video={project.CONTENT["Видео"]} />
+      ) : null}
+
       <Equipments />
-      <AnotherProjects projects={project.CONTENT["Другие проекты"]} />
+      {project.CONTENT["Другие проекты"] ? (
+        <AnotherProjects projects={project.CONTENT["Другие проекты"]} />
+      ) : null}
     </div>
   );
 };

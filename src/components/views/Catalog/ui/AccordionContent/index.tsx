@@ -11,18 +11,16 @@ import { Skeleton } from "@/components/ui/Skeleton";
 const AccordionContent: FC<any> = ({ accordion }) => {
   return (
     <div className={s.accordionContent}>
-      <div className={s.imageWrapper}>
-        {accordion.PICTURE ? (
+      {accordion.PICTURE ? (
+        <div className={s.imageWrapper}>
           <Image
             src={`https://dev9.paradigma-digital.ru/${accordion.PICTURE}`}
             fill
             alt="accordion"
             loading="lazy"
           />
-        ) : (
-          <Skeleton className={s.imageSkeleton} />
-        )}
-      </div>
+        </div>
+      ) : null}
 
       <div className={s.equipments}>
         {Object.values(accordion.ITM).map((equipment) => (

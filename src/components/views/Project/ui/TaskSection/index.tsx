@@ -5,32 +5,31 @@ import { PinIcon } from "@/components/ui/PinIcon";
 import { FC } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
 import Markdown from "react-markdown";
+import he from "he";
 interface ITaskSectionProps {
   task: string;
   decision: string;
 }
-
+const test = "&lt;br/&gt;";
 const TaskSection: FC<ITaskSectionProps> = ({ task, decision }) => {
   return (
     <div className={s.section}>
       <div className={s.task}>
         <SectionTitle label="Задача" />
+
         {task ? (
-          <Markdown>{task}</Markdown>
-        ) : (
-          <Skeleton className={s.taskSkeleton} />
-        )}
+          <div dangerouslySetInnerHTML={{ __html: he.decode(task) }}></div>
+        ) : null}
       </div>
       <br />
       <div className={s.decision}>
         <SectionTitle label="Решение" />
         <div className={s.content}>
           {decision ? (
-            <Markdown>{decision}</Markdown>
-          ) : (
-            // <div dangerouslySetInnerHTML={{ __html: decision }}></div>
-            <Skeleton className={s.decisionSkeleton} />
-          )}
+            <div
+              dangerouslySetInnerHTML={{ __html: he.decode(decision) }}
+            ></div>
+          ) : null}
         </div>
       </div>
       <div className={s.info}>
