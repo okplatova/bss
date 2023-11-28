@@ -46,6 +46,8 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
     isGrid ? s.grid : s.list
   }`;
 
+  const totalCount = allProjects?.length - visibleProjects?.length;
+
   return (
     <div className={s.content}>
       {!projects ? (
@@ -54,7 +56,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
         </div>
       ) : (
         <div className={projectListClass} ref={ref}>
-          {visibleProjects.map((project: any, index: number) => {
+          {visibleProjects?.map((project: any, index: number) => {
             let delay;
             if (isView) {
               delay = (index + 1) * 150;
@@ -91,7 +93,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
               onClick={showMore}
               size="medium"
               className={s.loadMore}
-              count={projects.length}
+              count={totalCount}
               ariaLabel="show"
             >
               Показать еще

@@ -23,8 +23,6 @@ const Project: FC<any> = ({ project }) => {
       label: project.NAME,
     },
   ];
-  console.log("project", project);
-
   return (
     <div className={s.project}>
       <Breadcrumbs items={breadcrumbs} />

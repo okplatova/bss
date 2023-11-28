@@ -26,7 +26,7 @@ const AnotherProjects: FC<IAnotherProjectsProps> = ({ projects }) => {
           </>
         ) : (
           <>
-            {projects?.map((project: any) => (
+            {Object.values(projects)?.map((project: any) => (
               <SwiperSlide key={project.ID}>
                 <ProjectItem
                   title={project.NAME}
