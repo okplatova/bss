@@ -54,7 +54,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
         </div>
       ) : (
         <div className={projectListClass} ref={ref}>
-          {projects.map((project: any, index: number) => {
+          {visibleProjects.map((project: any, index: number) => {
             let delay;
             if (isView) {
               delay = (index + 1) * 150;
