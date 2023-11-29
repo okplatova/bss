@@ -40,9 +40,14 @@ const Product: FC<any> = ({ product }) => {
         <div className={s.swiperWrapper}>
           <ProductSwiper images={product.CONTENT["Картинки"]} />
         </div>
-        <Specifications specifications={product.CONTENT["Характеристики"]} />
+        {product.CONTENT["Характеристики"] ? (
+          <Specifications specifications={product.CONTENT["Характеристики"]} />
+        ) : null}
+
         <Interactive />
-        <Certificates сertificates={product.CONTENT["Сертификаты"]} />
+        {product.CONTENT["Сертификаты"] ? (
+          <Certificates сertificates={product.CONTENT["Сертификаты"]} />
+        ) : null}
       </div>
       {product.CONTENT["Проекты"] ? (
         <Projects projects={product.CONTENT["Проекты"]} />
