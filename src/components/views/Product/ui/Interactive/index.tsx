@@ -3,18 +3,28 @@ import Image from "next/image";
 import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { FC } from "react";
 
-const Interactive = () => {
+const Interactive: FC<any> = ({ image, text }) => {
   return (
     <div className={s.interactive}>
       <SectionTitle label="интерактивный эффект" />
-      <p>
-        Отсутсвие задержки интерактивного эффекта обеспечивает сильное
-        воздействие, удивительные и незабываемые впечатления зрителей
-      </p>
-      <div className={s.imageWrapper}>
-        <Image src="/interactive.jpg" fill alt="interactive" loading="lazy" />
-      </div>
+      {text ? (
+        <p>
+          Отсутсвие задержки интерактивного эффекта обеспечивает сильное
+          воздействие, удивительные и незабываемые впечатления зрителей
+        </p>
+      ) : null}
+      {image ? (
+        <div className={s.imageWrapper}>
+          <Image
+            src={`https://dev9.paradigma-digital.ru/${image}`}
+            fill
+            alt="interactive"
+            loading="lazy"
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

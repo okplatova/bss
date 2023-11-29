@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import he from "he";
 import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
@@ -17,7 +17,7 @@ const Hero: FC<IHeroProps> = ({ title, img }) => {
       <div className={`${s.top} container`}>
         {title ? (
           <Title variant="h2" className={s.title}>
-            {title}
+            {he.decode(title)}
           </Title>
         ) : (
           <Skeleton className={s.titleSkeleton} />

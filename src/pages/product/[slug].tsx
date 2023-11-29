@@ -84,6 +84,8 @@ import {
 export const getServerSideProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
   const data = await res.json();
+  console.log("data", data);
+
   const product = Object.values(data).map((product: any) => {
     //@ts-ignore
     let item = [];
