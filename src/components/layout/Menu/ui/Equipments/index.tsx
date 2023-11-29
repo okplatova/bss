@@ -121,21 +121,26 @@ const Equipments = () => {
         </div>
         <div className={equipmentClass}>
           <div className={s.scrollContent}>
-            <div className={s.imageWrapper}>
-              {
-                //@ts-ignore
-                equipments?.PICTURE ? (
-                  <Image
-                    //@ts-ignore
-                    src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
-                    fill
-                    alt="equipment"
-                  />
-                ) : (
-                  <Skeleton className={s.imageSkeleton} />
-                )
-              }
-            </div>
+            {
+          //@ts-ignore
+            equipments?.PICTURE ? (
+              <div className={s.imageWrapper}>
+                {
+                  //@ts-ignore
+                  equipments?.PICTURE ? (
+                    <Image
+                      //@ts-ignore
+                      src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
+                      fill
+                      alt="equipment"
+                    />
+                  ) : (
+                    <Skeleton className={s.imageSkeleton} />
+                  )
+                }
+              </div>
+            ) : null}
+
             <div className={s.equipmentsItems}>
               {equipments &&
                 //@ts-ignore

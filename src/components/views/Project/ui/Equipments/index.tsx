@@ -4,19 +4,22 @@ import s from "./styles.module.sass";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { EquipmentItem } from "@/components/common/EquipmentItem";
+import { FC } from "react";
 
-const Equipments = () => {
+const Equipments: FC<any> = ({ equipmentsList }) => {
+  console.log("equipment", equipmentsList);
+
   return (
     <div className={s.equipments}>
       <SectionTitle label="Оборудование" />
       <div className={s.equipmentsList}>
-        {equipmentsList.map((equipment) => (
+        {equipmentsList.map((equipment: any) => (
           //@ts-ignore
           <EquipmentItem
             key={equipment.id}
-            title={equipment.title}
-            type={equipment.type}
-            options={equipment.options}
+            title={equipment.NAME}
+            type={equipment.TITLE}
+            // options={equipment.options}
           />
         ))}
       </div>

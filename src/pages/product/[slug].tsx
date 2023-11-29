@@ -13,13 +13,15 @@ import {
 //   const product = Object.values(data).map((product: any) => {
 //     //@ts-ignore
 //     let item = [];
-//     const filteredProduct = Object.values(product.CHILD).map((child) => {
-//       //@ts-ignore
-//       return Object.values(child.ITM);
-//     });
+//     const filteredProduct =
+//       product.CHILD &&
+//       Object.values(product.CHILD).map((child) => {
+//         //@ts-ignore
+//         return Object.values(child.ITM);
+//       });
 
-//     filteredProduct.forEach((obj) => {
-//       const filter = obj.filter((obj2) => {
+//     filteredProduct?.forEach((obj: any) => {
+//       const filter = obj.filter((obj2: any) => {
 //         return (
 //           //@ts-ignore
 //           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase()
@@ -38,7 +40,7 @@ import {
 //   }));
 //   return {
 //     paths: paths,
-//     fallback: false,
+//     fallback: true,
 //   };
 // }) satisfies GetStaticPaths;
 
@@ -85,12 +87,14 @@ export const getServerSideProps = (async (context) => {
   const product = Object.values(data).map((product: any) => {
     //@ts-ignore
     let item = [];
-    const filteredProduct = Object.values(product.CHILD).map((child) => {
-      //@ts-ignore
-      return Object.values(child.ITM);
-    });
-    filteredProduct.forEach((obj) => {
-      const filter = obj.filter((obj2) => {
+    const filteredProduct =
+      product.CHILD &&
+      Object.values(product.CHILD).map((child) => {
+        //@ts-ignore
+        return Object.values(child.ITM);
+      });
+    filteredProduct?.forEach((obj: any) => {
+      const filter = obj.filter((obj2: any) => {
         return (
           //@ts-ignore
           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase() ===

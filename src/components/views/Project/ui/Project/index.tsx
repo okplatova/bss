@@ -43,8 +43,10 @@ const Project: FC<any> = ({ project }) => {
       {project.CONTENT["Видео"] ? (
         <VideoSection video={project.CONTENT["Видео"]} />
       ) : null}
+      {project.CONTENT["Оборудование"] ? (
+        <Equipments equipmentsList={project.CONTENT["Оборудование"]} />
+      ) : null}
 
-      <Equipments />
       {project.CONTENT["Другие проекты"] ? (
         <AnotherProjects projects={project.CONTENT["Другие проекты"]} />
       ) : null}

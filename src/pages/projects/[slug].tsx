@@ -39,7 +39,7 @@ export const getStaticProps = (async (context) => {
     );
   });
 
-  return { props: { project } };
+  return { props: { project, revalidate: 60 } };
 }) satisfies GetStaticProps<{
   project: any;
 }>;
