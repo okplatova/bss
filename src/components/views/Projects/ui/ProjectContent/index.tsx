@@ -63,6 +63,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
             }
             return (
               <ProjectItem
+                link={project.DETAIL_PAGE_URL}
                 title={project.NAME}
                 year={project.CONTENT.Год}
                 img={project.PREVIEW_PICTURE}

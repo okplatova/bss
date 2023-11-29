@@ -7,6 +7,8 @@ import s from "./styles.module.sass";
 
 import { PlusIcon } from "@/components/ui/PlusIcon";
 import { Button } from "@/components/ui/Button";
+import { useStores } from "@/shared/context";
+import { useRouter } from "next/router";
 
 const EquipmentItem: FC<IEquipmentItemProps> = ({
   title,
@@ -14,9 +16,20 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
   className,
   customStyles,
 }) => {
+  const { catalog } = useStores();
+
+  const { push } = useRouter();
+  const handlePush = () => {
+    catalog.setCatalogItem({
+      id: 0,
+      title: title,
+      count: 0,
+    });
+    push("/catalog");
+  };
   return (
-    <Link
-      href={"/product/product-item"}
+    <div
+      onClick={handlePush}
       style={{ ...customStyles }}
       className={`${s.equipmentItem} ${className}`}
     >
@@ -34,7 +47,7 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
           <PlusIcon />
         </Button>
       </div>
-    </Link>
+    </div>
   );
 };
 

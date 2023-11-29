@@ -6,4 +6,5 @@ export interface IProjectItemProps {
   img: string;
   isGrid?: boolean;
   customStyles?: CSSProperties;
+  link: string;
 }

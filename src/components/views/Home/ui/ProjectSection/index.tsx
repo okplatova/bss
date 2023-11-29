@@ -37,6 +37,7 @@ const ProjectSection = () => {
               {projects?.map((project: any) => (
                 <SwiperSlide key={project.ID}>
                   <ProjectItem
+                    link={project.DETAIL_PAGE_URL}
                     title={project.NAME}
                     year={project.CONTENT.Год}
                     img={project.PREVIEW_PICTURE}

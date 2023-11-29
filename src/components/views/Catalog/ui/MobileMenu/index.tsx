@@ -19,9 +19,11 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
     catalog.handleOpenMenu();
   };
   const handleSelectItem = (item: any, index: number) => {
+    console.log("string", item);
+
     catalog.setCatalogItem(item);
     catalog.handleOpenMenu();
-    toggleCatalog(index);
+    toggleCatalog(item.title);
   };
 
   useEffect(() => {
@@ -43,19 +45,22 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
         {
           //@ts-ignore
           product?.map((catalogItem, index) => {
-            const children = Object.values(catalogItem.CHILD);
+            const children =
+              catalogItem.CHILD && Object.values(catalogItem.CHILD);
             const currentCatalogItem = {
               id: catalogItem.ID,
               title: catalogItem.NAME,
-              count: children.length,
+              count: children ? children.length : 0,
             };
             const btnClass = `${s.btn} ${
-              catalogItem.id === catalog.currentCatalogItem.id ? s.active : ""
+              catalogItem.title === catalog.currentCatalogItem.title
+                ? s.active
+                : ""
             }`;
             return (
               <Button
                 key={catalogItem.id}
-                count={children.length}
+                count={children ? children.length : 0}
                 size="medium"
                 variable="clear"
                 className={btnClass}

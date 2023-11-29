@@ -29,6 +29,7 @@ const AnotherProjects: FC<IAnotherProjectsProps> = ({ projects }) => {
             {Object.values(projects)?.map((project: any) => (
               <SwiperSlide key={project.ID}>
                 <ProjectItem
+                  link={project.DETAIL_PAGE_URL}
                   title={project.NAME}
                   year={project.YEAR}
                   img={project.PREVIEW_PICTURE}

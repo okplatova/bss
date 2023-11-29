@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    largePageDataBytes: 180 * 1000,
+  },
 };
 
 module.exports = nextConfig;

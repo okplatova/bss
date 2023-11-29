@@ -94,6 +94,7 @@ const Equipments = () => {
         </div>
         <div className={equipmentListClass}>
           {filteredProduct?.length > 0 &&
+            filteredProduct[0].CHILD &&
             Object.values(filteredProduct[0].CHILD).map((item, index) => {
               const btnClass = `${
                 equipmentMenu.equipmentListId &&

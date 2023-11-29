@@ -7,18 +7,27 @@ import {
   InferGetStaticPropsType,
 } from "next";
 
-export const getServerSideProps = (async (context) => {
+export const getStaticProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
   const projects = await res.json();
 
-  return { props: { projects } };
-}) satisfies GetServerSideProps<{
+  return { props: { projects }, revalidate: 60 };
+}) satisfies GetStaticProps<{
   projects: any;
 }>;
 
+// export const getServerSideProps = (async (context) => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
+//   const projects = await res.json();
+
+//   return { props: { projects } };
+// }) satisfies GetServerSideProps<{
+//   projects: any;
+// }>;
+
 const ProjectsPage = ({
   projects,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>

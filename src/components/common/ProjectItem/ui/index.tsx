@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,21 +10,21 @@ import { PlusIcon } from "@/components/ui/PlusIcon";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import he from "he";
-
+import translate from "translate";
+import { handleTranslate } from "@/shared/helpers/translate";
+import { useTranslate } from "@/shared/hooks";
 const ProjectItem: FC<IProjectItemProps> = ({
   title,
   year,
   img,
   isGrid = true,
   customStyles,
+  link,
 }) => {
   const projectClass = `${s.projectItem} ${!isGrid ? s.list : ""}`;
+
   return (
-    <Link
-      href={`/projects/${title.split(" ").join("-").toLowerCase()}`}
-      className={projectClass}
-      style={{ ...customStyles }}
-    >
+    <Link href={link} className={projectClass} style={{ ...customStyles }}>
       <div className={s.imageWrapper}>
         <Button
           size="large"

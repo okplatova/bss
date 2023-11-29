@@ -26,19 +26,22 @@ const breadcrumbs = [
 ];
 
 const Catalog = () => {
-  const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
-  const [selectedCatalog, setSelectedCatalog] = useState<number>(0);
-
   const { catalog } = useStores();
 
+  const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
+  const [selectedCatalog, setSelectedCatalog] = useState<string>(
+    catalog.currentCatalogItem.title
+  );
+
   const { product, isLoading } = useGetProduct();
+  console.log("catalog", catalog.currentCatalogItem.title);
 
   const toggleAccordion = (index: number) => {
     setSelectedAccordion(index);
   };
 
-  const toggleCatalog = (index: number) => {
-    setSelectedCatalog(index);
+  const toggleCatalog = (title: string) => {
+    setSelectedCatalog(title);
   };
 
   useEffect(() => {
@@ -48,6 +51,12 @@ const Catalog = () => {
   const handleOpenMenu = () => {
     catalog.handleOpenMenu();
   };
+  const filteredProduct =
+    product &&
+    //@ts-ignore
+    product.filter((item) => {
+      return item.NAME === selectedCatalog;
+    });
 
   return (
     <div className={s.catalog}>
@@ -75,17 +84,18 @@ const Catalog = () => {
             //@ts-ignore
             product?.map((catalogItem, index) => {
               const buttonClass = `${s.catalogBtn} ${
-                selectedCatalog === index ? s.active : ""
+                selectedCatalog === catalogItem.NAME ? s.active : ""
               }`;
-              const children = Object.values(catalogItem.CHILD);
+              const children =
+                catalogItem.CHILD && Object.values(catalogItem.CHILD);
               return (
                 <Button
                   key={catalogItem.ID}
-                  count={children.length}
+                  count={children ? children.length : 0}
                   size="medium"
                   variable="clear"
                   className={buttonClass}
-                  onClick={() => toggleCatalog(index)}
+                  onClick={() => toggleCatalog(catalogItem.NAME)}
                   ariaLabel="product"
                 >
                   {catalogItem.NAME}
@@ -97,22 +107,22 @@ const Catalog = () => {
         <div className={s.info}>
           {!isLoading &&
             //@ts-ignore
-            Object.values(product[selectedCatalog]?.CHILD).map(
-              (accordion, index) => (
-                <Accordion
-                  //@ts-ignore
-                  key={accordion.ID}
-                  isShow={selectedAccordion === index}
-                  //@ts-ignore
-                  title={accordion.NAME}
-                  onClick={() => toggleAccordion(index)}
-                  //@ts-ignore
-                  count={Object.values(accordion.ITM).length}
-                >
-                  <AccordionContent accordion={accordion} />
-                </Accordion>
-              )
-            )}
+            filteredProduct[0].CHILD &&
+            //@ts-ignore
+            Object.values(filteredProduct[0].CHILD).map((accordion, index) => (
+              <Accordion
+                //@ts-ignore
+                key={accordion.ID}
+                isShow={selectedAccordion === index}
+                //@ts-ignore
+                title={accordion.NAME}
+                onClick={() => toggleAccordion(index)}
+                //@ts-ignore
+                count={Object.values(accordion.ITM).length}
+              >
+                <AccordionContent accordion={accordion} />
+              </Accordion>
+            ))}
         </div>
       </div>
     </div>

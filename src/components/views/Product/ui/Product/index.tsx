@@ -44,7 +44,9 @@ const Product: FC<any> = ({ product }) => {
         <Interactive />
         <Certificates сertificates={product.CONTENT["Сертификаты"]} />
       </div>
-      <Projects projects={product.CONTENT["Проекты"]} />
+      {product.CONTENT["Проекты"] ? (
+        <Projects projects={product.CONTENT["Проекты"]} />
+      ) : null}
     </div>
   );
 };
