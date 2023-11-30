@@ -1,7 +1,17 @@
 import Head from "next/head";
 import { VideoProjection } from "@/components/views/VideoProjection";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-const VideoStudioPage = () => {
+export const getStaticProps = (async (context) => {
+  const res = await fetch("https://dev9.paradigma-digital.ru/complex/");
+  const complexes = await res.json();
+
+  return { props: { complexes }, revalidate: 60 };
+}) satisfies GetStaticProps<{
+  complexes: any;
+}>;
+
+const VideoProjectionPage = ({complexes}: InferGetStaticPropsType<typeof getStaticProps>)  => {
   return (
     <>
       <Head>
@@ -10,9 +20,9 @@ const VideoStudioPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <VideoProjection />
+      <VideoProjection complexes={complexes}/>
     </>
   );
 };
 
-export default VideoStudioPage;
+export default VideoProjectionPage;

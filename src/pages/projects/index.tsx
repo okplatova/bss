@@ -16,14 +16,6 @@ export const getStaticProps = (async (context) => {
   projects: any;
 }>;
 
-// export const getServerSideProps = (async (context) => {
-//   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
-//   const projects = await res.json();
-
-//   return { props: { projects } };
-// }) satisfies GetServerSideProps<{
-//   projects: any;
-// }>;
 
 const ProjectsPage = ({
   projects,

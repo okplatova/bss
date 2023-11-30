@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { catalogList } from "../../data/catalogList";
 
@@ -25,7 +25,7 @@ const breadcrumbs = [
   },
 ];
 
-const Catalog = () => {
+const Catalog: FC<any> = ({ products }) => {
   const { catalog } = useStores();
 
   const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
@@ -34,7 +34,6 @@ const Catalog = () => {
   );
 
   const { product, isLoading } = useGetProduct();
-  console.log("catalog", catalog.currentCatalogItem.title);
 
   const toggleAccordion = (index: number) => {
     setSelectedAccordion(index);
@@ -47,14 +46,15 @@ const Catalog = () => {
   useEffect(() => {
     toggleAccordion(0);
   }, [selectedCatalog]);
+  useEffect(() => {}, []);
 
   const handleOpenMenu = () => {
     catalog.handleOpenMenu();
   };
   const filteredProduct =
-    product &&
+    products &&
     //@ts-ignore
-    product.filter((item) => {
+    products.filter((item) => {
       return item.NAME === selectedCatalog;
     });
 
@@ -82,7 +82,7 @@ const Catalog = () => {
         <div className={s.catalogList}>
           {
             //@ts-ignore
-            product?.map((catalogItem, index) => {
+            products?.map((catalogItem, index) => {
               const buttonClass = `${s.catalogBtn} ${
                 selectedCatalog === catalogItem.NAME ? s.active : ""
               }`;
@@ -118,7 +118,7 @@ const Catalog = () => {
                 title={accordion.NAME}
                 onClick={() => toggleAccordion(index)}
                 //@ts-ignore
-                count={Object.values(accordion.ITM).length}
+                count={accordion.ITM ? Object.values(accordion.ITM).length : 0}
               >
                 <AccordionContent accordion={accordion} />
               </Accordion>

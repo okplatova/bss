@@ -19,8 +19,6 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
     catalog.handleOpenMenu();
   };
   const handleSelectItem = (item: any, index: number) => {
-    console.log("string", item);
-
     catalog.setCatalogItem(item);
     catalog.handleOpenMenu();
     toggleCatalog(item.title);

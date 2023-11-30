@@ -22,7 +22,7 @@ const Product: FC<any> = ({ product }) => {
       link: "/catalog",
     },
     {
-      label: product.CONTENT["Заголовок"],
+      label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
 
@@ -32,13 +32,15 @@ const Product: FC<any> = ({ product }) => {
       <Breadcrumbs items={breadcrumbs} />
       <div className={s.top}>
         <Title variant="h2" className="container">
-          {product.CONTENT["Заголовок"]}
+          {product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null}
         </Title>
         <span className={s.type}>{product.NAME}</span>
       </div>
       <div className={s.content}>
         <div className={s.swiperWrapper}>
-          <ProductSwiper images={product.CONTENT["Картинки"]} />
+          {product.CONTENT["Картинки"] ? (
+            <ProductSwiper images={product.CONTENT["Картинки"]} />
+          ) : null}
         </div>
         {product.CONTENT["Характеристики"] ? (
           <Specifications specifications={product.CONTENT["Характеристики"]} />

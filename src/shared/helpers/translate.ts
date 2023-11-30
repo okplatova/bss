@@ -6,7 +6,6 @@ export const handleTranslate = async (text: string) => {
     from: "ru",
     to: "en",
   });
-  console.log("resultText", resultText);
   const a = resultText + "hello";
   return "yes";
 };

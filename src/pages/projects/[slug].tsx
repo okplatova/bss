@@ -8,10 +8,6 @@ import {
   InferGetStaticPropsType,
 } from "next";
 import he from "he";
-import translate from "translate";
-import { useState } from "react";
-import { useTranslate } from "@/shared/hooks";
-import { handleTranslate } from "@/shared/helpers/translate";
 
 export const getStaticPaths = (async () => {
   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
@@ -59,7 +55,6 @@ export const getStaticProps = (async (context) => {
 const ProjectPage = ({
   project,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log("project", project);
   return (
     <>
       <Head>

@@ -10,7 +10,7 @@ class ProjectionStore {
   menuIsOpen = false;
   currentCatalogItem: CatalogItem = {
     id: 0,
-    title: "Выберите картегорию",
+    title: "",
     count: 0,
   };
 

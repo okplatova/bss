@@ -10,7 +10,7 @@ import s from "./styles.module.sass";
 
 import { Button } from "@/components/ui/Button";
 
-const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
+const MobileMenu: FC<any> = ({ complexes, toggleComplex }) => {
   const { projection } = useStores();
 
   const handleOpenMenu = () => {
@@ -19,7 +19,7 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
   const handleSelectItem = (item: any, index: number) => {
     projection.setCatalogItem(item);
     projection.handleOpenMenu();
-    // toggleCatalog(index);
+    toggleComplex(item.title);
   };
 
   useEffect(() => {
@@ -38,26 +38,25 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
         <div className={s.separatorWrapper}>
           <div className={s.separator} />
         </div>
-        {catalogList.map((catalogItem, index) => {
+        {complexes.map((item: any, index: number) => {
           const currentCatalogItem = {
-            id: catalogItem.id,
-            title: catalogItem.title,
-            count: catalogItem.count,
+            id: item.id,
+            title: item.NAME,
+            count: 0,
           };
           const btnClass = `${s.btn} ${
-            catalogItem.id === projection.currentCatalogItem.id ? s.active : ""
+            item.NAME === projection.currentCatalogItem.title ? s.active : ""
           }`;
           return (
             <Button
-              key={catalogItem.id}
-              count={catalogItem.content.length}
+              key={item.NAME}
               size="medium"
               variable="clear"
               className={btnClass}
               onClick={() => handleSelectItem(currentCatalogItem, index)}
               ariaLabel="product"
             >
-              {catalogItem.title}
+              {item.NAME}
             </Button>
           );
         })}

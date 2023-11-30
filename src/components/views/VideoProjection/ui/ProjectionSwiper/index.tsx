@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -26,7 +26,7 @@ const breakpoints = {
   },
 };
 
-const ProjectionSwiper = () => {
+const ProjectionSwiper: FC<any> = ({ images }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
   const sliderRef = useRef(null);
@@ -70,12 +70,12 @@ const ProjectionSwiper = () => {
           centeredSlides={false}
           breakpoints={breakpoints}
         >
-          {projectionSwiper.map((projection) => (
-            <SwiperSlide data-caption={projection.img} key={projection.id}>
+          {images.map((image: string) => (
+            <SwiperSlide data-caption={image} key={image}>
               <div className={s.imageWrapper}>
                 <Image
                   data-fancybox="gallery"
-                  src={projection.img}
+                  src={`https://dev9.paradigma-digital.ru/${image}`}
                   fill
                   alt="projection"
                   loading="lazy"

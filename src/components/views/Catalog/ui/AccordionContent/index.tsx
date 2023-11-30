@@ -23,7 +23,7 @@ const AccordionContent: FC<any> = ({ accordion }) => {
       ) : null}
 
       <div className={s.equipments}>
-        {Object.values(accordion.ITM).map((equipment) => (
+        {accordion.ITM ? Object.values(accordion.ITM).map((equipment) => (
           <EquipmentItem
             //@ts-ignore
             key={equipment.ID}
@@ -37,7 +37,7 @@ const AccordionContent: FC<any> = ({ accordion }) => {
             //@ts-ignore
             option3={equipment.CONTENT["Свойства для Анонса 3"]}
           />
-        ))}
+        )) : null}
       </div>
     </div>
   );

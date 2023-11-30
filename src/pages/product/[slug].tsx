@@ -6,7 +6,7 @@ import {
   InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from "next";
-
+import he from "he";
 // export const getStaticPaths = (async () => {
 //   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
 //   const data = await res.json();
@@ -84,7 +84,6 @@ import {
 export const getServerSideProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
   const data = await res.json();
-  console.log("data", data);
 
   const product = Object.values(data).map((product: any) => {
     //@ts-ignore
@@ -93,7 +92,18 @@ export const getServerSideProps = (async (context) => {
       product.CHILD &&
       Object.values(product.CHILD).map((child) => {
         //@ts-ignore
-        return Object.values(child.ITM);
+        if (!child.ITM) {
+          return [];
+        }
+        //@ts-ignore
+        if (child.ITM === Array) {
+          //@ts-ignore
+          return child.ITM;
+          //@ts-ignore
+        } else {
+          //@ts-ignore
+          return Object.values(child.ITM);
+        }
       });
 
     filteredProduct?.forEach((obj: any) => {
@@ -116,7 +126,7 @@ export const getServerSideProps = (async (context) => {
   });
   console.log("result", result);
 
-  if (!result) {
+  if (!result || result.length === 0) {
     return {
       notFound: true,
     };

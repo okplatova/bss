@@ -2,6 +2,9 @@
     
 .catalog
     flex: 1
+    display: flex
+    flex-direction: column
+    height: 100%
     .top
         padding: 24px 0
         border-bottom: 1px solid var(--gray-color)
@@ -41,16 +44,20 @@
                 display: flex
                 justify-content: space-between
     .catalogContent
-        display: grid
-        grid-template-columns: 30% 70%
+        display: flex
+        flex: 1
+        // grid-template-columns: 30% 70%
         @media(max-width: $desktop-sm)
             grid-template-columns: 40% 60%
         @media(max-width: $tab)
+            display: grid
             grid-template-columns: 100%
         .catalogList
-            width: 100%
+            width: 30%
             border-right: 1px solid var(--gray-color)
-            height: 100%
+            // height: 100%
+            @media(max-width: $desktop-sm)
+                width: 40%
             @media(max-width: $tab)
                 display: none
             .catalogBtn.active
@@ -82,7 +89,11 @@
                         line-height: 100%
                         letter-spacing: -0.2px
         .info
+            width: 70%
             display: flex
             flex-direction: column
-             
+            @media(max-width: $desktop-sm)
+                width: 60%
+            @media(max-width: $tab)
+                width: 100%
 

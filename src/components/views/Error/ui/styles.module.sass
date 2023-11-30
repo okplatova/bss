@@ -1,9 +1,17 @@
+@import '@/shared/styles/variables'
+    
 .error
     display: flex
     flex-direction: column
     align-items: center
     gap: 30px
+    @media(max-width: $tab)
+        gap: 5px
     h1
         font-size: 90px
+        @media(max-width: $tab)
+            font-size: 45px
     span
         font-size: 52px
+        @media(max-width: $tab)
+            font-size: 30px

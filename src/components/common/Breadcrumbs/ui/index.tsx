@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { IBreadcrumbsProps } from "../types/breadcrumbs.interface";
 
 import s from "./styles.module.sass";
+import he from "he";
 
 const Breadcrumbs: FC<IBreadcrumbsProps> = ({ items, className }) => {
   const { push } = useRouter();
@@ -27,7 +28,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = ({ items, className }) => {
             key={item.label}
             className={`${s.link} ${isLast ? s.last : ""}`}
           >
-            {item.label}
+            {he.decode(item.label)}
           </div>
         );
       })}

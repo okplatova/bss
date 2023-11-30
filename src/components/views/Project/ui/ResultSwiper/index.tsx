@@ -104,12 +104,13 @@ const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
       </Fancybox>
 
       <div className={s.swiperBottom}>
-        <div className={s.author}>
-          <span className={s.type}>Фотограф: </span>
-          <span className={s.name}>
-            {author ? author : <Skeleton className={s.authorSkeleton} />}
-          </span>
-        </div>
+        {author ? (
+          <div className={s.author}>
+            <span className={s.type}>Фотограф: </span>
+            <span className={s.name}>{author}</span>
+          </div>
+        ) : null}
+
         <button onClick={handlePrevSlide} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
