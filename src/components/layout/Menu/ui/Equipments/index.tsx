@@ -14,6 +14,7 @@ import { equipmentsMenuList } from "../../data/equipmentsMenuList";
 import { useGetProduct } from "@/shared/hooks";
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Title } from "@/components/ui/Title";
 
 const Equipments = () => {
   const [equipments, setEquipments] = useState(null);
@@ -171,6 +172,35 @@ const Equipments = () => {
                     ))
                   : null
               }
+            </div>
+            <div className={s.additionalEquipments}>
+              <div className={s.additionalItem}>
+                <Title variant="h4">Варианты подвеса экранов</Title>
+                <div className={s.additionalEquipmentsList}>
+                  {
+                    //@ts-ignore
+                    equipments && equipments.ITM
+                      ? //@ts-ignore
+                        Object.values(equipments.ITM).map((equipment) => (
+                          <EquipmentItem
+                            //@ts-ignore
+                            key={equipment.ID}
+                            // title={equipment.CONTENT["Заголовок"]}
+                            //@ts-ignore
+                            type={equipment.CONTENT["Заголовок"]}
+                            //@ts-ignore
+                            option1={equipment.CONTENT["Свойства для Анонса 1"]}
+                            //@ts-ignore
+                            option2={equipment.CONTENT["Свойства для Анонса 2"]}
+                            //@ts-ignore
+                            option3={equipment.CONTENT["Свойства для Анонса 3"]}
+                            variant="light"
+                          />
+                        ))
+                      : null
+                  }
+                </div>
+              </div>
             </div>
           </div>
 

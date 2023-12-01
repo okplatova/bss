@@ -149,7 +149,31 @@
                     display: flex
                     flex-direction: column
                     gap: .5rem
-                    padding-bottom: 12rem
+                .additionalEquipments
+                    display: flex
+                    flex-direction: column
+                    gap: .5rem
+                    margin-top: 1rem
+                    .additionalItem
+                        &:last-child
+                            padding-bottom: 12rem
+                        h4 
+                            color: var(--gray-color)
+                            font-family: Onest, sans-serif
+                            font-size: 16px
+                            font-style: normal
+                            font-weight: 400
+                            line-height: 100%
+                            letter-spacing: -0.64px
+                            text-transform: uppercase 
+                            @media(max-width: $tab)
+                                font-size: 14px
+                    .additionalEquipmentsList
+                        margin-top: 1rem
+                        display: flex
+                        flex-direction: column
+                        gap: .5rem
+                        
             .linkBtn
                 position: fixed
                 bottom: 0

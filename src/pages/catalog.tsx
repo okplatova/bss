@@ -7,12 +7,14 @@ export const getStaticProps = (async (context) => {
   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
   const products = await res.json();
 
-  return { props: { products }, revalidate: 60 };
+  return { props: { products } };
 }) satisfies GetStaticProps<{
   products: any;
 }>;
 
-const CatalogPage = ({products}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const CatalogPage = ({
+  products,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -21,7 +23,7 @@ const CatalogPage = ({products}: InferGetStaticPropsType<typeof getStaticProps>)
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Catalog products={Object.values(products)}/>
+      <Catalog products={Object.values(products)} />
     </>
   );
 };
