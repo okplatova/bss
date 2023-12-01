@@ -56,17 +56,21 @@ const MobileMenu: FC<IModalMenuProps> = ({ toggleCatalog }) => {
                 : ""
             }`;
             return (
-              <Button
-                key={catalogItem.id}
-                count={children ? children.length : 0}
-                size="medium"
-                variable="clear"
-                className={btnClass}
-                onClick={() => handleSelectItem(currentCatalogItem, index)}
-                ariaLabel="product"
-              >
-                {catalogItem.NAME}
-              </Button>
+              <>
+                {children ? (
+                  <Button
+                    key={catalogItem.id}
+                    count={children ? children.length : 0}
+                    size="medium"
+                    variable="clear"
+                    className={btnClass}
+                    onClick={() => handleSelectItem(currentCatalogItem, index)}
+                    ariaLabel="product"
+                  >
+                    {catalogItem.NAME}
+                  </Button>
+                ) : null}
+              </>
             );
           })
         }

@@ -77,17 +77,23 @@ const Equipments = () => {
                   ? s.active
                   : ""
               }`;
+              const children = type.CHILD && Object.values(type.CHILD);
+
               return (
-                <Button
-                  key={type.ID}
-                  onClick={() => handleOpenSecondMenu(type.ID)}
-                  size="medium"
-                  variable="clear"
-                  ariaLabel="equipmentType"
-                  className={btnClass}
-                >
-                  {type.NAME}
-                </Button>
+                <>
+                  {children ? (
+                    <Button
+                      key={type.ID}
+                      onClick={() => handleOpenSecondMenu(type.ID)}
+                      size="medium"
+                      variable="clear"
+                      ariaLabel="equipmentType"
+                      className={btnClass}
+                    >
+                      {type.NAME}
+                    </Button>
+                  ) : null}
+                </>
               );
             })
           }
@@ -95,7 +101,7 @@ const Equipments = () => {
         <div className={equipmentListClass}>
           {filteredProduct?.length > 0 &&
             filteredProduct[0].CHILD &&
-            Object.values(filteredProduct[0].CHILD).map((item, index) => {
+            Object.values(filteredProduct[0].CHILD).map((item: any, index) => {
               const btnClass = `${
                 equipmentMenu.equipmentListId &&
                 //@ts-ignore
@@ -114,7 +120,7 @@ const Equipments = () => {
                   ariaLabel="equipmentType"
                   className={btnClass}
                 >
-                  Экраны для улиц и помещений
+                  {item.NAME}
                 </Button>
               );
             })}
@@ -122,44 +128,49 @@ const Equipments = () => {
         <div className={equipmentClass}>
           <div className={s.scrollContent}>
             {
-          //@ts-ignore
-            equipments?.PICTURE ? (
-              <div className={s.imageWrapper}>
-                {
-                  //@ts-ignore
-                  equipments?.PICTURE ? (
-                    <Image
-                      //@ts-ignore
-                      src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
-                      fill
-                      alt="equipment"
-                    />
-                  ) : (
-                    <Skeleton className={s.imageSkeleton} />
-                  )
-                }
-              </div>
-            ) : null}
+              //@ts-ignore
+              equipments?.PICTURE ? (
+                <div className={s.imageWrapper}>
+                  {
+                    //@ts-ignore
+                    equipments?.PICTURE ? (
+                      <Image
+                        //@ts-ignore
+                        src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
+                        fill
+                        alt="equipment"
+                      />
+                    ) : (
+                      <Skeleton className={s.imageSkeleton} />
+                    )
+                  }
+                </div>
+              ) : null
+            }
 
             <div className={s.equipmentsItems}>
-              {equipments &&
+              {
                 //@ts-ignore
-                Object.values(equipments.ITM).map((equipment) => (
-                  <EquipmentItem
-                    //@ts-ignore
-                    key={equipment.ID}
-                    // title={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    type={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    option1={equipment.CONTENT["Свойства для Анонса 1"]}
-                    //@ts-ignore
-                    option2={equipment.CONTENT["Свойства для Анонса 2"]}
-                    //@ts-ignore
-                    option3={equipment.CONTENT["Свойства для Анонса 3"]}
-                    variant="light"
-                  />
-                ))}
+                equipments && equipments.ITM
+                  ? //@ts-ignore
+                    Object.values(equipments.ITM).map((equipment) => (
+                      <EquipmentItem
+                        //@ts-ignore
+                        key={equipment.ID}
+                        // title={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        type={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        option1={equipment.CONTENT["Свойства для Анонса 1"]}
+                        //@ts-ignore
+                        option2={equipment.CONTENT["Свойства для Анонса 2"]}
+                        //@ts-ignore
+                        option3={equipment.CONTENT["Свойства для Анонса 3"]}
+                        variant="light"
+                      />
+                    ))
+                  : null
+              }
             </div>
           </div>
 

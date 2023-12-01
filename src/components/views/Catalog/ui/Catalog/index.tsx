@@ -88,18 +88,23 @@ const Catalog: FC<any> = ({ products }) => {
               }`;
               const children =
                 catalogItem.CHILD && Object.values(catalogItem.CHILD);
+
               return (
-                <Button
-                  key={catalogItem.ID}
-                  count={children ? children.length : 0}
-                  size="medium"
-                  variable="clear"
-                  className={buttonClass}
-                  onClick={() => toggleCatalog(catalogItem.NAME)}
-                  ariaLabel="product"
-                >
-                  {catalogItem.NAME}
-                </Button>
+                <>
+                  {children ? (
+                    <Button
+                      key={catalogItem.ID}
+                      count={children ? children.length : 0}
+                      size="medium"
+                      variable="clear"
+                      className={buttonClass}
+                      onClick={() => toggleCatalog(catalogItem.NAME)}
+                      ariaLabel="product"
+                    >
+                      {catalogItem.NAME}
+                    </Button>
+                  ) : null}
+                </>
               );
             })
           }
