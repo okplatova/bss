@@ -105,8 +105,10 @@ export const getServerSideProps = (async (context) => {
           return Object.values(child.ITM);
         }
       });
-
+      console.log('context.params?.slug',context.params?.slug);
+      
     filteredProduct?.forEach((obj: any) => {
+      
       const filter = obj.filter((obj2: any) => {
         return (
           //@ts-ignore
@@ -114,7 +116,11 @@ export const getServerSideProps = (async (context) => {
           context.params?.slug
         );
       });
-      item.push(filter[0]);
+      console.log('filter',filter);
+      if(filter.length !== 0) {
+        item.push(filter[0]);
+
+      }
     });
     //@ts-ignore
     return item[0];

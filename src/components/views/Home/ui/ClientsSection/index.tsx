@@ -19,7 +19,13 @@ const ClientsSection = () => {
 
       <div className={s.clientsListWrapper}>
         <div className={`${s.clientsList} ${s.reverse}`}>
-          {clients &&
+        {clientsList.reverse().map((client) => (
+            <ClientItem key={client.id} img={client.img} />
+          ))}
+          {clientsList.map((client) => (
+            <ClientItem key={client.id} img={client.img} />
+          ))}
+          {/* {clients &&
             //@ts-ignore
             clients[0].LOGO.reverse().map((client) => (
               <ClientItem key={client} img={client} />
@@ -28,15 +34,15 @@ const ClientsSection = () => {
             //@ts-ignore
             clients[1].LOGO.map((client) => (
               <ClientItem key={client} img={client} />
-            ))}
+            ))} */}
         </div>
         <div className={s.clientsList}>
-          {/* {clientsList.map((client) => (
+          {clientsList.map((client) => (
             <ClientItem key={client.id} img={client.img} />
           ))}
           {clientsList.reverse().map((client) => (
             <ClientItem key={client.id} img={client.img} />
-          ))} */}
+          ))}
         </div>
       </div>
     </section>
