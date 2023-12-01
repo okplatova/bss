@@ -7,81 +7,7 @@ import {
   InferGetStaticPropsType,
 } from "next";
 import he from "he";
-// export const getStaticPaths = (async () => {
-//   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
-//   const data = await res.json();
-//   const product = Object.values(data).map((product: any) => {
-//     //@ts-ignore
-//     let item = [];
-//     const filteredProduct =
-//       product.CHILD &&
-//       Object.values(product.CHILD).map((child) => {
-//         //@ts-ignore
-//         return Object.values(child.ITM);
-//       });
-
-//     filteredProduct?.forEach((obj: any) => {
-//       const filter = obj.filter((obj2: any) => {
-//         return (
-//           //@ts-ignore
-//           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase()
-//         );
-//       });
-//       item.push(filter[0]);
-//     });
-//     //@ts-ignore
-//     return item[0];
-//   });
-
-//   const paths = product.map((project: any) => ({
-//     params: {
-//       slug: project.CONTENT["Заголовок"].split(" ").join("-").toLowerCase(),
-//     },
-//   }));
-//   return {
-//     paths: paths,
-//     fallback: true,
-//   };
-// }) satisfies GetStaticPaths;
-
-// export const getStaticProps = (async (context) => {
-//   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
-//   const data = await res.json();
-//   const product = Object.values(data).map((product: any) => {
-//     //@ts-ignore
-//     let item = [];
-//     const filteredProduct = Object.values(product.CHILD).map((child) => {
-//       //@ts-ignore
-//       return Object.values(child.ITM);
-//     });
-//     filteredProduct.forEach((obj) => {
-//       const filter = obj.filter((obj2) => {
-//         return (
-//           //@ts-ignore
-//           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase() ===
-//           context.params?.slug
-//         );
-//       });
-//       item.push(filter[0]);
-//     });
-//     //@ts-ignore
-//     return item[0];
-//   });
-
-//   const result = product[0];
-
-//   if (!result) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-//   //@ts-ignore
-//   return { props: { result } };
-// }) satisfies GetServerSideProps<{
-//   result: any;
-// }>;
-
-export const getServerSideProps = (async (context) => {
+export const getStaticPaths = (async () => {
   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
   const data = await res.json();
 
@@ -105,10 +31,64 @@ export const getServerSideProps = (async (context) => {
           return Object.values(child.ITM);
         }
       });
-      console.log('context.params?.slug',context.params?.slug);
-      
+
     filteredProduct?.forEach((obj: any) => {
-      
+      const filter = obj.filter((obj2: any) => {
+        return (
+          //@ts-ignore
+          obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase()
+        );
+      });
+
+      if (filter.length !== 0) {
+        item.push(filter[0]);
+      }
+    });
+    //@ts-ignore
+    return item[0];
+  });
+
+  const result = product.filter((item) => {
+    return item !== undefined;
+  });
+
+  const paths = product.map((item: any) => ({
+    params: {
+      slug: item.CONTENT["Заголовок"].split(" ").join("-").toLowerCase(),
+    },
+  }));
+  return {
+    paths: paths,
+    fallback: true,
+  };
+}) satisfies GetStaticPaths;
+
+export const getStaticProps = (async (context) => {
+  const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
+  const data = await res.json();
+
+  const product = Object.values(data).map((product: any) => {
+    //@ts-ignore
+    let item = [];
+    const filteredProduct =
+      product.CHILD &&
+      Object.values(product.CHILD).map((child) => {
+        //@ts-ignore
+        if (!child.ITM) {
+          return [];
+        }
+        //@ts-ignore
+        if (child.ITM === Array) {
+          //@ts-ignore
+          return child.ITM;
+          //@ts-ignore
+        } else {
+          //@ts-ignore
+          return Object.values(child.ITM);
+        }
+      });
+
+    filteredProduct?.forEach((obj: any) => {
       const filter = obj.filter((obj2: any) => {
         return (
           //@ts-ignore
@@ -116,41 +96,97 @@ export const getServerSideProps = (async (context) => {
           context.params?.slug
         );
       });
-      console.log('filter',filter);
-      if(filter.length !== 0) {
-        item.push(filter[0]);
 
+      if (filter.length !== 0) {
+        item.push(filter[0]);
       }
     });
     //@ts-ignore
     return item[0];
   });
-  console.log("product", product);
 
   const result = product.filter((item) => {
     return item !== undefined;
   });
-  console.log("result", result);
 
   if (!result || result.length === 0) {
     return {
       notFound: true,
     };
   }
+  console.log("result", result);
+
   //@ts-ignore
   return { props: { result } };
 }) satisfies GetServerSideProps<{
   result: any;
 }>;
 
+// export const getServerSideProps = (async (context) => {
+//   const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
+//   const data = await res.json();
+
+//   const product = Object.values(data).map((product: any) => {
+//     //@ts-ignore
+//     let item = [];
+//     const filteredProduct =
+//       product.CHILD &&
+//       Object.values(product.CHILD).map((child) => {
+//         //@ts-ignore
+//         if (!child.ITM) {
+//           return [];
+//         }
+//         //@ts-ignore
+//         if (child.ITM === Array) {
+//           //@ts-ignore
+//           return child.ITM;
+//           //@ts-ignore
+//         } else {
+//           //@ts-ignore
+//           return Object.values(child.ITM);
+//         }
+//       });
+
+//     filteredProduct?.forEach((obj: any) => {
+//       const filter = obj.filter((obj2: any) => {
+//         return (
+//           //@ts-ignore
+//           obj2.CONTENT["Заголовок"].split(" ").join("-").toLowerCase() ===
+//           context.params?.slug
+//         );
+//       });
+
+//       if (filter.length !== 0) {
+//         item.push(filter[0]);
+//       }
+//     });
+//     //@ts-ignore
+//     return item[0];
+//   });
+
+//   const result = product.filter((item) => {
+//     return item !== undefined;
+//   });
+
+//   if (!result || result.length === 0) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   //@ts-ignore
+//   return { props: { result } };
+// }) satisfies GetServerSideProps<{
+//   result: any;
+// }>;
+
 const ProductPage = ({
   result,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
         <title>
-          Big Screen Show - {result[0] && result[0].CONTENT["Заголовок"]}
+          Big Screen Show - {result && result[0].CONTENT["Заголовок"]}
         </title>
         <meta name="description" content="Generated by create next app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
