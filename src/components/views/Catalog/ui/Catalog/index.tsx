@@ -30,7 +30,7 @@ const Catalog: FC<any> = ({ products }) => {
 
   const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
   const [selectedCatalog, setSelectedCatalog] = useState<string>(
-    catalog.currentCatalogItem.title
+    products[0].NAME
   );
 
   const { product, isLoading } = useGetProduct();
@@ -46,7 +46,15 @@ const Catalog: FC<any> = ({ products }) => {
   useEffect(() => {
     toggleAccordion(0);
   }, [selectedCatalog]);
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    setSelectedCatalog(products[0].NAME);
+    catalog.setCatalogItem({
+      id: 0,
+      title: products[0].NAME,
+      count: 0,
+    });
+  }, [catalog, products]);
 
   const handleOpenMenu = () => {
     catalog.handleOpenMenu();

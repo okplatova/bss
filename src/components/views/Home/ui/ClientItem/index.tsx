@@ -10,10 +10,9 @@ const ClientItem: FC<IClientItemProps> = ({ img }) => {
     <div className={s.clientItem}>
       <div className={s.imageWrapper}>
         <Image
-          src={img.src}
+          src={`https://dev9.paradigma-digital.ru${img}`}
           alt="client"
-          width={img.width}
-          height={img.height}
+          fill
           loading="lazy"
         />
       </div>

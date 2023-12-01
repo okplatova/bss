@@ -10,7 +10,7 @@ class CatalogStore {
   menuIsOpen = false;
   currentCatalogItem: CatalogItem = {
     id: 0,
-    title: "Светодиодные экраны",
+    title: "",
     count: 0,
   };
 
