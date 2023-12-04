@@ -42,7 +42,7 @@ const AccordionContent: FC<any> = ({ accordion }) => {
             ))
           : null}
       </div>
-      <div className={s.additionalEquipments}>
+      {/* <div className={s.additionalEquipments}>
         <div className={s.additionalItem}>
           <Title variant="h4">Варианты подвеса экранов</Title>
           <div className={s.additionalEquipmentsList}>
@@ -87,7 +87,7 @@ const AccordionContent: FC<any> = ({ accordion }) => {
               : null}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
