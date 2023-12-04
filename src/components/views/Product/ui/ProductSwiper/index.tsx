@@ -76,7 +76,7 @@ const ProductSwiper: FC<any> = ({ images }) => {
           //@ts-ignore
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
-          slidesPerView={4}
+          slidesPerView="auto"
           watchSlidesProgress={true}
           modules={[Thumbs]}
           className={`${s.thumbs} swiper-thumbs`}

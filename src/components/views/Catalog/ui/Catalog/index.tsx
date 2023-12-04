@@ -30,7 +30,9 @@ const Catalog: FC<any> = ({ products }) => {
 
   const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
   const [selectedCatalog, setSelectedCatalog] = useState<string>(
-    products[0].NAME
+    catalog.currentCatalogItem.title
+      ? catalog.currentCatalogItem.title
+      : products[0].NAME
   );
 
   const { product, isLoading } = useGetProduct();
@@ -47,18 +49,19 @@ const Catalog: FC<any> = ({ products }) => {
     toggleAccordion(0);
   }, [selectedCatalog]);
 
-  useEffect(() => {
-    setSelectedCatalog(products[0].NAME);
-    catalog.setCatalogItem({
-      id: 0,
-      title: products[0].NAME,
-      count: 0,
-    });
-  }, [catalog, products]);
+  // useEffect(() => {
+  //   setSelectedCatalog(products[0].NAME);
+  //   catalog.setCatalogItem({
+  //     id: 0,
+  //     title: products[0].NAME,
+  //     count: 0,
+  //   });
+  // }, [catalog, products]);
 
   const handleOpenMenu = () => {
     catalog.handleOpenMenu();
   };
+
   const filteredProduct =
     products &&
     //@ts-ignore
@@ -122,20 +125,33 @@ const Catalog: FC<any> = ({ products }) => {
             //@ts-ignore
             filteredProduct[0].CHILD &&
             //@ts-ignore
-            Object.values(filteredProduct[0].CHILD).map((accordion, index) => (
-              <Accordion
-                //@ts-ignore
-                key={accordion.ID}
-                isShow={selectedAccordion === index}
-                //@ts-ignore
-                title={accordion.NAME}
-                onClick={() => toggleAccordion(index)}
-                //@ts-ignore
-                count={accordion.ITM ? Object.values(accordion.ITM).length : 0}
-              >
-                <AccordionContent accordion={accordion} />
-              </Accordion>
-            ))}
+            Object.values(filteredProduct[0].CHILD).map((accordion, index) => {
+              //@ts-ignore
+              const innerContent = accordion.CHILD;
+
+              return (
+                <Accordion
+                  //@ts-ignore
+                  key={accordion.ID}
+                  isShow={selectedAccordion === index}
+                  //@ts-ignore
+                  title={accordion.NAME}
+                  onClick={() => toggleAccordion(index)}
+                  count={
+                    //@ts-ignore
+                    accordion.ITM ? Object.values(accordion.ITM).length : 0
+                  }
+                >
+                  <AccordionContent
+                    accordion={accordion}
+                    child={
+                      //@ts-ignore
+                      innerContent ? Object.values(innerContent) : null
+                    }
+                  />
+                </Accordion>
+              );
+            })}
         </div>
       </div>
     </div>

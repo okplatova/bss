@@ -34,44 +34,35 @@ const EquipmentSection = () => {
           </Link>
         </div>
         <div ref={ref} className={equipmentListClass}>
-          {equipments && (
-            <>
-              {Object.values(equipments).map((equipment: any, index) => {
-                let delay;
-                if (isView) {
-                  delay = (index + 1) * 150;
+          {
+            //@ts-ignore
+            equipments && equipments.ROOT && (
+              <>
+                {
+                  //@ts-ignore
+                  Object.values(equipments.ROOT.CHILD).map(
+                    (equipment: any, index) => {
+                      let delay;
+                      if (isView) {
+                        delay = (index + 1) * 150;
+                      }
+                      return (
+                        <EquipmentItem
+                          key={equipment.ID}
+                          title={equipment.NAME}
+                          img={equipment.PICTURE}
+                          customStyles={{
+                            transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
+                          }}
+                          className={s.equipmentItem}
+                        />
+                      );
+                    }
+                  )
                 }
-                return (
-                  <EquipmentItem
-                    key={equipment.ID}
-                    title={equipment.NAME}
-                    img={equipment.PICTURE}
-                    customStyles={{
-                      transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
-                    }}
-                    className={s.equipmentItem}
-                  />
-                );
-              })}
-            </>
-          )}
-          {/* {equipmentList.map((equipment, index) => {
-            let delay;
-            if (isView) {
-              delay = (index + 1) * 150;
-            }
-            return (
-              <EquipmentItem
-                key={equipment.id}
-                title={equipment.title}
-                img={equipment.img}
-                customStyles={{
-                  transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
-                }}
-                className={s.equipmentItem}
-              />
-            );
-          })} */}
+              </>
+            )
+          }
         </div>
       </div>
     </section>

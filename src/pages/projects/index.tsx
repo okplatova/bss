@@ -16,7 +16,6 @@ export const getStaticProps = (async (context) => {
   projects: any;
 }>;
 
-
 const ProjectsPage = ({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {

@@ -53,6 +53,7 @@ const Equipments = () => {
   const equipmentClass = `${s.equipment} ${
     equipmentMenu.thirdMenuIsOpen ? s.active : ""
   }`;
+
   return (
     <div className={equipmentsMenuClass} onClick={(e) => e.stopPropagation()}>
       <div className={s.top}>
@@ -174,33 +175,53 @@ const Equipments = () => {
               }
             </div>
             <div className={s.additionalEquipments}>
-              <div className={s.additionalItem}>
-                <Title variant="h4">Варианты подвеса экранов</Title>
-                <div className={s.additionalEquipmentsList}>
+              {equipments &&
+              //@ts-ignore
+              equipments.CHILD &&
+              //@ts-ignore
+              Object.values(equipments.CHILD) ? (
+                <>
                   {
                     //@ts-ignore
-                    equipments && equipments.ITM
-                      ? //@ts-ignore
-                        Object.values(equipments.ITM).map((equipment) => (
-                          <EquipmentItem
+                    Object.values(equipments.CHILD).map((itm: any) => (
+                      <div key={itm.ID} className={s.additionalItem}>
+                        <Title variant="h4">{itm.NAME}</Title>
+                        <div className={s.additionalEquipmentsList}>
+                          {
                             //@ts-ignore
-                            key={equipment.ID}
-                            // title={equipment.CONTENT["Заголовок"]}
-                            //@ts-ignore
-                            type={equipment.CONTENT["Заголовок"]}
-                            //@ts-ignore
-                            option1={equipment.CONTENT["Свойства для Анонса 1"]}
-                            //@ts-ignore
-                            option2={equipment.CONTENT["Свойства для Анонса 2"]}
-                            //@ts-ignore
-                            option3={equipment.CONTENT["Свойства для Анонса 3"]}
-                            variant="light"
-                          />
-                        ))
-                      : null
+                            itm && itm.ITM
+                              ? //@ts-ignore
+                                Object.values(itm.ITM).map((equipment) => (
+                                  <EquipmentItem
+                                    //@ts-ignore
+                                    key={equipment.ID}
+                                    // title={equipment.CONTENT["Заголовок"]}
+                                    //@ts-ignore
+                                    type={equipment.CONTENT["Заголовок"]}
+                                    //@ts-ignore
+                                    option1={
+                                      //@ts-ignore
+                                      equipment.CONTENT["Свойства для Анонса 1"]
+                                    }
+                                    option2={
+                                      //@ts-ignore
+                                      equipment.CONTENT["Свойства для Анонса 2"]
+                                    }
+                                    option3={
+                                      //@ts-ignore
+                                      equipment.CONTENT["Свойства для Анонса 3"]
+                                    }
+                                    variant="light"
+                                  />
+                                ))
+                              : null
+                          }
+                        </div>
+                      </div>
+                    ))
                   }
-                </div>
-              </div>
+                </>
+              ) : null}
             </div>
           </div>
 

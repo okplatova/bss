@@ -35,10 +35,14 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
     >
       <h6 className={s.title}>{title}</h6>
       <div className={s.imageWrapper}>
-        {
-          img ? <Image src={`https://dev9.paradigma-digital.ru/${img}`} alt="Equipment" fill loading="lazy" /> : null
-        }
-        
+        {img ? (
+          <Image
+            src={`https://dev9.paradigma-digital.ru/${img}`}
+            alt="Equipment"
+            fill
+            loading="lazy"
+          />
+        ) : null}
       </div>
       <div className={s.btnWrapper}>
         <Button

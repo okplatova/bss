@@ -6,13 +6,13 @@ import s from "./styles.module.sass";
 import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
-import { useGetProjects } from "@/shared/hooks";
+import { useGetProjects, useGetVideostudio } from "@/shared/hooks";
 
 const ProjectsSection = () => {
   const [isView, setView] = useState(false);
   const [allProjects, setAllProjects] = useState<any>(null);
   const [visibleProjects, setVisibleProjects] = useState<any>(null);
-
+  const { videostudion } = useGetVideostudio();
   const [ref, inView] = useInView();
 
   const { projects, isLoading } = useGetProjects();
@@ -44,32 +44,39 @@ const ProjectsSection = () => {
 
   return (
     <div className={s.content}>
-      {!visibleProjects ? (
-        <div className={s.loaderWrapper}>
-          <Loader />
-        </div>
-      ) : (
-        <div className={projectListClass} ref={ref}>
-          {projects.map((project: any, index: number) => {
-            let delay;
-            if (isView) {
-              delay = (index + 1) * 150;
-            }
-            return (
-              <ProjectItem
-                link={project.DETAIL_PAGE_URL}
-                title={project.NAME}
-                year={project.CONTENT.Год}
-                img={project.PREVIEW_PICTURE}
-                key={project.NAME}
-                customStyles={{
-                  transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
-                }}
-              />
-            );
-          })}
-        </div>
-      )}
+      {
+        //@ts-ignore
+        !videostudion ? (
+          <div className={s.loaderWrapper}>
+            <Loader />
+          </div>
+        ) : (
+          <div className={projectListClass} ref={ref}>
+            {videostudion &&
+              //@ts-ignore
+              videostudion[0].CONTENT["Видеопроекты"].map(
+                (project: any, index: number) => {
+                  let delay;
+                  if (isView) {
+                    delay = (index + 1) * 150;
+                  }
+                  return (
+                    <ProjectItem
+                      link={project.DETAIL_PAGE_URL}
+                      title={project.NAME}
+                      year={""}
+                      img={project.PREVIEW_PICTURE}
+                      key={project.NAME}
+                      customStyles={{
+                        transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
+                      }}
+                    />
+                  );
+                }
+              )}
+          </div>
+        )
+      }
       {allProjects?.length < 6 ? null : (
         <>
           {allProjects?.length <= visibleProjects?.length ? (

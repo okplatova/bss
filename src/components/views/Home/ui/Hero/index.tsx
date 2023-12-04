@@ -4,9 +4,11 @@ import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
 import { Player } from "@/components/common/Player";
+import { useGetMainEquipment } from "@/shared/hooks";
 
 const Hero = () => {
   const [isActive, setActive] = useState(false);
+  const { equipments, isLoading } = useGetMainEquipment();
 
   useEffect(() => {
     setActive(true);
@@ -31,7 +33,7 @@ const Hero = () => {
       <div className={s.video}>
         <div className={s.videoWrapper}>
           <div className={s.backdrop} />
-          <Player url="https://vimeo.com/842048913" light="/video.jpg" />
+          <Player url="https://vimeo.com/842048913" />
         </div>
       </div>
     </div>

@@ -36,12 +36,15 @@ const VideoStudio = () => {
         </p>
       </div>
       <div className={s.content}>
-        <Player
-          url={
-            //@ts-ignore
-            videostudion?.CONTENT["Видео Ссылка"]
-          }
-        />
+        {videostudion ? (
+          <Player
+            url={
+              //@ts-ignore
+              videostudion[0]?.CONTENT["Видео Ссылка"]
+            }
+          />
+        ) : null}
+
         <AboutSection />
         <PhotoSwiperSection />
         <ProjectsSection />

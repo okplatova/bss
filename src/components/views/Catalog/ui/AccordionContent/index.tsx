@@ -9,7 +9,7 @@ import { EquipmentItem } from "@/components/common/EquipmentItem";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Title } from "@/components/ui/Title";
 
-const AccordionContent: FC<any> = ({ accordion }) => {
+const AccordionContent: FC<any> = ({ accordion, child }) => {
   return (
     <div className={s.accordionContent}>
       {accordion.PICTURE ? (
@@ -42,52 +42,34 @@ const AccordionContent: FC<any> = ({ accordion }) => {
             ))
           : null}
       </div>
-      {/* <div className={s.additionalEquipments}>
-        <div className={s.additionalItem}>
-          <Title variant="h4">Варианты подвеса экранов</Title>
-          <div className={s.additionalEquipmentsList}>
-            {accordion.ITM
-              ? Object.values(accordion.ITM).map((equipment) => (
-                  <EquipmentItem
-                    //@ts-ignore
-                    key={equipment.ID}
-                    // title={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    type={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    option1={equipment.CONTENT["Свойства для Анонса 1"]}
-                    //@ts-ignore
-                    option2={equipment.CONTENT["Свойства для Анонса 2"]}
-                    //@ts-ignore
-                    option3={equipment.CONTENT["Свойства для Анонса 3"]}
-                  />
-                ))
-              : null}
-          </div>
+      {child ? (
+        <div className={s.additionalEquipments}>
+          {child.map((item: any) => (
+            <div key={item.ID} className={s.additionalItem}>
+              <Title variant="h4">{item.NAME}</Title>
+              <div className={s.additionalEquipmentsList}>
+                {item.ITM
+                  ? Object.values(item.ITM).map((equipment) => (
+                      <EquipmentItem
+                        //@ts-ignore
+                        key={equipment.ID}
+                        // title={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        type={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        option1={equipment.CONTENT["Свойства для Анонса 1"]}
+                        //@ts-ignore
+                        option2={equipment.CONTENT["Свойства для Анонса 2"]}
+                        //@ts-ignore
+                        option3={equipment.CONTENT["Свойства для Анонса 3"]}
+                      />
+                    ))
+                  : null}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className={s.additionalItem}>
-          <Title variant="h4">Варианты подвеса экранов</Title>
-          <div className={s.additionalEquipmentsList}>
-            {accordion.ITM
-              ? Object.values(accordion.ITM).map((equipment) => (
-                  <EquipmentItem
-                    //@ts-ignore
-                    key={equipment.ID}
-                    // title={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    type={equipment.CONTENT["Заголовок"]}
-                    //@ts-ignore
-                    option1={equipment.CONTENT["Свойства для Анонса 1"]}
-                    //@ts-ignore
-                    option2={equipment.CONTENT["Свойства для Анонса 2"]}
-                    //@ts-ignore
-                    option3={equipment.CONTENT["Свойства для Анонса 3"]}
-                  />
-                ))
-              : null}
-          </div>
-        </div>
-      </div> */}
+      ) : null}
     </div>
   );
 };
