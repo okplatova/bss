@@ -11,6 +11,8 @@ import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { useSwiperRef } from "@/shared/hooks";
+import { Navigation } from "swiper/modules";
 
 interface IResultSwiperProps {
   author?: string;
@@ -30,30 +32,8 @@ const breakpoints = {
 };
 
 const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
-  const [totalSlides, setTotalSlides] = useState(1);
-  const sliderRef = useRef(null);
-
-  const handleNextSlide = () => {
-    if (!sliderRef.current) return;
-    //@ts-ignore
-    sliderRef.current?.swiper.slideNext();
-    //@ts-ignore
-    setCurrentSlideIndex(sliderRef.current?.swiper.activeIndex + 1);
-  };
-
-  const handlePrevSlide = () => {
-    if (!sliderRef.current) return;
-    //@ts-ignore
-    sliderRef.current?.swiper.slidePrev();
-    //@ts-ignore
-    setCurrentSlideIndex(sliderRef.current?.swiper.activeIndex + 1);
-  };
-
-  useEffect(() => {
-    //@ts-ignore
-    setTotalSlides(sliderRef.current?.swiper.slides.length);
-  }, []);
+  const [navigationPrev, navigationPrevRef] = useSwiperRef();
+  const [navigationNext, navigationNextRef] = useSwiperRef();
 
   return (
     <div className={s.swiper}>
@@ -65,13 +45,19 @@ const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
         }}
       >
         <Swiper
-          ref={sliderRef}
           slidesPerView={3}
           spaceBetween={16}
           speed={800}
           className="mySwiper"
           centeredSlides={false}
           breakpoints={breakpoints}
+          modules={[Navigation]}
+          navigation={{
+            //@ts-ignore
+            prevEl: navigationPrev,
+            //@ts-ignore
+            nextEl: navigationNext,
+          }}
         >
           {results ? (
             <>
@@ -111,10 +97,10 @@ const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
           </div>
         ) : null}
 
-        <button onClick={handlePrevSlide} aria-label="navigation">
+        <button ref={navigationPrevRef} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
-        <button onClick={handleNextSlide} aria-label="navigation">
+        <button ref={navigationNextRef} aria-label="navigation">
           <ArrowRightIcon />
         </button>
       </div>

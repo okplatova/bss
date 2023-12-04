@@ -1,3 +1,5 @@
+@import '@/shared/styles/variables'
+    
 .swiper
     // border-bottom: 1px solid var(--gray-color)
     // position: sticky
@@ -27,3 +29,36 @@
                     object-fit: contain
                     // width: auto !important
                     // height: auto !important
+        .thumbs
+            width: 80%
+        .navigation
+            position: absolute
+            bottom: 30px
+            display: flex
+            justify-content: space-between
+            pointer-events: none
+            right: 20px
+            left: 20px
+            z-index: 2
+            @media(max-width: $tab)
+                bottom: 60px
+            @media(max-width: $mob)
+                display: none
+            button
+                pointer-events: all
+                width: 64px
+                height: 64px
+                border-radius: var(--rounded-full)
+                background: var(--dark-color)
+                border: 1px solid var(--gray-color)
+                cursor: pointer
+                display: flex
+                align-items: center
+                justify-content: center
+                transition: var(--trs-300)
+                @media(max-width: $tab)
+                    width: 48px
+                    height: 48px
+                svg
+                    width: 23px
+                    height: 18px

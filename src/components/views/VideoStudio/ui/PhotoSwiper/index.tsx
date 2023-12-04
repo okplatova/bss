@@ -12,8 +12,9 @@ import s from "./styles.module.sass";
 import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
-import { useGetVideostudio } from "@/shared/hooks";
+import { useGetVideostudio, useSwiperRef } from "@/shared/hooks";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Navigation } from "swiper/modules";
 
 const breakpoints = {
   0: {
@@ -28,22 +29,10 @@ const breakpoints = {
 };
 
 const PhotoSwiper = () => {
-  const sliderRef = useRef(null);
+  const [navigationPrev, navigationPrevRef] = useSwiperRef();
+  const [navigationNext, navigationNextRef] = useSwiperRef();
 
   const { videostudion, isLoading } = useGetVideostudio();
-
-  const handleNextSlide = () => {
-    if (!sliderRef.current) return;
-    //@ts-ignore
-    sliderRef.current?.swiper.slideNext();
-  };
-
-  const handlePrevSlide = () => {
-    if (!sliderRef.current) return;
-    //@ts-ignore
-    sliderRef.current?.swiper.slidePrev();
-    //@ts-ignore
-  };
 
   return (
     <div className={s.swiper}>
@@ -55,13 +44,19 @@ const PhotoSwiper = () => {
         }}
       >
         <Swiper
-          ref={sliderRef}
           slidesPerView={3}
           spaceBetween={16}
           speed={800}
           className="mySwiper"
           centeredSlides={false}
           breakpoints={breakpoints}
+          modules={[Navigation]}
+          navigation={{
+            //@ts-ignore
+            prevEl: navigationPrev,
+            //@ts-ignore
+            nextEl: navigationNext,
+          }}
         >
           {isLoading ? (
             <>
@@ -95,10 +90,10 @@ const PhotoSwiper = () => {
       </Fancybox>
 
       <div className={s.swiperBottom}>
-        <button onClick={handlePrevSlide} aria-label="navigation">
+        <button ref={navigationPrevRef} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
-        <button onClick={handleNextSlide} aria-label="navigation">
+        <button ref={navigationNextRef} aria-label="navigation">
           <ArrowRightIcon />
         </button>
       </div>

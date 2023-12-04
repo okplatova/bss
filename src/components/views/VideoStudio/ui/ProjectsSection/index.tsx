@@ -7,6 +7,7 @@ import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 import { useGetProjects, useGetVideostudio } from "@/shared/hooks";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 
 const ProjectsSection = () => {
   const [isView, setView] = useState(false);
@@ -18,9 +19,13 @@ const ProjectsSection = () => {
   const { projects, isLoading } = useGetProjects();
 
   useEffect(() => {
-    setAllProjects(projects);
-    setVisibleProjects(projects.slice(0, 6));
-  }, [projects]);
+    //@ts-ignore
+    setAllProjects(videostudion && videostudion[0].CONTENT["Видеопроекты"]);
+    setVisibleProjects(
+      //@ts-ignore
+      videostudion && videostudion[0].CONTENT["Видеопроекты"].slice(0, 6)
+    );
+  }, [videostudion]);
 
   const showMore = () => {
     setVisibleProjects((prev: any) => [
@@ -41,9 +46,10 @@ const ProjectsSection = () => {
   };
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
-
+  const totalCount = allProjects?.length - visibleProjects?.length;
   return (
     <div className={s.content}>
+      <SectionTitle label="Проекты" />
       {
         //@ts-ignore
         !videostudion ? (
@@ -52,28 +58,30 @@ const ProjectsSection = () => {
           </div>
         ) : (
           <div className={projectListClass} ref={ref}>
-            {videostudion &&
+            {visibleProjects &&
               //@ts-ignore
-              videostudion[0].CONTENT["Видеопроекты"].map(
-                (project: any, index: number) => {
-                  let delay;
-                  if (isView) {
-                    delay = (index + 1) * 150;
-                  }
-                  return (
-                    <ProjectItem
-                      link={project.DETAIL_PAGE_URL}
-                      title={project.NAME}
-                      year={""}
-                      img={project.PREVIEW_PICTURE}
-                      key={project.NAME}
-                      customStyles={{
-                        transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
-                      }}
-                    />
-                  );
+              visibleProjects.map((project: any, index: number) => {
+                let delay;
+                if (isView) {
+                  delay = (index + 1) * 150;
                 }
-              )}
+                const link = project.DETAIL_PAGE_URL.replace(
+                  "/video/",
+                  "/projects/"
+                );
+                return (
+                  <ProjectItem
+                    link={link}
+                    title={project.NAME}
+                    year={""}
+                    img={project.PREVIEW_PICTURE}
+                    key={project.NAME}
+                    customStyles={{
+                      transition: `opacity 500ms ease ${delay}ms, background 500ms ease`,
+                    }}
+                  />
+                );
+              })}
           </div>
         )
       }
@@ -94,7 +102,7 @@ const ProjectsSection = () => {
               onClick={showMore}
               size="medium"
               className={s.loadMore}
-              count={projects.length}
+              count={totalCount}
               ariaLabel="show"
             >
               Показать еще

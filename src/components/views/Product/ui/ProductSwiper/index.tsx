@@ -6,34 +6,21 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import Image from "next/image";
-import { Thumbs } from "swiper/modules";
+import { Navigation, Thumbs } from "swiper/modules";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import s from "./styles.module.sass";
 
-import product1 from "/public/equipments/equipment3.png";
-import product2 from "/public/equipments/equipment4.png";
-import product3 from "/public/equipments/equipment5.png";
 import { Fancybox } from "@/components/ui/Fancybox";
 import { Skeleton } from "@/components/ui/Skeleton";
-
-// const images = [
-//   {
-//     original: product1.src,
-//     thumbnail: product1.src,
-//   },
-//   {
-//     original: product2.src,
-//     thumbnail: product2.src,
-//   },
-//   {
-//     original: product3.src,
-//     thumbnail: product3.src,
-//   },
-// ];
+import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
+import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
+import { useSwiperRef } from "@/shared/hooks";
 
 const ProductSwiper: FC<any> = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [navigationPrev, navigationPrevRef] = useSwiperRef();
+  const [navigationNext, navigationNextRef] = useSwiperRef();
   return (
     <div className={s.swiper}>
       <div className={s.swiperInner}>
@@ -76,10 +63,30 @@ const ProductSwiper: FC<any> = ({ images }) => {
           //@ts-ignore
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
-          slidesPerView="auto"
+          slidesPerView={4}
           watchSlidesProgress={true}
-          modules={[Thumbs]}
+          modules={[Thumbs, Navigation]}
           className={`${s.thumbs} swiper-thumbs`}
+          navigation={{
+            //@ts-ignore
+            prevEl: navigationPrev,
+            //@ts-ignore
+            nextEl: navigationNext,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 2.6,
+            },
+            767: {
+              slidesPerView: 3,
+            },
+            1024: {
+              slidesPerView: 4,
+            },
+            1280: {
+              slidesPerView: 5,
+            },
+          }}
         >
           {images.map((image: string) => (
             <SwiperSlide
@@ -98,6 +105,14 @@ const ProductSwiper: FC<any> = ({ images }) => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className={s.navigation}>
+          <button ref={navigationPrevRef} aria-label="navigation">
+            <ArrowLeftIcon />
+          </button>
+          <button ref={navigationNextRef} aria-label="navigation">
+            <ArrowRightIcon />
+          </button>
+        </div>
       </div>
     </div>
   );

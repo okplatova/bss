@@ -1,22 +1,23 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { projectList } from "../data/projectList";
+import { resultList } from "../../data/resultList";
 
-import "swiper/css";
-import "swiper/css/navigation";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import s from "./styles.module.sass";
 
-import { ProjectItem } from "../../ProjectItem";
+import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
-import { useGetProjects, useSwiperRef } from "@/shared/hooks";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Player } from "@/components/common/Player";
+import { useSwiperRef } from "@/shared/hooks";
 import { Navigation } from "swiper/modules";
 
-interface IProjectSwiperProps {
-  projects?: any;
-  children: ReactNode;
+interface IResultSwiperProps {
+  author?: string;
+  results: any;
 }
 
 const breakpoints = {
@@ -31,7 +32,7 @@ const breakpoints = {
   },
 };
 
-const ProjectSwiper: FC<IProjectSwiperProps> = ({ projects, children }) => {
+const VideoSwiper: FC<any> = ({ video }) => {
   const [navigationPrev, navigationPrevRef] = useSwiperRef();
   const [navigationNext, navigationNextRef] = useSwiperRef();
 
@@ -52,8 +53,27 @@ const ProjectSwiper: FC<IProjectSwiperProps> = ({ projects, children }) => {
           nextEl: navigationNext,
         }}
       >
-        {children}
+        {video ? (
+          <>
+            {video.map((result: string, index: number) => (
+              <SwiperSlide key={index}>
+                <Player url={result} />
+              </SwiperSlide>
+            ))}
+          </>
+        ) : (
+          <>
+            {[...Array(5)].map((_, index) => (
+              <SwiperSlide key={index}>
+                <div className={s.imageWrapper}>
+                  <Skeleton className={s.skeleton} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </>
+        )}
       </Swiper>
+
       <div className={s.swiperBottom}>
         <button ref={navigationPrevRef} aria-label="navigation">
           <ArrowLeftIcon />
@@ -66,4 +86,4 @@ const ProjectSwiper: FC<IProjectSwiperProps> = ({ projects, children }) => {
   );
 };
 
-export default ProjectSwiper;
+export default VideoSwiper;

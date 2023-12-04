@@ -8,6 +8,7 @@ import VideoSection from "../VideoSection";
 import Equipments from "../Equipments";
 import AnotherProjects from "../AnotherProjects";
 import { FC } from "react";
+import VideoSwiper from "../VideoSwiper";
 
 const Project: FC<any> = ({ project }) => {
   const breadcrumbs = [
@@ -40,6 +41,7 @@ const Project: FC<any> = ({ project }) => {
           results={project.CONTENT["Результат"]}
         />
       ) : null}
+
       {project.CONTENT["Видео"] ? (
         <VideoSection video={project.CONTENT["Видео"]} />
       ) : null}
