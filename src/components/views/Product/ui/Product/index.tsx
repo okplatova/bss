@@ -25,7 +25,6 @@ const Product: FC<any> = ({ product }) => {
       label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
-
   return (
     <div className={s.product}>
       <Calculator />

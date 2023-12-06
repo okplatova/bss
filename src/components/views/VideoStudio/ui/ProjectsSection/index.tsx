@@ -6,8 +6,9 @@ import s from "./styles.module.sass";
 import { ProjectItem } from "@/components/common/ProjectItem";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
-import { useGetProjects, useGetVideostudio } from "@/shared/hooks";
+import { useGetVideostudio } from "@/shared/hooks";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { useGetVideoProjects } from "@/shared/hooks/useGetVideoProjects";
 
 const ProjectsSection = () => {
   const [isView, setView] = useState(false);
@@ -16,20 +17,21 @@ const ProjectsSection = () => {
   const { videostudion } = useGetVideostudio();
   const [ref, inView] = useInView();
 
-  const { projects, isLoading } = useGetProjects();
+  const { projects, isLoading } = useGetVideoProjects();
 
   useEffect(() => {
     //@ts-ignore
-    setAllProjects(videostudion && videostudion[0].CONTENT["Видеопроекты"]);
+    setAllProjects(projects && projects);
     setVisibleProjects(
       //@ts-ignore
-      videostudion && videostudion[0].CONTENT["Видеопроекты"].slice(0, 6)
+      allProjects && allProjects.slice(0, 6)
     );
-  }, [videostudion]);
+  }, [allProjects, projects, videostudion]);
 
   const showMore = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
+      //@ts-ignore
       ...projects.slice(
         visibleProjects.length - 1,
         visibleProjects.length - 1 + 6
@@ -47,6 +49,7 @@ const ProjectsSection = () => {
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
   const totalCount = allProjects?.length - visibleProjects?.length;
+
   return (
     <div className={s.content}>
       <SectionTitle label="Проекты" />
@@ -65,13 +68,10 @@ const ProjectsSection = () => {
                 if (isView) {
                   delay = (index + 1) * 150;
                 }
-                const link = project.DETAIL_PAGE_URL.replace(
-                  "/video/",
-                  "/projects/"
-                );
+
                 return (
                   <ProjectItem
-                    link={link}
+                    link={project.DETAIL_PAGE_URL}
                     title={project.NAME}
                     year={""}
                     img={project.PREVIEW_PICTURE}
