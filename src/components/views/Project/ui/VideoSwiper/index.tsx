@@ -1,13 +1,9 @@
-import React, { FC, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import React, { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import { resultList } from "../../data/resultList";
 
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import s from "./styles.module.sass";
 
-import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { Skeleton } from "@/components/ui/Skeleton";
