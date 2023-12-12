@@ -34,6 +34,8 @@ const Project: FC<any> = ({ project }) => {
       <TaskSection
         task={project.CONTENT.Задача.TEXT}
         decision={project.CONTENT.Решение.TEXT}
+        location={project.CONTENT.Локация}
+        date={project.DATE_ACTIVE_FROM}
       />
       {project.CONTENT["Результат"] ? (
         <ResultSection

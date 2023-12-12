@@ -9,21 +9,28 @@ import he from "he";
 interface ITaskSectionProps {
   task: string;
   decision: string;
+  location: string;
+  date: string;
 }
 const test = "&lt;br/&gt;";
-const TaskSection: FC<ITaskSectionProps> = ({ task, decision }) => {
+const TaskSection: FC<ITaskSectionProps> = ({
+  task,
+  decision,
+  location,
+  date,
+}) => {
   return (
     <div className={s.section}>
-      <div className={s.task}>
+      {/* <div className={s.task}>
         <SectionTitle label="Задача" />
 
         {task ? (
           <div dangerouslySetInnerHTML={{ __html: he.decode(task) }}></div>
         ) : null}
-      </div>
+      </div> */}
       <br />
       <div className={s.decision}>
-        <SectionTitle label="Решение" />
+        <SectionTitle label="Описание" />
         <div className={s.content}>
           {decision ? (
             <div
@@ -33,14 +40,19 @@ const TaskSection: FC<ITaskSectionProps> = ({ task, decision }) => {
         </div>
       </div>
       <div className={s.info}>
-        <div className={s.infoItem}>
-          <CalendarIcon />
-          <span>06.06.2018</span>
-        </div>
-        <div className={s.infoItem}>
-          <PinIcon />
-          <span>Москва, Государственный Кремлевский Дворец</span>
-        </div>
+        {date ? (
+          <div className={s.infoItem}>
+            <CalendarIcon />
+            <span>{date}</span>
+          </div>
+        ) : null}
+
+        {location ? (
+          <div className={s.infoItem}>
+            <PinIcon />
+            <span>{location}</span>
+          </div>
+        ) : null}
       </div>
     </div>
   );
