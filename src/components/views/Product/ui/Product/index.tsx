@@ -10,6 +10,7 @@ import Projects from "../Projects";
 import { Calculator } from "../Calculator";
 import { useGetProduct } from "@/shared/hooks";
 import { FC } from "react";
+import VideoPresentation from "../VideoPresentation";
 
 const Product: FC<any> = ({ product }) => {
   const breadcrumbs = [
@@ -25,7 +26,8 @@ const Product: FC<any> = ({ product }) => {
       label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
-
+  console.log('product',product);
+  
   return (
     <div className={s.product}>
       <Calculator />
@@ -54,6 +56,9 @@ const Product: FC<any> = ({ product }) => {
 
         {product.CONTENT["Сертификаты"] ? (
           <Certificates сertificates={product.CONTENT["Сертификаты"]} />
+        ) : null}
+        {product.CONTENT["Видеопрезентация"] ? (
+          <VideoPresentation video={product.CONTENT["Видеопрезентация"]} />
         ) : null}
       </div>
       {product.CONTENT["Проекты"] ? (

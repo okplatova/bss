@@ -17,7 +17,7 @@ const Equipments: FC<any> = ({ equipmentsList }) => {
           //@ts-ignore
           <EquipmentItem
             key={equipment.id}
-            title={equipment.NAME}
+            title={equipment.TYPE}
             type={equipment.TITLE}
 
             // options={equipment.options}
