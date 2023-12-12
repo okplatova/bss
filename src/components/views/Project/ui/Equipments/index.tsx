@@ -7,6 +7,8 @@ import { EquipmentItem } from "@/components/common/EquipmentItem";
 import { FC } from "react";
 
 const Equipments: FC<any> = ({ equipmentsList }) => {
+  console.log("equipmentsList", equipmentsList);
+
   return (
     <div className={s.equipments}>
       <SectionTitle label="Оборудование" />
@@ -17,6 +19,7 @@ const Equipments: FC<any> = ({ equipmentsList }) => {
             key={equipment.id}
             title={equipment.NAME}
             type={equipment.TITLE}
+
             // options={equipment.options}
           />
         ))}

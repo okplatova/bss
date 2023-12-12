@@ -17,7 +17,7 @@
         gap: 1.5rem
         .specification
             display: flex
-            align-items: flex-end
+            align-items: baseline
             gap: .5rem
             @media(max-width: $tab-sm)
                 flex-direction: column
@@ -26,16 +26,23 @@
                 width: 150px
                 height: 20px
             p
-                white-space: nowrap
+                // max-width: 400px
+                // white-space: nowrap
                 font-size: 16px
                 font-style: normal
                 font-weight: 400
                 line-height: 100%
                 @media(max-width: $tab-sm)
                     font-size: 14px
+                // &:last-child
+                //     white-space: normal
+                //     width: 100%
+                //     text-align: right
             .line
-                width: 100%
+                // width: 100%
+                min-width: 100px
                 height: 1px
+                flex: 1 1
                 background: var(--gray-color)
                 @media(max-width: $tab-sm)
                     order: 1

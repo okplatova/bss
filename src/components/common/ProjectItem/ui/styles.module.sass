@@ -41,6 +41,8 @@
 .projectItem
     position: relative
     cursor: pointer
+    display: flex
+    flex-direction: column
     &:hover
         .imageWrapper
             .btn
@@ -81,6 +83,8 @@
         line-height: 100%
         text-transform: uppercase 
         transition: var(--trs-800)
+        flex: 1 1
+        justify-content: space-between
         .title
             font-size: 16px
             letter-spacing: -0.64px

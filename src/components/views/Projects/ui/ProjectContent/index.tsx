@@ -46,7 +46,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
     isGrid ? s.grid : s.list
   }`;
 
-  const totalCount = allProjects?.length - visibleProjects?.length;
+  const totalCount = allProjects?.length - visibleProjects?.length + 1;
 
   return (
     <div className={s.content}>
@@ -79,16 +79,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
       )}
       {allProjects?.length < 6 ? null : (
         <>
-          {allProjects?.length <= visibleProjects?.length ? (
-            <Button
-              onClick={hideMore}
-              size="medium"
-              className={s.loadMore}
-              ariaLabel="hide"
-            >
-              Скрыть
-            </Button>
-          ) : (
+          {allProjects?.length <= visibleProjects?.length ? null : (
             <Button
               disabled={!allProjects}
               onClick={showMore}

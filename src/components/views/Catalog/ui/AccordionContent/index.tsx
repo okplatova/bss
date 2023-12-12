@@ -10,6 +10,8 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { Title } from "@/components/ui/Title";
 
 const AccordionContent: FC<any> = ({ accordion, child }) => {
+  console.log("child", child);
+
   return (
     <div className={s.accordionContent}>
       {accordion.PICTURE ? (
@@ -25,21 +27,26 @@ const AccordionContent: FC<any> = ({ accordion, child }) => {
 
       <div className={s.equipments}>
         {accordion.ITM
-          ? Object.values(accordion.ITM).map((equipment) => (
-              <EquipmentItem
-                //@ts-ignore
-                key={equipment.ID}
-                // title={equipment.CONTENT["Заголовок"]}
-                //@ts-ignore
-                type={equipment.CONTENT["Заголовок"]}
-                //@ts-ignore
-                option1={equipment.CONTENT["Свойства для Анонса 1"]}
-                //@ts-ignore
-                option2={equipment.CONTENT["Свойства для Анонса 2"]}
-                //@ts-ignore
-                option3={equipment.CONTENT["Свойства для Анонса 3"]}
-              />
-            ))
+          ? Object.values(accordion.ITM).map((equipment) => {
+              console.log("equipment", equipment);
+              return (
+                <EquipmentItem
+                  //@ts-ignore
+                  key={equipment.ID}
+                  // title={equipment.CONTENT["Заголовок"]}
+                  //@ts-ignore
+                  type={equipment.CONTENT["Заголовок"]}
+                  //@ts-ignore
+                  title={equipment.CONTENT["Тип оборудования"]}
+                  //@ts-ignore
+                  option1={equipment.CONTENT["Свойства для Анонса 1"]}
+                  //@ts-ignore
+                  option2={equipment.CONTENT["Свойства для Анонса 2"]}
+                  //@ts-ignore
+                  option3={equipment.CONTENT["Свойства для Анонса 3"]}
+                />
+              );
+            })
           : null}
       </div>
       {child ? (
@@ -56,6 +63,8 @@ const AccordionContent: FC<any> = ({ accordion, child }) => {
                         // title={equipment.CONTENT["Заголовок"]}
                         //@ts-ignore
                         type={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        title={equipment.CONTENT["Тип оборудования"]}
                         //@ts-ignore
                         option1={equipment.CONTENT["Свойства для Анонса 1"]}
                         //@ts-ignore

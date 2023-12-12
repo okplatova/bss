@@ -48,7 +48,7 @@ const ProjectsSection = () => {
   };
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
-  const totalCount = allProjects?.length - visibleProjects?.length;
+  const totalCount = allProjects?.length - visibleProjects?.length + 1;
 
   return (
     <div className={s.content}>
@@ -87,16 +87,7 @@ const ProjectsSection = () => {
       }
       {allProjects?.length < 6 ? null : (
         <>
-          {allProjects?.length <= visibleProjects?.length ? (
-            <Button
-              onClick={hideMore}
-              size="medium"
-              className={s.loadMore}
-              ariaLabel="hide"
-            >
-              Скрыть
-            </Button>
-          ) : (
+          {allProjects?.length <= visibleProjects?.length ? null : (
             <Button
               disabled={!allProjects}
               onClick={showMore}

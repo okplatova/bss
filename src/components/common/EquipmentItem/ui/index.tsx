@@ -8,7 +8,7 @@ import s from "./styles.module.sass";
 import { Title } from "@/components/ui/Title";
 
 const EquipmentItem: FC<IEquipmentItemProps> = ({
-  title = "светодиодный модуль",
+  title,
   type,
   options,
   variant = "black",
@@ -16,6 +16,8 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
   option2,
   option3,
 }) => {
+  console.log("title", title);
+
   const equipmentClass = `${s.equipment} ${s[variant]}`;
   return (
     <Link

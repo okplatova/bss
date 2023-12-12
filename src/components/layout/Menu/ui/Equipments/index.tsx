@@ -36,6 +36,7 @@ const Equipments = () => {
   const handleOpenSecondMenu = (id: number) => {
     equipmentMenu.setEquipmentTypeId(id);
     equipmentMenu.handleOpenSecondMenu(true);
+    equipmentMenu.handleOpenThirdMenu(false);
   };
   const handleOpenThirdMenu = (id: number, item: any) => {
     equipmentMenu.setEquipmentListId(id);
@@ -162,6 +163,8 @@ const Equipments = () => {
                         // title={equipment.CONTENT["Заголовок"]}
                         //@ts-ignore
                         type={equipment.CONTENT["Заголовок"]}
+                        //@ts-ignore
+                        title={equipment.CONTENT["Тип оборудования"]}
                         //@ts-ignore
                         option1={equipment.CONTENT["Свойства для Анонса 1"]}
                         //@ts-ignore

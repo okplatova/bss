@@ -25,6 +25,7 @@ const Product: FC<any> = ({ product }) => {
       label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
+
   return (
     <div className={s.product}>
       <Calculator />
@@ -33,7 +34,7 @@ const Product: FC<any> = ({ product }) => {
         <Title variant="h2" className="container">
           {product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null}
         </Title>
-        <span className={s.type}>{product.NAME}</span>
+        <span className={s.type}>{product.CONTENT["Тип оборудования"]}</span>
       </div>
       <div className={s.content}>
         <div className={s.swiperWrapper}>
@@ -44,10 +45,13 @@ const Product: FC<any> = ({ product }) => {
         {product.CONTENT["Характеристики"] ? (
           <Specifications specifications={product.CONTENT["Характеристики"]} />
         ) : null}
-        <Interactive
-          text={product.CONTENT["Эффект Текст"]}
-          image={product.CONTENT["Эффект Картинка"]}
-        />
+        {product.CONTENT["Эффект Картинка"] ? (
+          <Interactive
+            text={product.CONTENT["Эффект Текст"]}
+            image={product.CONTENT["Эффект Картинка"]}
+          />
+        ) : null}
+
         {product.CONTENT["Сертификаты"] ? (
           <Certificates сertificates={product.CONTENT["Сертификаты"]} />
         ) : null}
