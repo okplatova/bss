@@ -6,8 +6,6 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import VideoSwiper from "../VideoSwiper";
 
 const VideoSection: FC<any> = ({ video }) => {
-  console.log("video", video);
-
   return (
     <div className={s.section}>
       <SectionTitle label="Видео" />

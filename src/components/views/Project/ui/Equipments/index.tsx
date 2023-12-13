@@ -7,8 +7,6 @@ import { EquipmentItem } from "@/components/common/EquipmentItem";
 import { FC } from "react";
 
 const Equipments: FC<any> = ({ equipmentsList }) => {
-  console.log("equipmentsList", equipmentsList);
-
   return (
     <div className={s.equipments}>
       <SectionTitle label="Оборудование" />

@@ -29,11 +29,12 @@ const Specifications: FC<any> = ({ specifications }) => {
               <p>{specification["Название"]}</p>
             )}
 
-            <div className={s.line} />
-            {!specification["Значение"] ? (
-              <Skeleton className={s.skeleton} />
-            ) : (
-              <p>{specification["Значение"]}</p>
+            {!specification["Значение"] ? null : (
+              <>
+                <div className={s.line} />
+
+                <p>{specification["Значение"]}</p>
+              </>
             )}
           </div>
         ))}

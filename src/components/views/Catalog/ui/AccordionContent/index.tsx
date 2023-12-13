@@ -10,8 +10,6 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { Title } from "@/components/ui/Title";
 
 const AccordionContent: FC<any> = ({ accordion, child }) => {
-  console.log("child", child);
-
   return (
     <div className={s.accordionContent}>
       {accordion.PICTURE ? (
@@ -28,7 +26,6 @@ const AccordionContent: FC<any> = ({ accordion, child }) => {
       <div className={s.equipments}>
         {accordion.ITM
           ? Object.values(accordion.ITM).map((equipment) => {
-              console.log("equipment", equipment);
               return (
                 <EquipmentItem
                   //@ts-ignore

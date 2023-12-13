@@ -16,8 +16,6 @@ const EquipmentItem: FC<IEquipmentItemProps> = ({
   option2,
   option3,
 }) => {
-  console.log("title", title);
-
   const equipmentClass = `${s.equipment} ${s[variant]}`;
   return (
     <Link
