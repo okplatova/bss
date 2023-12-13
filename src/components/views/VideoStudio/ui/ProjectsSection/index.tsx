@@ -18,6 +18,8 @@ const ProjectsSection = () => {
   const [ref, inView] = useInView();
 
   const { projects, isLoading } = useGetVideoProjects();
+  console.log("projects", projects);
+  console.log("visibleProjects", visibleProjects);
 
   useEffect(() => {
     //@ts-ignore
@@ -32,10 +34,7 @@ const ProjectsSection = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
       //@ts-ignore
-      ...projects.slice(
-        visibleProjects.length - 1,
-        visibleProjects.length - 1 + 6
-      ),
+      ...projects.slice(visibleProjects.length, visibleProjects.length + 6),
     ]);
   };
 
@@ -48,7 +47,7 @@ const ProjectsSection = () => {
   };
 
   const projectListClass = `${s.projectList} ${isView ? s.isView : ""}`;
-  const totalCount = allProjects?.length - visibleProjects?.length + 1;
+  const totalCount = allProjects?.length - visibleProjects?.length;
 
   return (
     <div className={s.content}>

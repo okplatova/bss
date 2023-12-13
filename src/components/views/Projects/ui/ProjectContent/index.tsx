@@ -27,10 +27,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
   const showMore = () => {
     setVisibleProjects((prev: any) => [
       ...prev,
-      ...projects.slice(
-        visibleProjects.length - 1,
-        visibleProjects.length - 1 + 6
-      ),
+      ...projects.slice(visibleProjects.length, visibleProjects.length + 6),
     ]);
   };
 
@@ -46,7 +43,7 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
     isGrid ? s.grid : s.list
   }`;
 
-  const totalCount = allProjects?.length - visibleProjects?.length + 1;
+  const totalCount = allProjects?.length - visibleProjects?.length;
 
   return (
     <div className={s.content}>
