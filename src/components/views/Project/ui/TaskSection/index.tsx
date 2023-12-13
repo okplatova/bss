@@ -19,6 +19,9 @@ const TaskSection: FC<ITaskSectionProps> = ({
   location,
   date,
 }) => {
+
+  console.log('decision',decision);
+  
   return (
     <div className={s.section}>
       {/* <div className={s.task}>

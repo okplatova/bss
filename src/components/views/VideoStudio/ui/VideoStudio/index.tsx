@@ -21,7 +21,7 @@ const VideoStudio = () => {
       label: "Видеостудия",
     },
   ];
-
+  
   return (
     <div className={s.videoStudio}>
       <Breadcrumbs items={breadcrumbs} />
