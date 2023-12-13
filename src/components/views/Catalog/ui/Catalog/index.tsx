@@ -97,15 +97,42 @@ const Catalog: FC<any> = ({ products }) => {
               const buttonClass = `${s.catalogBtn} ${
                 selectedCatalog === catalogItem.NAME ? s.active : ""
               }`;
-              const children =
-                catalogItem.CHILD && Object.values(catalogItem.CHILD);
+
+              const children = 1;
+              //@ts-ignore
+              let totalChild = [];
+
+              catalogItem.CHILD &&
+                Object.values(catalogItem.CHILD).forEach((child) => {
+                  //@ts-ignore
+                  if (child.CHILD) {
+                    //@ts-ignore
+                    Object.values(child.CHILD).forEach((item) => {
+                      //@ts-ignore
+                      totalChild = [...totalChild, ...Object.values(item.ITM)];
+                    });
+                  }
+                  //@ts-ignore
+                  if (!child.ITM) {
+                    return;
+                  }
+                  //@ts-ignore
+                  if (child.ITM === Array) {
+                    //@ts-ignore
+                    totalChild = [...totalChild, ...child.ITM];
+                    //@ts-ignore
+                  } else {
+                    //@ts-ignore
+                    totalChild = [...totalChild, ...Object.values(child.ITM)];
+                  }
+                });
 
               return (
                 <>
-                  {children ? (
+                  {totalChild.length ? (
                     <Button
                       key={catalogItem.ID}
-                      count={children ? children.length : 0}
+                      count={totalChild.length}
                       size="medium"
                       variable="clear"
                       className={buttonClass}
@@ -128,6 +155,29 @@ const Catalog: FC<any> = ({ products }) => {
             Object.values(filteredProduct[0].CHILD).map((accordion, index) => {
               //@ts-ignore
               const innerContent = accordion.CHILD;
+              //@ts-ignore
+              let totalChild = [];
+              //@ts-ignore
+              if (accordion.CHILD) {
+                //@ts-ignore
+                Object.values(accordion.CHILD).forEach((item) => {
+                  //@ts-ignore
+                  totalChild = [...totalChild, ...Object.values(item.ITM)];
+                });
+              }
+              //@ts-ignore
+              if (!accordion.ITM) {
+                return;
+              }
+              //@ts-ignore
+              if (accordion.ITM === Array) {
+                //@ts-ignore
+                totalChild = [...totalChild, ...accordion.ITM];
+                //@ts-ignore
+              } else {
+                //@ts-ignore
+                totalChild = [...totalChild, ...Object.values(accordion.ITM)];
+              }
 
               return (
                 <Accordion
@@ -137,10 +187,7 @@ const Catalog: FC<any> = ({ products }) => {
                   //@ts-ignore
                   title={accordion.NAME}
                   onClick={() => toggleAccordion(index)}
-                  count={
-                    //@ts-ignore
-                    accordion.ITM ? Object.values(accordion.ITM).length : 0
-                  }
+                  count={totalChild.length}
                 >
                   <AccordionContent
                     accordion={accordion}

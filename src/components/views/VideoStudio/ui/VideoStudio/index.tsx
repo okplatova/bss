@@ -21,7 +21,7 @@ const VideoStudio = () => {
       label: "Видеостудия",
     },
   ];
-  
+
   return (
     <div className={s.videoStudio}>
       <Breadcrumbs items={breadcrumbs} />
@@ -36,14 +36,7 @@ const VideoStudio = () => {
         </p>
       </div>
       <div className={s.content}>
-        {videostudion ? (
-          <Player
-            url={
-              //@ts-ignore
-              videostudion[0]?.CONTENT["Видео Ссылка"]
-            }
-          />
-        ) : null}
+        {videostudion ? <Player url="https://vimeo.com/842048913" /> : null}
 
         <AboutSection />
         <PhotoSwiperSection />

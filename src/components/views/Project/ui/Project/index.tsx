@@ -9,16 +9,19 @@ import Equipments from "../Equipments";
 import AnotherProjects from "../AnotherProjects";
 import { FC } from "react";
 import VideoSwiper from "../VideoSwiper";
+import { useRouter } from "next/router";
 
 const Project: FC<any> = ({ project }) => {
+  const { asPath } = useRouter();
+
   const breadcrumbs = [
     {
       label: "Главная",
       link: "/",
     },
     {
-      label: "Проекты",
-      link: "/projects",
+      label: asPath.includes("video") ? "видеостудия" : "Проекты",
+      link: asPath.includes("video") ? "/video-studio" : "/projects",
     },
     {
       label: project.NAME,
