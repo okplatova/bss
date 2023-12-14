@@ -31,7 +31,10 @@ const Product: FC<any> = ({ product }) => {
 
   return (
     <div className={s.product}>
-      <Calculator specifications={product.CONTENT["Характеристики"]} />
+      {product.CONTENT["Заголовок"] === "P3" ? (
+        <Calculator specifications={product.CONTENT["Характеристики"]} />
+      ) : null}
+
       <Breadcrumbs items={breadcrumbs} />
       <div className={s.top}>
         <Title variant="h2" className="container">
@@ -46,7 +49,10 @@ const Product: FC<any> = ({ product }) => {
           ) : null}
         </div>
         {product.CONTENT["Характеристики"] ? (
-          <Specifications specifications={product.CONTENT["Характеристики"]} />
+          <Specifications
+            title={product.CONTENT["Заголовок"]}
+            specifications={product.CONTENT["Характеристики"]}
+          />
         ) : null}
         {product.CONTENT["Эффект Картинка"] ? (
           <Interactive

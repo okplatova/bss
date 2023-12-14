@@ -10,7 +10,7 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { FC } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
 
-const Specifications: FC<any> = ({ specifications }) => {
+const Specifications: FC<any> = ({ specifications, title }) => {
   const { calculator } = useStores();
 
   const handleOpenCalculator = () => {
@@ -39,15 +39,17 @@ const Specifications: FC<any> = ({ specifications }) => {
           </div>
         ))}
       </div>
-      <Button
-        onClick={handleOpenCalculator}
-        className={s.calcBtn}
-        size="medium"
-        variable="secondary"
-        ariaLabel="calculator"
-      >
-        Калькулятор
-      </Button>
+      {title === "P3" ? (
+        <Button
+          onClick={handleOpenCalculator}
+          className={s.calcBtn}
+          size="medium"
+          variable="secondary"
+          ariaLabel="calculator"
+        >
+          Калькулятор
+        </Button>
+      ) : null}
     </div>
   );
 };
