@@ -33,7 +33,13 @@ const Hero = () => {
       <div className={s.video}>
         <div className={s.videoWrapper}>
           <div className={s.backdrop} />
-          <Player url="https://vimeo.com/842048913" />
+          <Player
+            url="https://vimeo.com/842048913"
+            muted
+            playing
+            loop
+            light={false}
+          />
         </div>
       </div>
     </div>

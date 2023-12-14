@@ -36,7 +36,7 @@ const VideoStudio = () => {
         </p>
       </div>
       <div className={s.content}>
-        {videostudion ? <Player url="https://vimeo.com/842048913" /> : null}
+        {videostudion ? <Player url="https://vimeo.com/869155664" /> : null}
 
         <AboutSection />
         <PhotoSwiperSection />

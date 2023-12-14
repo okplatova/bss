@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-
+import Image from "next/image";
 import { useStores } from "@/shared/context";
 import { equipments } from "../../data/equipments";
 
@@ -35,7 +35,7 @@ const VideoProjection: FC<any> = ({ complexes }) => {
   const handleOpenMenu = () => {
     projection.handleOpenMenu();
   };
- 
+
   const toggleComplex = (title: string) => {
     setSelectedComplex(title);
   };
@@ -69,7 +69,10 @@ const VideoProjection: FC<any> = ({ complexes }) => {
         </p>
       </div>
       <div className={s.content}>
-        <Player url={complexes[0].CONTENT["Видео"]} />
+        <div className={s.imageWrapper}>
+          <Image src="/video.jpg" fill alt="video" />
+        </div>
+        {/* <Player url={complexes[0].CONTENT["Видео"]} /> */}
         <div className={s.complexes}>
           <div className="container">
             <SectionTitle label="Комплексы" />

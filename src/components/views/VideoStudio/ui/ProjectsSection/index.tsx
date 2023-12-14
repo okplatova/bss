@@ -18,8 +18,6 @@ const ProjectsSection = () => {
   const [ref, inView] = useInView();
 
   const { projects, isLoading } = useGetVideoProjects();
-  console.log("projects", projects);
-  console.log("visibleProjects", visibleProjects);
 
   useEffect(() => {
     //@ts-ignore

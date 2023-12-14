@@ -13,6 +13,8 @@ import { FC } from "react";
 import VideoPresentation from "../VideoPresentation";
 
 const Product: FC<any> = ({ product }) => {
+  console.log("product", product);
+
   const breadcrumbs = [
     {
       label: "Главная",
@@ -29,7 +31,7 @@ const Product: FC<any> = ({ product }) => {
 
   return (
     <div className={s.product}>
-      <Calculator />
+      <Calculator specifications={product.CONTENT["Характеристики"]} />
       <Breadcrumbs items={breadcrumbs} />
       <div className={s.top}>
         <Title variant="h2" className="container">

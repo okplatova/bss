@@ -9,9 +9,15 @@ import { PlayIcon } from "@/components/ui/PlayIcon";
 
 const PlayerDynamic = dynamic(() => import("react-player"), {});
 
-const Player: FC<IPlayerProps> = ({ url, light }) => {
+const Player: FC<IPlayerProps> = ({
+  url,
+  light = true,
+  muted = false,
+  playing = false,
+  loop = false,
+}) => {
   const [hydrate, setHydrate] = useState(false);
-  const [playing, setPlaying] = useState(false);
+  // const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     setHydrate(true);
@@ -21,12 +27,14 @@ const Player: FC<IPlayerProps> = ({ url, light }) => {
       {hydrate && (
         <div className={s.videoWrapper}>
           <PlayerDynamic
-            volume={0.3}
-            playing
+            // volume={0.3}
+            loop={loop}
+            playing={playing}
             width="100%"
             url={url}
-            light={true}
+            light={light}
             controls
+            muted={muted}
           />
           {/* <span
             onClick={() => setPlaying((prev) => !prev)}

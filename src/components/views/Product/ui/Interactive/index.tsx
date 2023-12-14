@@ -18,7 +18,7 @@ const Interactive: FC<any> = ({ images, text }) => {
 
   return (
     <div className={s.interactive}>
-      <SectionTitle label="интерактивный эффект" />
+      <SectionTitle label="Описание" />
 
       {images ? (
         <div className={s.swiperWrapper}>

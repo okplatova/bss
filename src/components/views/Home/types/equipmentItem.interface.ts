@@ -5,5 +5,5 @@ export interface IEquipmentItemProps {
   title: string;
   img: StaticImageData;
   className: string;
-  customStyles: CSSProperties;
+  customStyles?: CSSProperties;
 }

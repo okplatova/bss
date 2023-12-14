@@ -47,7 +47,7 @@ const Header = () => {
       </Link>
       <div className={s.headerContent}>
         <div className={s.top}>
-          <NavItem link="#" label="infi@bss-tv.com" isMail />
+          <NavItem link="#" label="info@bss-tv.com" isMail />
           <NavItem link="#" label="+7 (900) 845-14-41" isPhone />
           <NavItem link="#" label="+7 (903) 796-24-14" isPhone />
           <div onClick={handleOpenMenu} className={s.burger}>

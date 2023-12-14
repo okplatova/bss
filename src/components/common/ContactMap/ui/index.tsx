@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 import s from "./styles.module.sass";
 
@@ -43,6 +43,12 @@ const ContactMap = () => {
               iconLayout: "default#image",
               iconImageHref: pin.src,
               iconImageSize: [232, 32],
+            }}
+          />
+          <ZoomControl
+            options={{
+              //@ts-ignore
+              float: "right",
             }}
           />
         </Map>

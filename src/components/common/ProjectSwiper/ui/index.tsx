@@ -11,7 +11,6 @@ import { ProjectItem } from "../../ProjectItem";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { useGetProjects, useSwiperRef } from "@/shared/hooks";
-import { Skeleton } from "@/components/ui/Skeleton";
 import { Navigation } from "swiper/modules";
 
 interface IProjectSwiperProps {
