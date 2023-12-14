@@ -60,7 +60,7 @@ const EquipmentSection = () => {
             centeredSlides={false}
             breakpoints={breakpoints}
             modules={[Navigation]}
-            className={s.swiper}
+            className={`${s.swiper} equip-swiper`}
             navigation={{
               //@ts-ignore
               prevEl: navigationPrev,

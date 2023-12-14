@@ -142,7 +142,7 @@ const Calculator: FC<any> = ({ specifications }) => {
               <span className={s.preSectionTitle}>Количество модулей</span>
               <div className={s.sectionItems}>
                 <div className={s.sectionItem}>
-                  <span>Ширина</span>
+                  <span>Общее</span>
                   <div className={s.separator} />
                   <span>{+WatchWidth * +WatchHeight} шт</span>
                 </div>
@@ -155,9 +155,11 @@ const Calculator: FC<any> = ({ specifications }) => {
                   <span>Общая</span>
                   <div className={s.separator} />
                   <span>
-                    {(size[0] / 1000) *
+                    {(
+                      (size[0] / 1000) *
                       +WatchWidth *
-                      ((size[1] / 1000) * +WatchHeight)}
+                      ((size[1] / 1000) * +WatchHeight)
+                    ).toFixed(3)}
                     м<sup>2</sup>
                   </span>
                 </div>

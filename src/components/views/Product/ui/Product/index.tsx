@@ -13,8 +13,6 @@ import { FC } from "react";
 import VideoPresentation from "../VideoPresentation";
 
 const Product: FC<any> = ({ product }) => {
-  console.log("product", product);
-
   const breadcrumbs = [
     {
       label: "Главная",
@@ -31,7 +29,7 @@ const Product: FC<any> = ({ product }) => {
 
   return (
     <div className={s.product}>
-      {product.CONTENT["Заголовок"] === "P3" ? (
+      {product.CONTENT["Калькулятор"] ? (
         <Calculator specifications={product.CONTENT["Характеристики"]} />
       ) : null}
 
@@ -50,7 +48,7 @@ const Product: FC<any> = ({ product }) => {
         </div>
         {product.CONTENT["Характеристики"] ? (
           <Specifications
-            title={product.CONTENT["Заголовок"]}
+            calc={product.CONTENT["Калькулятор"]}
             specifications={product.CONTENT["Характеристики"]}
           />
         ) : null}
