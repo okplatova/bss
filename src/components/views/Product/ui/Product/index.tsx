@@ -26,11 +26,15 @@ const Product: FC<any> = ({ product }) => {
       label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
+  console.log('product.CONTENT["Описание"]', product);
 
   return (
     <div className={s.product}>
       {product.CONTENT["Калькулятор"] === "true" ? (
-        <Calculator specifications={product.CONTENT["Характеристики"]} />
+        <Calculator
+          title={product.CONTENT["Заголовок"]}
+          specifications={product.CONTENT["Характеристики"]}
+        />
       ) : null}
 
       <Breadcrumbs items={breadcrumbs} />

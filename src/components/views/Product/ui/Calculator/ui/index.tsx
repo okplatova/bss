@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/Button";
 import { CloseIcon } from "@/components/ui/CloseIcon";
 import { Input } from "@/components/ui/Input";
 
-const Calculator: FC<any> = ({ specifications }) => {
+const Calculator: FC<any> = ({ title, specifications }) => {
   const { calculator } = useStores();
 
   const { register, control, watch } = useForm<FieldValues>({
@@ -52,7 +52,7 @@ const Calculator: FC<any> = ({ specifications }) => {
       <div className={s.menuContent} onClick={(e) => e.stopPropagation()}>
         <div className={s.top}>
           <Title variant="h3" className={s.title}>
-            P3
+            {title}
           </Title>
           <Button
             className={s.closebtn}
