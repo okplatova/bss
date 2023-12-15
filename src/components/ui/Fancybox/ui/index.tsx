@@ -25,7 +25,11 @@ function Fancybox(props: {
     };
   });
 
-  return <div ref={containerRef}>{props.children}</div>;
+  return (
+    <div style={{ height: "100%" }} ref={containerRef}>
+      {props.children}
+    </div>
+  );
 }
 
 export default Fancybox;
