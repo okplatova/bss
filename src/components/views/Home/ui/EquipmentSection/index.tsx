@@ -31,8 +31,11 @@ const EquipmentSection = () => {
     0: {
       slidesPerView: 1,
     },
-    767: {
+    500: {
       slidesPerView: 2,
+    },
+    767: {
+      slidesPerView: 3,
     },
     1024: {
       slidesPerView: 3,
