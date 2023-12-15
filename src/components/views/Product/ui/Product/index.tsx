@@ -29,7 +29,7 @@ const Product: FC<any> = ({ product }) => {
 
   return (
     <div className={s.product}>
-      {product.CONTENT["Калькулятор"] ? (
+      {product.CONTENT["Калькулятор"] === "true" ? (
         <Calculator specifications={product.CONTENT["Характеристики"]} />
       ) : null}
 

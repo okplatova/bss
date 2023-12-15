@@ -39,7 +39,7 @@ const Specifications: FC<any> = ({ specifications, calc }) => {
           </div>
         ))}
       </div>
-      {calc ? (
+      {calc === "true" ? (
         <Button
           onClick={handleOpenCalculator}
           className={s.calcBtn}
