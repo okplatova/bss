@@ -58,7 +58,7 @@ const Product: FC<any> = ({ product }) => {
         ) : null}
         {product.CONTENT["Эффект Картинка"] || product.CONTENT["Описание"] ? (
           <Interactive
-            text={product.CONTENT["Описание"]}
+            text={product.CONTENT["Описание"].TEXT}
             images={product.CONTENT["Эффект Картинка"]}
           />
         ) : null}

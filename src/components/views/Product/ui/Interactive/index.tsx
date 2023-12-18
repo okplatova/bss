@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import s from "./styles.module.sass";
+import he from "he";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { FC } from "react";
@@ -82,7 +83,9 @@ const Interactive: FC<any> = ({ images, text }) => {
           </div>
         </div>
       ) : null}
-      {text ? <p>{text}</p> : null}
+      {text ? (
+        <div dangerouslySetInnerHTML={{ __html: he.decode(text) }}></div>
+      ) : null}
     </div>
   );
 };
