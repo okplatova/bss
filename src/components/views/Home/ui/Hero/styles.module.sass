@@ -17,6 +17,8 @@
             &:nth-child(5)
                 transition-delay: 1800ms
     .heroContent
+        span 
+            opacity: 1
         p
             opacity: 1
     .video
@@ -62,10 +64,22 @@
         margin-top: 2rem
         @media(max-width: $tab)
             margin-top: 1rem
+        span 
+            opacity: 0
+            transition: opacity var(--trs-500) 2700ms
+            max-width: 900px
+            font-size: 18px
+            font-style: normal
+            font-weight: 400
+            line-height: 100%
+            margin-bottom: 1rem
+            display: block
+            @media(max-width: $tab)
+                font-size: 16px
         p
             opacity: 0
             transition: opacity var(--trs-500) 2700ms
-            max-width: 448px
+            max-width: 900px
             font-size: 16px
             font-style: normal
             font-weight: 400
