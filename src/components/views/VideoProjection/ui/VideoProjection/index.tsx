@@ -125,15 +125,19 @@ const VideoProjection: FC<any> = ({ complexes }) => {
               <div className={s.complexeContentItem}>
                 <SectionTitle label="Оборудование" />
                 <div className={s.quipmentList}>
-                  {filteredProduct[0].OBORUDOVANIE.map((equipment: any) => (
-                    //@ts-ignore
-                    <EquipmentItem
-                      key={equipment.NAME}
-                      title={equipment.NAME}
-                      type={equipment.NAME}
-                      // options={equipment.options}
-                    />
-                  ))}
+                  {filteredProduct[0].OBORUDOVANIE ? (
+                    <>
+                      {filteredProduct[0].OBORUDOVANIE.map((equipment: any) => (
+                        //@ts-ignore
+                        <EquipmentItem
+                          key={equipment.NAME}
+                          title={equipment.NAME}
+                          type={equipment.NAME}
+                          // options={equipment.options}
+                        />
+                      ))}
+                    </>
+                  ) : null}
                 </div>
               </div>
             </div>
