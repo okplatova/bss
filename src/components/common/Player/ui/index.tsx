@@ -15,9 +15,11 @@ const Player: FC<IPlayerProps> = ({
   muted = false,
   playing = false,
   loop = false,
+  controls = true,
 }) => {
   const [hydrate, setHydrate] = useState(false);
-  // const [playing, setPlaying] = useState(false);
+  const [isPlaying, setPlaying] = useState(playing);
+  console.log("controls", controls);
 
   useEffect(() => {
     setHydrate(true);
@@ -29,19 +31,21 @@ const Player: FC<IPlayerProps> = ({
           <PlayerDynamic
             // volume={0.3}
             loop={loop}
-            playing={playing}
+            playing={isPlaying}
             width="100%"
             url={url}
             light={light}
-            controls
+            controls={controls}
             muted={muted}
           />
-          {/* <span
-            onClick={() => setPlaying((prev) => !prev)}
-            className={s.controls}
-          >
-            {playing ? "" : <PlayIcon />}
-          </span> */}
+          {!controls ? (
+            <span
+              onClick={() => setPlaying((prev) => !prev)}
+              className={s.controls}
+            >
+              {isPlaying ? "" : <PlayIcon />}
+            </span>
+          ) : null}
         </div>
       )}
     </div>

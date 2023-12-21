@@ -12,7 +12,7 @@ const VideoSection: FC<any> = ({ video }) => {
       {video.length > 1 ? (
         <VideoSwiper video={video} />
       ) : (
-        <Player url={video[0]} />
+        <Player controls url={video[0]} />
       )}
     </div>
   );

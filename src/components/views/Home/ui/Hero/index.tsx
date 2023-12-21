@@ -4,12 +4,12 @@ import s from "./styles.module.sass";
 
 import { Title } from "@/components/ui/Title";
 import { Player } from "@/components/common/Player";
-import { useGetMainEquipment } from "@/shared/hooks";
+import { useGetMainEquipment, useGetMainVideo } from "@/shared/hooks";
 
 const Hero = () => {
   const [isActive, setActive] = useState(false);
   const { equipments, isLoading } = useGetMainEquipment();
-
+  const { video } = useGetMainVideo();
   useEffect(() => {
     setActive(true);
   }, []);
@@ -39,7 +39,8 @@ const Hero = () => {
         <div className={s.videoWrapper}>
           <div className={s.backdrop} />
           <Player
-            url="https://vimeo.com/842048913"
+            controls={false}
+            url={video}
             muted
             playing
             loop
