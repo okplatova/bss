@@ -30,7 +30,7 @@ const VideoProjection: FC<any> = ({ complexes }) => {
   const { projection } = useStores();
 
   const [selectedComplex, setSelectedComplex] = useState<string>(
-    complexes[0].CONTENT["Комплексы"][0].NAME
+    complexes.CONTENT["Комплексы"][0].NAME
   );
   const handleOpenMenu = () => {
     projection.handleOpenMenu();
@@ -40,18 +40,19 @@ const VideoProjection: FC<any> = ({ complexes }) => {
     setSelectedComplex(title);
   };
   useEffect(() => {
-    setSelectedComplex(complexes[0].CONTENT["Комплексы"][0].NAME);
+    setSelectedComplex(complexes.CONTENT["Комплексы"][0].NAME);
     projection.setCatalogItem({
       id: 0,
-      title: complexes[0].CONTENT["Комплексы"][0].NAME,
+      title: complexes.CONTENT["Комплексы"][0].NAME,
       count: 0,
     });
   }, [complexes, projection]);
+  console.log("complexes", complexes);
 
   const filteredProduct =
     complexes &&
     //@ts-ignore
-    complexes[0].CONTENT["Комплексы"].filter((item) => {
+    complexes.CONTENT["Комплексы"].filter((item) => {
       return item.NAME === selectedComplex;
     });
 
@@ -81,7 +82,7 @@ const VideoProjection: FC<any> = ({ complexes }) => {
             <SectionTitle label="Комплексы" />
           </div>
           <MobileMenu
-            complexes={complexes[0].CONTENT["Комплексы"]}
+            complexes={complexes.CONTENT["Комплексы"]}
             toggleComplex={setSelectedComplex}
           />
           <div className={s.modalBtnWrapper}>
@@ -98,7 +99,7 @@ const VideoProjection: FC<any> = ({ complexes }) => {
           <div className={s.complexesContent}>
             <div className={s.complexesListWrapper}>
               <div className={s.complexesList}>
-                {complexes[0].CONTENT["Комплексы"].map((complex: any) => {
+                {complexes.CONTENT["Комплексы"].map((complex: any) => {
                   const buttonClass = `${s.complexeBtn} ${
                     selectedComplex === complex.NAME ? s.active : ""
                   }`;
