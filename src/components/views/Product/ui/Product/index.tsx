@@ -26,7 +26,6 @@ const Product: FC<any> = ({ product }) => {
       label: product.CONTENT["Заголовок"] ? product.CONTENT["Заголовок"] : null,
     },
   ];
-  console.log('product.CONTENT["Описание"]', product);
 
   return (
     <div className={s.product}>

@@ -120,12 +120,15 @@ const VideoProjection: FC<any> = ({ complexes }) => {
             <div className={s.complexeContent}>
               <div className={s.complexeContentItem}>
                 <SectionTitle label="Видеопроекционный комплекс" />
-                <ProjectionSwiper images={filteredProduct[0].PICTURE} />
+                <ProjectionSwiper
+                  images={filteredProduct[0].PICTURE}
+                  text={filteredProduct[0].TEXT}
+                />
               </div>
-              <div className={s.complexeContentItem}>
-                <SectionTitle label="Оборудование" />
-                <div className={s.quipmentList}>
-                  {filteredProduct[0].OBORUDOVANIE ? (
+              {filteredProduct[0].OBORUDOVANIE ? (
+                <div className={s.complexeContentItem}>
+                  <SectionTitle label="Оборудование" />
+                  <div className={s.quipmentList}>
                     <>
                       {filteredProduct[0].OBORUDOVANIE.map((equipment: any) => (
                         //@ts-ignore
@@ -137,9 +140,9 @@ const VideoProjection: FC<any> = ({ complexes }) => {
                         />
                       ))}
                     </>
-                  ) : null}
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
           </div>
         </div>

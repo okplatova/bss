@@ -26,7 +26,7 @@ const breakpoints = {
   },
 };
 
-const ProjectionSwiper: FC<any> = ({ images }) => {
+const ProjectionSwiper: FC<any> = ({ images, text }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
   const sliderRef = useRef(null);
@@ -94,11 +94,7 @@ const ProjectionSwiper: FC<any> = ({ images }) => {
           <ArrowRightIcon />
         </button>
       </div>
-      <p>
-        Подготовим инсталяции видеокомплексов любой сложности, подберем и
-        поможем приобрести оборудование и софт для вашей концепции с написанием
-        подробной технической документации
-      </p>
+      {text ? <p>{text}</p> : null}
     </div>
   );
 };

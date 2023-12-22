@@ -19,7 +19,6 @@ const Player: FC<IPlayerProps> = ({
 }) => {
   const [hydrate, setHydrate] = useState(false);
   const [isPlaying, setPlaying] = useState(playing);
-  console.log("controls", controls);
 
   useEffect(() => {
     setHydrate(true);

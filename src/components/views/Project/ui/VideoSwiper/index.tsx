@@ -53,7 +53,7 @@ const VideoSwiper: FC<any> = ({ video }) => {
           <>
             {video.map((result: string, index: number) => (
               <SwiperSlide key={index}>
-                <Player url={result} />
+                <Player controls url={result} />
               </SwiperSlide>
             ))}
           </>

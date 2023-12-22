@@ -8,7 +8,6 @@ import { useGetServices } from "@/shared/hooks/useGetServices";
 
 const ServicesSection = () => {
   const { services } = useGetServices();
-  console.log("services", services);
 
   return (
     <section className={`${s.section} container`}>
