@@ -28,7 +28,7 @@ const ContactsSection = () => {
           <div className={s.contactsList}>
             <ContactItem
               title="Телефоны для связи"
-              links={["+7 (900) 845-14-41", "+7 (903) 796-24-14"]}
+              links={["+7 (499) 136-24-44", "+7 (905) 509-72-72"]}
             />
             <ContactItem title="Email" links={["infi@bss-tv.com"]} isMail />
             <ContactItem title="Факс" links={["+7 (495) 931-99-09"]} />
