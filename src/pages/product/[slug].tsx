@@ -17,13 +17,13 @@ export const getStaticPaths = (async () => {
     product.CHILD &&
       Object.values(product.CHILD).forEach((child) => {
         //@ts-ignore
-        if (child.CHILD) {
-          //@ts-ignore
-          Object.values(child.CHILD).forEach((item) => {
-            //@ts-ignore
-            total = [...total, ...Object.values(item.ITM)];
-          });
-        }
+        // if (child.CHILD) {
+        //   //@ts-ignore
+        //   Object.values(child.CHILD).forEach((item) => {
+        //     //@ts-ignore
+        //     total = [...total, ...Object.values(item.ITM)];
+        //   });
+        // }
         //@ts-ignore
         if (!child.ITM) {
           return;
@@ -80,13 +80,13 @@ export const getStaticProps = (async (context) => {
     product.CHILD &&
       Object.values(product.CHILD).forEach((child) => {
         //@ts-ignore
-        if (child.CHILD) {
-          //@ts-ignore
-          Object.values(child.CHILD).filter((item) => {
-            //@ts-ignore
-            total = [...total, ...Object.values(item.ITM)];
-          });
-        }
+        // if (child.CHILD) {
+        //   //@ts-ignore
+        //   Object.values(child.CHILD).filter((item) => {
+        //     //@ts-ignore
+        //     total = [...total, ...Object.values(item.ITM)];
+        //   });
+        // }
         //@ts-ignore
         if (!child.ITM) {
           return;

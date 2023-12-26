@@ -120,13 +120,25 @@ const Catalog: FC<any> = ({ products }) => {
               catalogItem.CHILD &&
                 Object.values(catalogItem.CHILD).forEach((child) => {
                   //@ts-ignore
-                  if (child.CHILD) {
-                    //@ts-ignore
-                    Object.values(child.CHILD).forEach((item) => {
-                      //@ts-ignore
-                      totalChild = [...totalChild, ...Object.values(item.ITM)];
-                    });
-                  }
+                  // if (child.CHILD) {
+                  //   //@ts-ignore
+                  //   Object.values(child.CHILD).forEach((item) => {
+                  //     //@ts-ignore
+                  //     console.log("item", item);
+
+                  //     if (item.ITM === Array) {
+                  //       //@ts-ignore
+                  //       totalChild = [...totalChild, ...item.ITM];
+                  //     } else {
+                  //       // totalChild = [
+                  //       //   //@ts-ignore
+                  //       //   ...totalChild,
+                  //       //   //@ts-ignore
+                  //       //   ...Object.values(item.ITM),
+                  //       // ];
+                  //     }
+                  //   });
+                  // }
                   //@ts-ignore
                   if (!child.ITM) {
                     return;
@@ -175,10 +187,10 @@ const Catalog: FC<any> = ({ products }) => {
               //@ts-ignore
               if (accordion.CHILD) {
                 //@ts-ignore
-                Object.values(accordion.CHILD).forEach((item) => {
-                  //@ts-ignore
-                  totalChild = [...totalChild, ...Object.values(item.ITM)];
-                });
+                // Object.values(accordion.CHILD).forEach((item) => {
+                //   //@ts-ignore
+                //   totalChild = [...totalChild, ...Object.values(item.ITM)];
+                // });
               }
               //@ts-ignore
               if (!accordion.ITM) {
