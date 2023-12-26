@@ -3,7 +3,7 @@ import { VideoProjection } from "@/components/views/VideoProjection";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 export const getStaticProps = (async (context) => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/complex/");
+  const res = await fetch("https://adm.bss-tv.com/complex/");
   const complexes = await res.json();
 
   return { props: { complexes }, revalidate: 60 };
@@ -11,7 +11,9 @@ export const getStaticProps = (async (context) => {
   complexes: any;
 }>;
 
-const VideoProjectionPage = ({complexes}: InferGetStaticPropsType<typeof getStaticProps>)  => {
+const VideoProjectionPage = ({
+  complexes,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
@@ -20,7 +22,7 @@ const VideoProjectionPage = ({complexes}: InferGetStaticPropsType<typeof getStat
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <VideoProjection complexes={complexes}/>
+      <VideoProjection complexes={complexes} />
     </>
   );
 };

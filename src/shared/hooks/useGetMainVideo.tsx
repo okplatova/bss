@@ -11,7 +11,7 @@ export const useGetMainVideo = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/",
+        url: "https://adm.bss-tv.com/",
       });
       setVideo(res.data.VIDEO[0].PREVIEW_TEXT);
     } catch (e) {

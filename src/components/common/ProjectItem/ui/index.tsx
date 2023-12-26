@@ -35,7 +35,7 @@ const ProjectItem: FC<IProjectItemProps> = ({
           <PlusIcon />
         </Button>
         <Image
-          src={`https://dev9.paradigma-digital.ru/${img}`}
+          src={`https://adm.bss-tv.com/${img}`}
           alt="project"
           fill
           loading="lazy"

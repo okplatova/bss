@@ -10,7 +10,7 @@ const ClientItem: FC<IClientItemProps> = ({ img }) => {
     <div className={s.clientItem}>
       <div className={s.imageWrapper}>
         <Image
-          src={`https://dev9.paradigma-digital.ru${img}`}
+          src={`https://adm.bss-tv.com${img}`}
           alt="client"
           fill
           loading="lazy"

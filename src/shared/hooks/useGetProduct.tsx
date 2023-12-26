@@ -11,7 +11,7 @@ export const useGetProduct = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/equipment/",
+        url: "https://adm.bss-tv.com/equipment/",
       });
       setProduct(res.data && Object.values(res.data));
     } catch (e) {

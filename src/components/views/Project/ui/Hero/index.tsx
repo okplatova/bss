@@ -26,7 +26,7 @@ const Hero: FC<IHeroProps> = ({ title, img }) => {
         <div className={s.imageWrapper}>
           {img ? (
             <Image
-              src={`https://dev9.paradigma-digital.ru/${img}`}
+              src={`https://adm.bss-tv.com/${img}`}
               fill
               alt="hero"
               loading="lazy"

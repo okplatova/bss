@@ -11,7 +11,7 @@ export const useGetVideostudio = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/videostudio/",
+        url: "https://adm.bss-tv.com/videostudio/",
       });
       setVideostudion(res.data);
     } catch (e) {

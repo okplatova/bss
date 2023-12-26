@@ -4,7 +4,7 @@ import { Catalog } from "@/components/views/Catalog";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 export const getStaticProps = (async (context) => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/equipment/");
+  const res = await fetch("https://adm.bss-tv.com/equipment/");
   const products = await res.json();
 
   return { props: { products } };

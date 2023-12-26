@@ -8,7 +8,7 @@ import {
 } from "next";
 
 export const getStaticProps = (async (context) => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
+  const res = await fetch("https://adm.bss-tv.com/projects/");
   const projects = await res.json();
 
   return { props: { projects }, revalidate: 60 };

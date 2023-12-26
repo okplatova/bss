@@ -15,7 +15,7 @@ const AccordionContent: FC<any> = ({ accordion, child }) => {
       {accordion.PICTURE ? (
         <div className={s.imageWrapper}>
           <Image
-            src={`https://dev9.paradigma-digital.ru/${accordion.PICTURE}`}
+            src={`https://adm.bss-tv.com/${accordion.PICTURE}`}
             fill
             alt="accordion"
             loading="lazy"

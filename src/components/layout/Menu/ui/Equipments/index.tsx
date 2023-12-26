@@ -139,7 +139,7 @@ const Equipments = () => {
                     equipments?.PICTURE ? (
                       <Image
                         //@ts-ignore
-                        src={`https://dev9.paradigma-digital.ru/${equipments.PICTURE}`}
+                        src={`https://adm.bss-tv.com/${equipments.PICTURE}`}
                         fill
                         alt="equipment"
                       />

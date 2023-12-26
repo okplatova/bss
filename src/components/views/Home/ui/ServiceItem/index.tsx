@@ -11,7 +11,7 @@ const ServiceItem: FC<IServiceItemProps> = ({ img, title, text }) => {
       <div className={s.title}>
         <h6>{title}</h6>
         <Image
-          src={`https://dev9.paradigma-digital.ru${img}`}
+          src={`https://adm.bss-tv.com${img}`}
           alt={title}
           width={72}
           height={72}

@@ -75,7 +75,7 @@ const ProjectionSwiper: FC<any> = ({ images, text }) => {
               <div className={s.imageWrapper}>
                 <Image
                   data-fancybox="gallery"
-                  src={`https://dev9.paradigma-digital.ru/${image}`}
+                  src={`https://adm.bss-tv.com/${image}`}
                   fill
                   alt="projection"
                   loading="lazy"

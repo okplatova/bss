@@ -10,7 +10,7 @@ import {
 import he from "he";
 
 export const getStaticPaths = (async () => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/video/");
+  const res = await fetch("https://adm.bss-tv.com/video/");
   const data = await res.json();
 
   const paths = data.map((project: any) => ({
@@ -25,7 +25,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async (context) => {
-  const res = await fetch("https://dev9.paradigma-digital.ru/video/");
+  const res = await fetch("https://adm.bss-tv.com/video/");
   const data = await res.json();
   const project = data.filter((project: any) => {
     return (
@@ -41,7 +41,7 @@ export const getStaticProps = (async (context) => {
 }>;
 
 // export const getServerSideProps = (async (context) => {
-//   const res = await fetch("https://dev9.paradigma-digital.ru/projects/");
+//   const res = await fetch("https://adm.bss-tv.com/projects/");
 //   const data = await res.json();
 //   const project = data.filter((project: any) => {
 //     return project.DETAIL_PAGE_URL === context.params?.slug;

@@ -11,7 +11,7 @@ export const useGetComplex = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/complex/",
+        url: "https://adm.bss-tv.com/complex/",
       });
       setComplex(res.data);
     } catch (e) {

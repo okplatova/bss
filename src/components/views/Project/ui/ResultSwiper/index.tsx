@@ -66,7 +66,7 @@ const ResultSwiper: FC<IResultSwiperProps> = ({ author, results }) => {
                   <div className={s.imageWrapper}>
                     <Image
                       data-fancybox="gallery"
-                      src={`https://dev9.paradigma-digital.ru/${result}`}
+                      src={`https://adm.bss-tv.com/${result}`}
                       fill
                       alt="result"
                       loading="lazy"

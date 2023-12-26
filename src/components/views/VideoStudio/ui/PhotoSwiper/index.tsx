@@ -75,7 +75,7 @@ const PhotoSwiper = () => {
                     <div className={s.imageWrapper}>
                       <Image
                         data-fancybox="gallery"
-                        src={`https://dev9.paradigma-digital.ru/${photo}`}
+                        src={`https://adm.bss-tv.com/${photo}`}
                         fill
                         alt="photo"
                         loading="lazy"

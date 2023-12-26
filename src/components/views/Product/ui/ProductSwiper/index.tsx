@@ -43,13 +43,13 @@ const ProductSwiper: FC<any> = ({ images }) => {
           >
             {images.map((image: string) => (
               <SwiperSlide
-                data-caption={`https://dev9.paradigma-digital.ru/${image}`}
+                data-caption={`https://adm.bss-tv.com/${image}`}
                 key={image}
               >
                 <div className={s.imageWrapper}>
                   <Image
                     data-fancybox="gallery"
-                    src={`https://dev9.paradigma-digital.ru/${image}`}
+                    src={`https://adm.bss-tv.com/${image}`}
                     fill
                     alt="product"
                     loading="lazy"
@@ -90,13 +90,13 @@ const ProductSwiper: FC<any> = ({ images }) => {
         >
           {images.map((image: string) => (
             <SwiperSlide
-              data-caption={`https://dev9.paradigma-digital.ru/${image}`}
+              data-caption={`https://adm.bss-tv.com/${image}`}
               key={image}
             >
               <div className={s.imageWrapper}>
                 <Image
                   data-fancybox="gallery"
-                  src={`https://dev9.paradigma-digital.ru/${image}`}
+                  src={`https://adm.bss-tv.com/${image}`}
                   fill
                   alt="product"
                   loading="lazy"

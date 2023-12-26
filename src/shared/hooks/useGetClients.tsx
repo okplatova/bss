@@ -11,7 +11,7 @@ export const useGetClients = () => {
 
       const res = await axios({
         method: "get",
-        url: "https://dev9.paradigma-digital.ru/clients/",
+        url: "https://adm.bss-tv.com/clients/",
       });
       setClients(res.data);
     } catch (e) {
