@@ -99,25 +99,23 @@ const VideoProjection: FC<any> = ({ complexes }) => {
           <div className={s.complexesContent}>
             <div className={s.complexesListWrapper}>
               <div className={s.complexesList}>
-                {complexes.CONTENT["Комплексы"]
-                  .reverse()
-                  .map((complex: any) => {
-                    const buttonClass = `${s.complexeBtn} ${
-                      selectedComplex === complex.NAME ? s.active : ""
-                    }`;
-                    return (
-                      <Button
-                        key={complex.ID}
-                        onClick={() => toggleComplex(complex.NAME)}
-                        size="medium"
-                        ariaLabel="complexe"
-                        variable="clear"
-                        className={buttonClass}
-                      >
-                        {complex.NAME}
-                      </Button>
-                    );
-                  })}
+                {complexes.CONTENT["Комплексы"].map((complex: any) => {
+                  const buttonClass = `${s.complexeBtn} ${
+                    selectedComplex === complex.NAME ? s.active : ""
+                  }`;
+                  return (
+                    <Button
+                      key={complex.ID}
+                      onClick={() => toggleComplex(complex.NAME)}
+                      size="medium"
+                      ariaLabel="complexe"
+                      variable="clear"
+                      className={buttonClass}
+                    >
+                      {complex.NAME}
+                    </Button>
+                  );
+                })}
               </div>
             </div>
             <div className={s.complexeContent}>
