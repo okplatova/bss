@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { equipmentSwiper } from "../../data/equipmentSwiper";
-
+import { Navigation } from "swiper/modules";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -13,6 +13,7 @@ import { Fancybox } from "@/components/ui/Fancybox";
 import { ArrowLeftIcon } from "@/components/ui/ArrowLeftIcon";
 import { ArrowRightIcon } from "@/components/ui/ArrowRightIcon";
 import { projectionSwiper } from "../../data/projectionSwiper";
+import { useSwiperRef } from "@/shared/hooks";
 
 const breakpoints = {
   0: {
@@ -29,6 +30,10 @@ const breakpoints = {
 const ProjectionSwiper: FC<any> = ({ images, text }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(1);
+
+  const [navigationPrev, navigationPrevRef] = useSwiperRef();
+  const [navigationNext, navigationNextRef] = useSwiperRef();
+
   const sliderRef = useRef(null);
 
   const handleNextSlide = () => {
@@ -69,6 +74,13 @@ const ProjectionSwiper: FC<any> = ({ images, text }) => {
           className="mySwiper"
           centeredSlides={false}
           breakpoints={breakpoints}
+          modules={[Navigation]}
+          navigation={{
+            //@ts-ignore
+            prevEl: navigationPrev,
+            //@ts-ignore
+            nextEl: navigationNext,
+          }}
         >
           {images.map((image: string) => (
             <SwiperSlide data-caption={image} key={image}>
@@ -87,10 +99,10 @@ const ProjectionSwiper: FC<any> = ({ images, text }) => {
       </Fancybox>
 
       <div className={s.swiperBottom}>
-        <button onClick={handlePrevSlide} aria-label="navigation">
+        <button ref={navigationPrevRef} aria-label="navigation">
           <ArrowLeftIcon />
         </button>
-        <button onClick={handleNextSlide} aria-label="navigation">
+        <button ref={navigationNextRef} aria-label="navigation">
           <ArrowRightIcon />
         </button>
       </div>
