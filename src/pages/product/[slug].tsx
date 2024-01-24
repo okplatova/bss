@@ -131,7 +131,7 @@ export const getStaticProps = (async (context) => {
   }
 
   //@ts-ignore
-  return { props: { item } };
+  return { props: { item }, revalidate: 60 };
 }) satisfies GetServerSideProps<{
   item: any;
 }>;
