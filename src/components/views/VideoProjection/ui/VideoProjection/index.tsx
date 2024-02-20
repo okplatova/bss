@@ -47,7 +47,6 @@ const VideoProjection: FC<any> = ({ complexes }) => {
       count: 0,
     });
   }, [complexes, projection]);
-  console.log("complexes", complexes);
 
   const filteredProduct =
     complexes &&

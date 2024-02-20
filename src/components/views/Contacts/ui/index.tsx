@@ -50,7 +50,7 @@ const Contacts = () => {
               <ContactItem
                 className={s.contactItem}
                 title="Email"
-                links={["infi@bss-tv.com"]}
+                links={["info@bss-tv.com"]}
                 isMail
               />
               <ContactItem
