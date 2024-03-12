@@ -7,7 +7,7 @@ export const getStaticProps = (async (context) => {
   const res = await fetch("https://adm.bss-tv.com/equipment/");
   const products = await res.json();
 
-  return { props: { products } };
+  return { props: { products }, revalidate: 60 };
 }) satisfies GetStaticProps<{
   products: any;
 }>;
