@@ -16,7 +16,7 @@ const Footer = () => {
           href="https://paradigma-digital.ru/"
           className={s.development}
         >
-          <ParadigmaLogo />
+          {/* <ParadigmaLogo /> */}
           <p>
             <span>разработка сайта – </span>
             <span>paradigma</span>
