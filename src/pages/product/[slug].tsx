@@ -3,6 +3,7 @@ import { Product } from "@/components/views/Product";
 import {
   GetServerSideProps,
   GetStaticPaths,
+  GetStaticProps,
   InferGetServerSidePropsType,
   InferGetStaticPropsType,
 } from "next";
@@ -131,8 +132,8 @@ export const getStaticProps = (async (context) => {
   }
 
   //@ts-ignore
-  return { props: { item, revalidate: 60 } };
-}) satisfies GetServerSideProps<{
+  return { props: { item }, revalidate: 60 };
+}) satisfies GetStaticProps<{
   item: any;
 }>;
 

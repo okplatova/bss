@@ -35,22 +35,10 @@ export const getStaticProps = (async (context) => {
     );
   });
 
-  return { props: { project, revalidate: 60 } };
+  return { props: { project }, revalidate: 60 };
 }) satisfies GetStaticProps<{
   project: any;
 }>;
-
-// export const getServerSideProps = (async (context) => {
-//   const res = await fetch("https://adm.bss-tv.com/projects/");
-//   const data = await res.json();
-//   const project = data.filter((project: any) => {
-//     return project.DETAIL_PAGE_URL === context.params?.slug;
-//   });
-
-//   return { props: { project } };
-// }) satisfies GetServerSideProps<{
-//   project: any;
-// }>;
 
 const ProjectPage = ({
   project,
