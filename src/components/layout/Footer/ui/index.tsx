@@ -3,7 +3,7 @@ import s from "./styles.module.sass";
 const Footer = () => {
   return (
     <footer className={s.footer}>
-      {/* <div className={`${s.footerInner} container`}>
+      <div className={`${s.footerInner} container`}>
         <p className={s.text}>
           <span>Big Screen Show © 2023.</span>
           <span>
@@ -22,7 +22,7 @@ const Footer = () => {
             <span>paradigma</span>
           </p>
         </a>
-      </div> */}
+      </div>
     </footer>
   );
 };

@@ -10,9 +10,7 @@ const Breadcrumbs: FC<IBreadcrumbsProps> = ({ items, className }) => {
   const { push } = useRouter();
 
   const breadcrumbsClass = `${s.breadcrumbs} ${className ? className : ""}`;
-  console.log("====================================");
-  console.log(items);
-  console.log("====================================");
+
   return (
     <div className={breadcrumbsClass}>
       {items.map((item) => {
