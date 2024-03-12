@@ -3,7 +3,7 @@ import s from "./styles.module.sass";
 const Footer = () => {
   return (
     <footer className={s.footer}>
-      <div className={`${s.footerInner} container`}>
+      {/* <div className={`${s.footerInner} container`}>
         <p className={s.text}>
           <span>Big Screen Show © 2023.</span>
           <span>
@@ -16,13 +16,13 @@ const Footer = () => {
           href="https://paradigma-digital.ru/"
           className={s.development}
         >
-          {/* <ParadigmaLogo /> */}
+          <ParadigmaLogo />
           <p>
             <span>разработка сайта – </span>
             <span>paradigma</span>
           </p>
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 };
