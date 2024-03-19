@@ -204,7 +204,7 @@ export const getServerSideProps = (async (context) => {
   }
 
   //@ts-ignore
-  return { props: { item }, revalidate: 60 };
+  return { props: { item } };
 }) satisfies GetServerSideProps<{
   item: any;
 }>;
