@@ -13,6 +13,9 @@ export const useGetProjects = () => {
         method: "get",
         url: "https://adm.bss-tv.com/projects/",
       });
+      console.log("====================================");
+      console.log(res);
+      console.log("====================================");
       setProjects(res.data);
     } catch (e) {
       console.log("error projects", e);

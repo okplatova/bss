@@ -6,7 +6,19 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    largePageDataBytes: 180 * 1000,
+    largePageDataBytes: 1800 * 1000,
+  },
+  rewrites: async () => {
+    return [
+      {
+        source: "/:path*",
+        destination: "/:path*",
+      },
+      {
+        source: "/other/:path*",
+        destination: "/:path*",
+      },
+    ];
   },
 };
 

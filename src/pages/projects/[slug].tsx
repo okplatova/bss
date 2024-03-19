@@ -18,6 +18,9 @@ export const getStaticPaths = (async () => {
       slug: project.DETAIL_PAGE_URL.replace("/projects/", "").slice(0, -1),
     },
   }));
+  console.log("====================================");
+  console.log(paths);
+  console.log("====================================");
   return {
     paths,
     fallback: false,
