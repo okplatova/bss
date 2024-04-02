@@ -43,7 +43,8 @@ import he from "he";
 export const getServerSideProps = (async (context) => {
   const res = await fetch("https://adm.bss-tv.com/projects/");
   const data = await res.json();
-  const project = data.filter((project: any) => {
+
+  const project = data.PROJECTS.filter((project: any) => {
     return (
       project.DETAIL_PAGE_URL.replace("/projects/", "").slice(0, -1) ===
       //@ts-ignore
