@@ -18,7 +18,6 @@ const ProjectContent: FC<any> = ({ projects, isGrid }) => {
   const [ref, inView] = useInView();
 
   // const { projects, isLoading } = useGetProjects();
-
   useEffect(() => {
     setAllProjects(projects);
     setVisibleProjects(projects.slice(0, 6));

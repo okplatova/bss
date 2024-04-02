@@ -197,7 +197,6 @@ export const getServerSideProps = (async (context) => {
 
   //@ts-ignore
   if (!item || item.length === 0) {
-    console.log("empty");
     return {
       notFound: true,
     };

@@ -27,16 +27,17 @@ const breadcrumbs = [
 
 const Catalog: FC<any> = ({ products }) => {
   const { catalog } = useStores();
+  const productsAll = products[0];
 
   const [selectedAccordion, setSelectedAccordion] = useState<number>(0);
   const [selectedCatalog, setSelectedCatalog] = useState<string>(
     catalog.currentCatalogItem.title
       ? catalog.currentCatalogItem.title
-      : products[0].NAME
+      : //@ts-ignore
+        Object.values(productsAll.CHILD)[0].NAME
   );
 
   const { product, isLoading } = useGetProduct();
-
   const toggleAccordion = (index: number) => {
     setSelectedAccordion(index);
   };
@@ -63,9 +64,10 @@ const Catalog: FC<any> = ({ products }) => {
   };
 
   const filteredProduct =
-    products &&
+    productsAll &&
     //@ts-ignore
-    products.filter((item) => {
+    Object.values(productsAll.CHILD).filter((item) => {
+      //@ts-ignore
       return item.NAME === selectedCatalog;
     });
 
@@ -76,21 +78,7 @@ const Catalog: FC<any> = ({ products }) => {
         <Title variant="h1" className={`${s.title} container`}>
           оборудование
         </Title>
-        <p className="container">
-          На сегодняшний день компания обладает самым большим в Москве парком
-          светодиодных экранов, с шагом пикселя от 1 до 30 мм. Способных
-          удовлетворить самым строгим условиям проектов различной сложности. Мы
-          обладаем модулями с уникальным облегченным конструктивом, светодиодами
-          повышенной яркости и контрастности, а так же светодиодными
-          экранами-сетками высокого разрешения с повышенным коэффициентом
-          пропускания. Наряду с этим компания имеет в своем распоряжении более
-          100 можных проекторов, со световым потоком от 20 до 40 тыс. люмен и
-          большим парком обьективов, позволивших нас реализовать такие
-          масштабные проекты, как Ледовые шоу и мероприятия в рамках проведения
-          «Круга Света» в Москве. Для реализации сложных комплексных
-          мероприятий, презентаций, концертов и интерактивных шоу компания
-          активно использует различные серверные решения.
-        </p>
+        <p className="container">{products[1]}</p>
       </div>
       <div className={s.catalogContent}>
         <MobileMenu toggleCatalog={setSelectedCatalog} />
@@ -108,16 +96,18 @@ const Catalog: FC<any> = ({ products }) => {
         <div className={s.catalogList}>
           {
             //@ts-ignore
-            products?.map((catalogItem, index) => {
+            Object.values(productsAll.CHILD)?.map((catalogItem, index) => {
               const buttonClass = `${s.catalogBtn} ${
+                //@ts-ignore
                 selectedCatalog === catalogItem.NAME ? s.active : ""
               }`;
 
               const children = 1;
               //@ts-ignore
               let totalChild = [];
-
+              //@ts-ignore
               catalogItem.CHILD &&
+                //@ts-ignore
                 Object.values(catalogItem.CHILD).forEach((child) => {
                   //@ts-ignore
                   // if (child.CHILD) {
@@ -158,15 +148,26 @@ const Catalog: FC<any> = ({ products }) => {
                 <>
                   {totalChild.length ? (
                     <Button
-                      key={catalogItem.ID}
+                      key={
+                        //@ts-ignore
+                        catalogItem.ID
+                      }
                       count={totalChild.length}
                       size="medium"
                       variable="clear"
                       className={buttonClass}
-                      onClick={() => toggleCatalog(catalogItem.NAME)}
+                      onClick={() =>
+                        toggleCatalog(
+                          //@ts-ignore
+                          catalogItem.NAME
+                        )
+                      }
                       ariaLabel="product"
                     >
-                      {catalogItem.NAME}
+                      {
+                        //@ts-ignore
+                        catalogItem.NAME
+                      }
                     </Button>
                   ) : null}
                 </>

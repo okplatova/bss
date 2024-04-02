@@ -27,19 +27,7 @@ const Projects: FC<any> = ({ projects }) => {
         <Title variant="h1" className={`${s.title} container`}>
           Проекты
         </Title>
-        <p className="container">
-          С момента создания, компания принимала участие в подготовке и
-          реализации многих значимых и технически сложных проектов, среди
-          которых можно отметить: Инаугурации Президента РФ 2008, 2014 и 2018
-          годов; все пямые линии и пресс-конференции Президента РФ;
-          торжественные мероприятия, посвященные 60-летию, 65-летию и 70-ти
-          летию Великой Победы на Красной Площади; все значимые мероприятия в
-          ходе проведения Чемпионата Мира по футболу 2018 года; Премии
-          телеканала МУЗ-ТВ, «Золотой Граммофон»; Чемпионат Мира по легкой
-          атлетике 2013 года; Конкурс Красоты «Мисс Вселенная» 2013 года;
-          концерты мировых звезд, среди которых: Пол Маккартни, Элтон Джон,
-          Scorpions, Metallica, Roxette, Imagine Dragons, Iron Maiden.
-        </p>
+        <p className="container">{projects.DESCRIPTION}</p>
         <div className={s.typeSelectors}>
           <Button
             onClick={() => setGrid(true)}
@@ -61,7 +49,10 @@ const Projects: FC<any> = ({ projects }) => {
           </Button>
         </div>
       </div>
-      <ProjectContent projects={projects} isGrid={isGrid} />
+      <ProjectContent
+        projects={projects.PROJECTS}
+        isGrid={isGrid}
+      />
     </div>
   );
 };

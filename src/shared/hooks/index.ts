@@ -6,3 +6,4 @@ export * from "./useGetMainEquipment";
 export * from "./useGetClients";
 export * from "./useSwiperRef";
 export * from "./useGetMainVideo";
+export * from "./useGetMain";
