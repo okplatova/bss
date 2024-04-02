@@ -147,7 +147,7 @@ export const getServerSideProps = (async (context) => {
   //@ts-ignore
   let item = [];
 
-  Object.values(data).forEach((product: any) => {
+  Object.values(data.ROOT.CHILD).forEach((product: any) => {
     //@ts-ignore
     product.CHILD &&
       Object.values(product.CHILD).forEach((child) => {
