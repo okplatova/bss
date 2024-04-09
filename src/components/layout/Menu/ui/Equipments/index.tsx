@@ -23,9 +23,15 @@ const Equipments = () => {
   const { push } = useRouter();
   const { product } = useGetProduct();
   //@ts-ignore
-  const filteredProduct = product?.filter((item) => {
-    return item.ID === equipmentMenu.equipmentTypeId;
-  });
+
+  const filteredProduct =
+    product &&
+    //@ts-ignore
+    Object.values(product[0].CHILD)?.filter((item) => {
+      //@ts-ignore
+      return item.ID === equipmentMenu.equipmentTypeId;
+    });
+  console.log("product", filteredProduct);
 
   const handleOpenMenu = () => {
     equipmentMenu.handleOpenMainMenu(false);
@@ -71,62 +77,79 @@ const Equipments = () => {
       </div>
       <div className={s.content}>
         <div className={s.equipmentsTypes}>
-          {
+          {product &&
             //@ts-ignore
-            product?.map((type, index) => {
+            Object.values(product[0].CHILD)?.map((type, index) => {
               const btnClass = `${
                 equipmentMenu.equipmentTypeId &&
+                //@ts-ignore
                 type.ID === equipmentMenu.equipmentTypeId
                   ? s.active
                   : ""
               }`;
+              //@ts-ignore
               const children = type.CHILD && Object.values(type.CHILD);
 
               return (
                 <>
                   {children ? (
                     <Button
-                      key={type.ID}
-                      onClick={() => handleOpenSecondMenu(type.ID)}
+                      key={
+                        //@ts-ignore
+                        type.ID
+                      }
+                      onClick={
+                        //@ts-ignore
+                        () => handleOpenSecondMenu(type.ID)
+                      }
                       size="medium"
                       variable="clear"
                       ariaLabel="equipmentType"
                       className={btnClass}
                     >
-                      {type.NAME}
+                      {
+                        //@ts-ignore
+                        type.NAME
+                      }
                     </Button>
                   ) : null}
                 </>
               );
-            })
-          }
+            })}
         </div>
         <div className={equipmentListClass}>
-          {filteredProduct?.length > 0 &&
-            filteredProduct[0].CHILD &&
-            Object.values(filteredProduct[0].CHILD).map((item: any, index) => {
-              const btnClass = `${
-                equipmentMenu.equipmentListId &&
-                //@ts-ignore
-                item.ID === equipmentMenu.equipmentListId
-                  ? s.active
-                  : ""
-              }`;
-              return (
-                <Button
-                  //@ts-ignore
-                  key={item.ID}
-                  //@ts-ignore
-                  onClick={() => handleOpenThirdMenu(item.ID, item)}
-                  size="medium"
-                  variable="clear"
-                  ariaLabel="equipmentType"
-                  className={btnClass}
-                >
-                  {item.NAME}
-                </Button>
-              );
-            })}
+          {
+            //@ts-ignore
+            filteredProduct?.length > 0 &&
+              //@ts-ignore
+              filteredProduct[0].CHILD &&
+              //@ts-ignore
+              Object.values(filteredProduct[0].CHILD).map(
+                (item: any, index) => {
+                  const btnClass = `${
+                    equipmentMenu.equipmentListId &&
+                    //@ts-ignore
+                    item.ID === equipmentMenu.equipmentListId
+                      ? s.active
+                      : ""
+                  }`;
+                  return (
+                    <Button
+                      //@ts-ignore
+                      key={item.ID}
+                      //@ts-ignore
+                      onClick={() => handleOpenThirdMenu(item.ID, item)}
+                      size="medium"
+                      variable="clear"
+                      ariaLabel="equipmentType"
+                      className={btnClass}
+                    >
+                      {item.NAME}
+                    </Button>
+                  );
+                }
+              )
+          }
         </div>
         <div className={equipmentClass}>
           <div className={s.scrollContent}>
