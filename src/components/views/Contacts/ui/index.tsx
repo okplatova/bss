@@ -42,11 +42,11 @@ const Contacts = () => {
               </p>
             </div>
             <div className={s.contactsList}>
-              <ContactItem
+              {/* <ContactItem
                 className={s.contactItem}
                 title="Телефоны для связи"
                 links={["+7 (499) 136-24-44", "+7 (905) 509-72-72"]}
-              />
+              /> */}
               <ContactItem
                 className={s.contactItem}
                 title="Email"

@@ -49,7 +49,7 @@ const Header = () => {
         <div className={s.top}>
           <NavItem link="#" label="info@bss-tv.com" isMail />
           <NavItem link="#" label="+7 (499) 136-24-44" isPhone />
-          <NavItem link="#" label="+7 (905) 509-72-72" isPhone />
+          {/* <NavItem link="#" label="+7 (905) 509-72-72" isPhone /> */}
           <div onClick={handleOpenMenu} className={s.burger}>
             <span>Меню</span>
             <BurgerIcon />
