@@ -112,9 +112,9 @@ const Menu = () => {
           </Button>
         </div>
         <div className={s.bottom}>
-          <a href="maito:info@bss-tv.com">info@bss-tv.com</a>
-          <a href="tel:+7 (499) 136-24-44">+7 (499) 136-24-44</a>
-          <a href="tel:+7 (905) 509-72-72">+7 (905) 509-72-72</a>
+          <a href="mailto:info@bss-tv.com">info@bss-tv.com</a>
+          <a href="tel:+74991362444">+7 (499) 136-24-44</a>
+          <a href="tel:+79055097272">+7 (905) 509-72-72</a>
         </div>
       </div>
     </div>

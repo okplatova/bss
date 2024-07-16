@@ -30,11 +30,10 @@ const VideoStudio = () => {
         <Title variant="h1" className={s.title}>
           Видеостудия
         </Title>
-        <p className={s.description}>
-          {videostudion
+        <p className={s.description} dangerouslySetInnerHTML={{ __html: videostudion
             ? //@ts-ignore
               he.decode(videostudion[0].CONTENT["О студии"].TEXT)
-            : ""}
+            : ""}}>
         </p>
       </div>
       <div className={s.content}>

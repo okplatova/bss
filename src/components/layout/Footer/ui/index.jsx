@@ -1,11 +1,15 @@
 import { ParadigmaLogo } from "@/components/ui/ParadigmaLogo";
+
 import s from "./styles.module.sass";
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={s.footer}>
       <div className={`${s.footerInner} container`}>
         <p className={s.text}>
-          <span>Big Screen Show © 2023.</span>
+          <span>Big Screen Show © {currentYear}</span>
           <span>
             Световизуальное оборудование для грандиозного шоу. все права
             защищены
