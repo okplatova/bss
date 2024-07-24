@@ -14,6 +14,9 @@ import { observer } from "mobx-react-lite";
 import { useStores } from "@/shared/context";
 import { OutlineArrowRight } from "@/components/ui/OutlineArrowRight";
 import { useGetProduct } from "@/shared/hooks";
+import Image from 'next/image';
+import bannerImageUrl from './banner-catalog.jpg';
+import Link from "next/link";
 
 const breadcrumbs = [
   {
@@ -75,10 +78,17 @@ const Catalog: FC<any> = ({ products }) => {
     <div className={s.catalog}>
       <Breadcrumbs items={breadcrumbs} className={s.bread} />
       <div className={s.top}>
-        <Title variant="h1" className={`${s.title} container`}>
-          оборудование
-        </Title>
-        <p className="container">{products[1]}</p>
+        <div>
+          <Title variant="h1" className={`${s.title} container`}>
+            оборудование
+          </Title>
+          <p className="container">{products[1]}</p>
+        </div>
+        <div className="container">
+          <Link href="/product/mw-3.9" className={s.banner}>
+            <Image src={bannerImageUrl} alt="Banner" />
+          </Link>
+        </div>
       </div>
       <div className={s.catalogContent}>
         <MobileMenu toggleCatalog={setSelectedCatalog} />

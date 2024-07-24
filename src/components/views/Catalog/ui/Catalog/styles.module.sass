@@ -8,6 +8,10 @@
     .top
         padding: 24px 0
         border-bottom: 1px solid var(--gray-color)
+        display: flex
+        flex-direction: column
+        @media(min-width: $tab)
+            flex-direction: row
         .title
             font-size: 96px
             @media(max-width: $tab)
@@ -26,6 +30,15 @@
             margin-bottom: 2rem 
             @media(max-width: $tab)
                 font-size: 14px
+        .banner
+            display: block
+            img
+                width: 100%
+                height: auto
+                @media(min-width: $desktop-md)
+                    max-height: 330px
+                    width: auto
+
     .modalBtnWrapper
         display: none
         background: var(--dark-color)
