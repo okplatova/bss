@@ -37,8 +37,7 @@ const Contacts = () => {
             <div className={s.address}>
               <h6>Адрес</h6>
               <p>
-                г. Москва, Алтуфьевское шоссе, дом 37, стр.1 Логистический центр
-                &quot;Аврора&quot;
+                г. Москва, Ракетный бульвар 16
               </p>
             </div>
             <div className={s.contactsList}>

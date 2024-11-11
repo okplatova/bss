@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
-import s from "./styles.module.sass";
-
 import pin from "/public/pin.svg";
 
+import s from "./styles.module.sass";
+
+
 const ContactMap = () => {
+  const coordinates = [55.817471, 37.655688];
   const map = useRef<any>();
 
   return (
@@ -13,7 +15,7 @@ const ContactMap = () => {
       <YMaps>
         <Map
           defaultState={{
-            center: [55.86752247044282, 37.579347650787305],
+            center: coordinates,
             zoom: 15,
           }}
           instanceRef={map}
@@ -37,12 +39,12 @@ const ContactMap = () => {
           style={{ width: "100%", height: "100%" }}
         >
           <Placemark
-            geometry={[55.86752247044282, 37.579347650787305]}
+            geometry={coordinates}
             options={{
               draggable: false,
               iconLayout: "default#image",
               iconImageHref: pin.src,
-              iconImageSize: [232, 32],
+              iconImageSize: [159, 32],
             }}
           />
           <ZoomControl
