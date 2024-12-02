@@ -1,12 +1,16 @@
-import "@/shared/styles/index.sass";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import type { AppProps } from "next/app";
+import NProgress from "nprogress";
+
 import { Layout } from "@/components/layout/Layout";
 import { RootStoreContext } from "@/shared/context";
 import RootStore from "@/shared/store/rootStore";
+import { YandexMetrika } from "../provider/YandexMetrika";
+
+import "@/shared/styles/index.sass";
 import "nprogress/nprogress.css";
-import NProgress from "nprogress";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
@@ -30,9 +34,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <RootStoreContext.Provider value={new RootStore()}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <YandexMetrika>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </YandexMetrika>
     </RootStoreContext.Provider>
   );
 }
